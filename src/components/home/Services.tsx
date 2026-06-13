@@ -1,4 +1,5 @@
 import { Gem, Leaf, ShieldCheck } from "lucide-react";
+import Link from "next/link";
 
 const services = [
   {
@@ -47,3 +48,9 @@ export default function Services() {
     </section>
   );
 }
+
+<div className="mt-10 text-center">
+  <Link href="/services" className="btn-primary">
+    Explore All Services
+  </Link>
+</div>;

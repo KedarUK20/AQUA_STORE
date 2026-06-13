@@ -18,7 +18,7 @@ export default function Navbar() {
           <nav className="hidden items-center gap-7 text-xs text-slate-300 lg:flex">
             <Link href="/">Home</Link>
             <Link href="/discover">Discover</Link>
-            <Link href="/#services">Services</Link>
+            <Link href="/services">Services</Link>
             <Link href="/#projects">Projects</Link>
             <Link href="/#shop">Shop</Link>
             <Link href="/#about">About Us</Link>
@@ -35,7 +35,10 @@ export default function Navbar() {
               className="hidden h-5 w-5 text-slate-300 sm:block"
               aria-hidden="true"
             />
-            <ShoppingCart className="h-5 w-5 text-slate-300" aria-hidden="true" />
+            <ShoppingCart
+              className="h-5 w-5 text-slate-300"
+              aria-hidden="true"
+            />
           </div>
         </div>
       </div>
