@@ -2,8 +2,8 @@ import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 
 import Hero from "../components/home/Hero";
-import CraftShowcase from "../components/home/sections/CraftShowcase";
-import DiscoveryEditorial from "../components/home/sections/DiscoveryEditorial";
+// import CraftShowcase from "../components/home/sections/CraftShowcase";
+// import DiscoveryEditorial from "../components/home/sections/DiscoveryEditorial";
 import FeaturedProjects from "../components/home/FeaturedProjects";
 import Services from "../components/home/Services";
 import Products from "../components/home/Products";
@@ -17,9 +17,9 @@ export default function Home() {
 
       <Hero />
 
-      <DiscoveryEditorial />
+      {/* <DiscoveryEditorial /> */}
 
-      <CraftShowcase />
+      {/* <CraftShowcase /> */}
 
       <FeaturedProjects />
 
