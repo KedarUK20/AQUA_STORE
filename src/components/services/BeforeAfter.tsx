@@ -20,7 +20,7 @@ export default function BeforeAfter() {
           <div className="premium-card overflow-hidden">
             <div className="relative">
               <img
-                src="/images/before.jpg"
+                src="/images/02 aquarium.jpg"
                 alt="Before"
                 className="h-[500px] w-full object-cover"
               />
@@ -43,7 +43,7 @@ export default function BeforeAfter() {
           <div className="premium-card overflow-hidden">
             <div className="relative">
               <img
-                src="/images/aquahomeimg.png"
+                src="/images/istockphoto-1967399204-612x612.jpg"
                 alt="After"
                 className="h-[500px] w-full object-cover"
               />
