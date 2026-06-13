@@ -75,13 +75,7 @@ export const productHighlights = [
     image:
       "https://images.unsplash.com/photo-1582673937754-8d0cfed5dcc9?auto=format&fit=crop&w=900&q=85",
   },
-  {
-    name: "Lily Pipe Set",
-    category: "Glass Flow System",
-    price: "INR 2,899",
-    image:
-      "https://images.unsplash.com/photo-1524704796725-9fc3044a58b2?auto=format&fit=crop&w=900&q=85",
-  },
+
   {
     name: "Seiryu Stone Pack",
     category: "Hardscape",
