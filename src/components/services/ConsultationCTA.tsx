@@ -15,7 +15,7 @@ export default function ConsultationCTA() {
           READY TO START?
         </p>
 
-        <h2 className="font-serif text-5xl md:text-7xl">
+        <h2 className="font-serif text-4xl md:text-5xl xl:text-6xl leading-tight">
           Bring Nature
           <br />
           Into Your Space
