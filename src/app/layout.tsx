@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/src/components/layout/Navbar";
 import Footer from "@/src/components/layout/Footer";
 
+// ✅ SEO Metadata
 export const metadata: Metadata = {
   title: "Aquarium Nature Studio",
   description:
@@ -20,11 +21,7 @@ export default function RootLayout({
       <body className="bg-[#030d18] text-white">
         <Navbar />
 
-        <main className="pt-24">
-          {children}
-        </main>
-
-       
+        <main className="pt-24">{children}</main>
       </body>
     </html>
   );

@@ -203,9 +203,42 @@ export default function Navbar() {
               onClick={() => setMobileMenu(false)}
               className="btn-primary mt-4"
             >
-              Book Consultation
+              Consultation
             </Link>
           </nav>
+        </div>
+      </div>
+
+      {/* Mobile Drawer */}
+      <div
+        className={`
+        fixed top-0 right-0
+        h-screen w-[280px]
+        bg-[#06141B]
+        border-l border-cyan-500/20
+        z-[60]
+        transition-all duration-300
+        ${mobileMenu ? "translate-x-0" : "translate-x-full"}
+      `}
+      >
+        <div className="p-6">
+          <div className="flex justify-between mb-8">
+            <h2 className="text-xl text-white font-bold">Menu</h2>
+
+            <button onClick={() => setMobileMenu(false)}>
+              <X className="text-white" />
+            </button>
+          </div>
+
+          <div className="flex flex-col gap-5 text-white">
+            <Link href="/">Home</Link>
+            <Link href="/discover">Discover</Link>
+            <Link href="/services">Services</Link>
+            <Link href="/projects">Projects</Link>
+            <Link href="/shop">Shop</Link>
+            <Link href="/about">About</Link>
+            <Link href="/cart">Cart</Link>
+          </div>
         </div>
       </div>
 
