@@ -10,13 +10,14 @@ import Products from "../components/home/Products";
 import Testimonials from "../components/home/Testimonials";
 import CTA from "../components/home/CTA";
 
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#02080d] text-white overflow-hidden">
       <Navbar />
 
       <Hero />
-
+     
       {/* <DiscoveryEditorial /> */}
 
       {/* <CraftShowcase /> */}
