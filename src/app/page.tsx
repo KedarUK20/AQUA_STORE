@@ -32,7 +32,7 @@ export default function Home() {
 
       <CTA />
 
-      <Footer />
+      <Footer />  
     </main>
   );
 }
