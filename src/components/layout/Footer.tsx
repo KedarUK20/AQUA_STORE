@@ -9,12 +9,16 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-white/5 bg-[#02080d] text-white">
+    <footer className="mt-24 border-t border-white/10 bg-[#02080d] text-white">
 
-      <div className="max-w-7xl mx-auto px-4 py-16">
+      
 
-        <div className="grid md:grid-cols-4 gap-10">
+      {/* Main Footer */}
+      <div className="container-custom py-16">
 
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+
+          {/* Brand */}
           <div>
 
             <h2 className="text-xl font-bold">
@@ -22,39 +26,68 @@ export default function Footer() {
                 AQUARIUM
               </span>
 
-              <span className="block text-xs uppercase tracking-[0.35em] text-cyan-200">
+              <span className="block text-xs uppercase tracking-[0.35em] text-cyan-200 mt-1">
                 Nature Studio
               </span>
             </h2>
 
-            <p className="mt-5 text-sm text-slate-400 leading-7">
+            <p className="mt-5 text-sm leading-7 text-slate-400">
               Premium aquascaping, custom aquarium design,
-              installation and maintenance services.
+              installation, maintenance and luxury aquatic
+              ecosystems for homes and businesses.
             </p>
+
+           
 
           </div>
 
+          {/* Explore */}
           <div>
 
-            <h3 className="mb-4 font-semibold">
+            <h3 className="mb-5 text-white font-semibold">
               Explore
             </h3>
 
             <ul className="space-y-3 text-slate-400">
 
-              <li><Link href="/">Home</Link></li>
-              <li><Link href="/about">About</Link></li>
-              <li><Link href="/projects">Projects</Link></li>
-              <li><Link href="/gallery">Gallery</Link></li>
-              <li><Link href="/shop">Shop</Link></li>
+              <li>
+                <Link href="/" className="footer-link">
+                  Home
+                </Link>
+              </li>
+
+              <li>
+                <Link href="/about" className="footer-link">
+                  About
+                </Link>
+              </li>
+
+              <li>
+                <Link href="/projects" className="footer-link">
+                  Projects
+                </Link>
+              </li>
+
+              <li>
+                <Link href="/gallery" className="footer-link">
+                  Gallery
+                </Link>
+              </li>
+
+              <li>
+                <Link href="/shop" className="footer-link">
+                  Shop
+                </Link>
+              </li>
 
             </ul>
 
           </div>
 
+          {/* Services */}
           <div>
 
-            <h3 className="mb-4 font-semibold">
+            <h3 className="mb-5 text-white font-semibold">
               Services
             </h3>
 
@@ -62,7 +95,7 @@ export default function Footer() {
 
               <li>Custom Aquascaping</li>
               <li>Aquarium Installation</li>
-              <li>Maintenance</li>
+              <li>Maintenance & Care</li>
               <li>Corporate Aquariums</li>
               <li>Water Testing</li>
 
@@ -70,33 +103,45 @@ export default function Footer() {
 
           </div>
 
+          {/* Contact */}
           <div>
 
-            <h3 className="mb-4 font-semibold">
+            <h3 className="mb-5 text-white font-semibold">
               Contact
             </h3>
 
-            <div className="space-y-4 text-slate-400">
+            <div className="space-y-5 text-slate-400">
 
-              <div className="flex gap-3">
-                <MapPin className="text-cyan-400 w-5 h-5" />
+              <div className="flex items-start gap-3">
+
+                <MapPin className="h-5 w-5 shrink-0 text-cyan-400 mt-1" />
+
                 <span>
                   Kolhapur,
                   Maharashtra,
                   India
                 </span>
+
               </div>
 
-              <div className="flex gap-3">
-                <Phone className="text-cyan-400 w-5 h-5" />
-                <span>+91 9876543210</span>
-              </div>
+              <div className="flex items-center gap-3">
 
-              <div className="flex gap-3">
-                <Mail className="text-cyan-400 w-5 h-5" />
+                <Phone className="h-5 w-5 text-cyan-400" />
+
                 <span>
+                  +91 9876543210
+                </span>
+
+              </div>
+
+              <div className="flex items-center gap-3">
+
+                <Mail className="h-5 w-5 text-cyan-400" />
+
+                <span className="break-all">
                   hello@aquariumnaturestudio.com
                 </span>
+
               </div>
 
             </div>
@@ -107,27 +152,42 @@ export default function Footer() {
 
       </div>
 
+      {/* Bottom Bar */}
       <div className="border-t border-white/5">
 
-        <div className="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center">
+        <div className="container-custom py-6">
 
-          <p className="text-xs text-slate-500">
-            © {year} Aquarium Nature Studio.
-          </p>
+          <div className="flex flex-col items-center justify-between gap-4 text-center md:flex-row">
 
-          <div className="flex gap-6 text-xs text-slate-500 mt-4 md:mt-0">
+            <p className="text-xs text-slate-500">
+              © {year} Aquarium Nature Studio.
+              All rights reserved.
+            </p>
 
-            <Link href="/privacy">
-              Privacy Policy
-            </Link>
+            <div className="flex flex-wrap justify-center gap-6 text-xs text-slate-500">
 
-            <Link href="/terms">
-              Terms
-            </Link>
+              <Link
+                href="/privacy"
+                className="hover:text-cyan-400 transition"
+              >
+                Privacy Policy
+              </Link>
 
-            <Link href="/contact">
-              Contact
-            </Link>
+              <Link
+                href="/terms"
+                className="hover:text-cyan-400 transition"
+              >
+                Terms
+              </Link>
+
+              <Link
+                href="/contact"
+                className="hover:text-cyan-400 transition"
+              >
+                Contact
+              </Link>
+
+            </div>
 
           </div>
 
