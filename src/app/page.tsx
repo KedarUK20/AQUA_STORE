@@ -16,7 +16,10 @@ export default function Home() {
       <Navbar />
 
       <Hero />
+     
+      {/* <DiscoveryEditorial /> */}
 
+      {/* <CraftShowcase /> */}
 
       <FeaturedProjects />
 
@@ -28,7 +31,7 @@ export default function Home() {
 
       <CTA />
 
-      <Footer />
+      <Footer />  
     </main>
   );
 }

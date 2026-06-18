@@ -11,7 +11,8 @@ const services = [
 
 export default function Hero() {
   return (
-    <section className="relative isolate min-h-screen overflow-hidden bg-[#02080d]">
+   <section className="relative min-h-[85vh] rounded-3xl overflow-hidden">
+          
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: "url('/images/aquahomeimg.png')" }}
@@ -26,7 +27,7 @@ export default function Hero() {
             Aquarium Nature Studio
           </p>
 
-          <h1 className="max-w-3xl font-serif text-5xl leading-[0.98] tracking-normal text-white md:text-7xl xl:text-8xl">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif leading-tight">
             We Design.
             <br />
             You Relax.
@@ -48,7 +49,6 @@ export default function Hero() {
             </Link>
           </div>
         </div>
-
         <div className="grid gap-4 lg:grid-cols-[1.05fr_1fr]">
           <div className="premium-card p-5">
             <div className="mb-4 flex items-center justify-between">
@@ -117,7 +117,7 @@ export default function Hero() {
               </Link>
             </div>
 
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
               {productHighlights.map((item) => (
                 <div
                   key={item.name}

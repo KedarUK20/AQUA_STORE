@@ -1,34 +1,14 @@
-import "./globals.css";
 import type { Metadata } from "next";
-import { Inter, Cormorant_Garamond } from "next/font/google";
+import "./globals.css";
 
-// ✅ Body font
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-body",
-});
-
-// ✅ Heading font
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-heading",
-});
+import Navbar from "@/src/components/layout/Navbar";
+import Footer from "@/src/components/layout/Footer";
 
 // ✅ SEO Metadata
 export const metadata: Metadata = {
-  title: "Aquarium Nature Studio | Premium Aquascaping",
+  title: "Aquarium Nature Studio",
   description:
-    "Premium aquarium design, aquascaping, curated aquatic products, and maintenance for refined living spaces.",
-  keywords: [
-    "aquarium",
-    "aquascaping",
-    "fish tank design",
-    "aquarium plants",
-    "aquarium shop",
-  ],
-  authors: [{ name: "Aquarium Nature Studio" }],
-  viewport: "width=device-width, initial-scale=1",
+    "Luxury aquarium design, aquascaping, maintenance and premium aquatic products.",
 };
 
 export default function RootLayout({
@@ -37,19 +17,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${cormorant.variable}`}
-    >
-      <body
-        className="
-          bg-[#071a1f]
-          text-white
-          font-sans
-          antialiased
-        "
-      >
-        {children}
+    <html lang="en">
+      <body className="bg-[#030d18] text-white">
+        <Navbar />
+
+        <main className="pt-24">
+          {children}
+        </main>
+
+       
       </body>
     </html>
   );
