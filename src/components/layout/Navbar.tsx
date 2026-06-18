@@ -248,7 +248,7 @@ export default function Navbar() {
               }
               className="btn-primary mt-4"
             >
-              Book Consultation
+              Consultation
             </Link>
 
           </nav>
