@@ -2,13 +2,13 @@ import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 
 import Hero from "../components/home/Hero";
-// import CraftShowcase from "../components/home/sections/CraftShowcase";
-// import DiscoveryEditorial from "../components/home/sections/DiscoveryEditorial";
+
 import FeaturedProjects from "../components/home/FeaturedProjects";
 import Services from "../components/home/Services";
 import Products from "../components/home/Products";
 import Testimonials from "../components/home/Testimonials";
 import CTA from "../components/home/CTA";
+
 
 export default function Home() {
   return (
@@ -17,9 +17,6 @@ export default function Home() {
 
       <Hero />
 
-      {/* <DiscoveryEditorial /> */}
-
-      {/* <CraftShowcase /> */}
 
       <FeaturedProjects />
 

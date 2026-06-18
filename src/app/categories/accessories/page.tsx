@@ -1,5 +1,6 @@
 import ProductCard from "../../../components/shop/ProductCard";
 
+
 const products = [
   {
     title: "LED Light",

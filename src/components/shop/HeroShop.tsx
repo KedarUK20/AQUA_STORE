@@ -1,55 +1,135 @@
 "use client";
 
+import Link from "next/link";
+
 export default function HeroShop() {
   return (
-    <div className="relative h-[500px] rounded-2xl overflow-hidden">
+    <section className="relative h-screen overflow-hidden">
 
       {/* Background Image */}
-
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: "url('/images/banner1.jpg')",
-        }}
+      <img
+        src="/images/banner1.jpg"
+        alt="Aquarium Banner"
+        className="absolute inset-0 h-full w-full object-cover"
       />
 
       {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/70" />
 
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
+      {/* Hero Content */}
+      <div className="relative z-20 flex h-full items-center">
 
-      {/* Content */}
+        <div className="container mx-auto px-6 md:px-12 lg:px-20">
 
-      <div className="relative z-10 flex items-center h-full px-12">
+          <div className="max-w-3xl">
 
-        <div>
+            <h1
+              className="
+                text-5xl
+                md:text-7xl
+                xl:text-8xl
+                font-black
+                leading-tight
+                text-white
+              "
+            >
+              Premium Products
+              <br />
+              For{" "}
+              <span className="text-cyan-400">
+                Aquariums
+              </span>
+            </h1>
 
-          <p className="text-cyan-400 text-lg font-semibold tracking-widest uppercase">
-            Premium Aquarium Store
-          </p>
+            <p
+              className="
+                mt-6
+                text-lg
+                md:text-2xl
+                text-gray-300
+                max-w-2xl
+              "
+            >
+              Discover premium aquarium plants,
+              fertilizers, fish food, aquascaping
+              essentials and high-quality aquarium
+              accessories.
+            </p>
 
-          <h1 className="text-6xl font-extrabold text-white mt-4 leading-tight">
-            Everything for Your
-            <br />
-            <span className="text-cyan-400">
-              AQUARIUM
-            </span>
-          </h1>
+            {/* Buttons */}
+            <div className="mt-10 flex flex-wrap gap-4">
 
-          <p className="mt-6 text-gray-300 max-w-xl text-lg">
-            Discover premium aquarium plants,
-            fertilizers, fish food and aquascaping
-            essentials for a beautiful underwater world.
-          </p>
+              <Link
+                href="/products"
+                className="
+                  rounded-2xl
+                  bg-cyan-500
+                  px-8
+                  py-4
+                  font-bold
+                  text-black
+                  transition-all
+                  duration-300
+                  hover:scale-105
+                  hover:bg-cyan-400
+                  hover:shadow-[0_0_30px_rgba(34,211,238,0.5)]
+                "
+              >
+                Shop Now
+              </Link>
 
-          <div className="flex gap-4 mt-8">
+              {/* <Link
+                href="/gallery"
+                className="
+                  rounded-2xl
+                  border
+                  border-cyan-400
+                  px-8
+                  py-4
+                  text-white
+                  transition-all
+                  duration-300
+                  hover:bg-cyan-500/10
+                  hover:shadow-[0_0_25px_rgba(34,211,238,0.25)]
+                "
+              >
+                Explore Gallery
+              </Link> */}
 
-            <button className="bg-cyan-500 hover:bg-cyan-400 transition px-8 py-3 rounded-xl text-black font-bold">
-              Shop Now →
-            </button>
+            </div>
 
-            <button className="border border-cyan-500 text-cyan-400 hover:bg-cyan-500 hover:text-black transition px-8 py-3 rounded-xl font-bold">
-              Explore
-            </button>
+            {/* Stats */}
+            <div className="grid grid-cols-2 gap-4 mt-14 max-w-xl">
+
+              <div className="bg-black/30 backdrop-blur-xl border border-white/10 rounded-3xl p-6">
+                <h2 className="text-4xl md:text-5xl font-bold text-white">
+                  500+
+                </h2>
+
+                <p className="text-cyan-400 text-lg mt-2">
+                  Live Plants
+                </p>
+
+                <p className="text-gray-400 text-sm mt-3">
+                  Healthy and handpicked aquarium plants.
+                </p>
+              </div>
+
+              <div className="bg-black/30 backdrop-blur-xl border border-white/10 rounded-3xl p-6">
+                <h2 className="text-4xl md:text-5xl font-bold text-white">
+                  1000+
+                </h2>
+
+                <p className="text-cyan-400 text-lg mt-2">
+                  Products
+                </p>
+
+                <p className="text-gray-400 text-sm mt-3">
+                  Filters, lights, substrate and more.
+                </p>
+              </div>
+
+            </div>
 
           </div>
 
@@ -57,30 +137,6 @@ export default function HeroShop() {
 
       </div>
 
-      {/* Floating Badges */}
-
-      <div className="absolute right-8 bottom-8 grid grid-cols-2 gap-3">
-
-        <div className="bg-black/50 backdrop-blur-md border border-cyan-500/30 rounded-xl px-4 py-3">
-          <p className="text-cyan-400 font-bold">
-            🌿 500+
-          </p>
-          <p className="text-white text-sm">
-            Live Plants
-          </p>
-        </div>
-
-        <div className="bg-black/50 backdrop-blur-md border border-cyan-500/30 rounded-xl px-4 py-3">
-          <p className="text-cyan-400 font-bold">
-            🐠 1000+
-          </p>
-          <p className="text-white text-sm">
-            Aquarium Products
-          </p>
-        </div>
-
-      </div>
-
-    </div>
+    </section>
   );
 }

@@ -12,32 +12,36 @@ type Props = {
   title: string;
   image: string;
   price: string;
-  link?: string;
+  category?: string;
 };
 
 export default function ProductCard({
   title,
   image,
   price,
+  category = "Premium Aquarium Product",
 }: Props) {
   const [liked, setLiked] = useState(false);
 
   const handleAddToCart = () => {
-    const cart = JSON.parse(
-      localStorage.getItem("cart") || "[]"
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+    const existingItem = cart.find(
+      (item: any) => item.title === title
     );
 
-    cart.push({
-      title,
-      image,
-      price,
-      quantity: 1,
-    });
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      cart.push({
+        title,
+        image,
+        price,
+        quantity: 1,
+      });
+    }
 
-    localStorage.setItem(
-      "cart",
-      JSON.stringify(cart)
-    );
+    localStorage.setItem("cart", JSON.stringify(cart));
 
     alert(`${title} added to cart 🛒`);
   };
@@ -45,73 +49,68 @@ export default function ProductCard({
   return (
     <div
       className="
-      group
-      bg-[#071a24]
-      rounded-2xl
-      overflow-hidden
-      border
-      border-cyan-900/30
-      hover:border-cyan-400
-      hover:-translate-y-2
-      transition-all
-      duration-300
-      shadow-lg
+        group
+        bg-gradient-to-b
+        from-[#081923]
+        to-[#07141d]
+        rounded-3xl
+        overflow-hidden
+        border
+        border-cyan-900/30
+        hover:border-cyan-400
+        hover:-translate-y-2
+        transition-all
+        duration-300
+        shadow-xl
       "
     >
-      {/* Image */}
-
+      {/* Product Image */}
       <div className="relative overflow-hidden">
-
         <img
           src={image}
           alt={title}
           className="
-          h-60
-          w-full
-          object-cover
-          transition
-          duration-500
-          group-hover:scale-110
+            h-72
+            w-full
+            object-cover
+            transition
+            duration-700
+            group-hover:scale-110
           "
         />
 
         {/* Overlay */}
-
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
 
         {/* Badge */}
-
-        <div className="absolute top-4 left-4 bg-emerald-500 text-black text-xs font-bold px-3 py-1 rounded-full">
+        <div className="absolute left-4 top-4 rounded-full bg-emerald-500 px-3 py-1 text-xs font-bold text-black">
           NEW
         </div>
 
-        {/* Icons */}
-
+        {/* Right Icons */}
         <div
           className="
-          absolute
-          top-4
-          right-4
-          flex
-          flex-col
-          gap-2
-          opacity-0
-          group-hover:opacity-100
-          transition
+            absolute
+            right-4
+            top-4
+            flex
+            flex-col
+            gap-3
+            opacity-0
+            translate-x-3
+            group-hover:opacity-100
+            group-hover:translate-x-0
+            transition-all
+            duration-300
           "
         >
           <button
             onClick={() => setLiked(!liked)}
             className="
-            w-10
-            h-10
-            rounded-full
-            bg-black/70
-            hover:bg-cyan-500
-            flex
-            items-center
-            justify-center
-            transition
+              h-10 w-10 rounded-full bg-black/70
+              hover:bg-cyan-500
+              flex items-center justify-center
+              transition
             "
           >
             <Heart
@@ -126,107 +125,77 @@ export default function ProductCard({
 
           <button
             className="
-            w-10
-            h-10
-            rounded-full
-            bg-black/70
-            hover:bg-cyan-500
-            flex
-            items-center
-            justify-center
-            transition
+              h-10 w-10 rounded-full bg-black/70
+              hover:bg-cyan-500
+              flex items-center justify-center
+              transition
             "
           >
-            <Eye
-              size={18}
-              className="text-white"
-            />
+            <Eye size={18} className="text-white" />
           </button>
         </div>
       </div>
 
       {/* Content */}
-
-      <div className="p-5">
-
-        <h3 className="text-white text-xl font-bold">
+      <div className="p-6">
+        <h3 className="text-2xl font-bold text-white">
           {title}
         </h3>
 
-        <p className="text-gray-400 text-sm mt-1">
-          Premium aquarium product
+        <p className="mt-1 text-sm text-gray-400">
+          {category}
         </p>
 
         {/* Rating */}
+        <div className="mt-3 flex items-center gap-1">
+          {[...Array(5)].map((_, index) => (
+            <Star
+              key={index}
+              size={16}
+              className="fill-yellow-400 text-yellow-400"
+            />
+          ))}
 
-        <div className="flex items-center gap-1 mt-3">
-          <Star
-            size={16}
-            className="fill-yellow-400 text-yellow-400"
-          />
-          <Star
-            size={16}
-            className="fill-yellow-400 text-yellow-400"
-          />
-          <Star
-            size={16}
-            className="fill-yellow-400 text-yellow-400"
-          />
-          <Star
-            size={16}
-            className="fill-yellow-400 text-yellow-400"
-          />
-          <Star
-            size={16}
-            className="fill-yellow-400 text-yellow-400"
-          />
-
-          <span className="text-gray-400 text-sm ml-2">
+          <span className="ml-2 text-sm text-gray-400">
             (5.0)
           </span>
         </div>
 
         {/* Price */}
-
-        <div className="mt-4 flex items-center justify-between">
-
-          <span className="text-cyan-400 text-3xl font-bold">
+        <div className="mt-5 flex items-center justify-between">
+          <span className="text-4xl font-bold text-cyan-400">
             {price}
           </span>
 
           <span className="text-sm text-gray-500 line-through">
             $12
           </span>
-
         </div>
 
-        {/* Add To Cart */}
-
+        {/* Add to cart */}
         <button
           onClick={handleAddToCart}
           className="
-          mt-5
-          w-full
-          flex
-          items-center
-          justify-center
-          gap-2
-          bg-cyan-500
-          hover:bg-cyan-400
-          py-3
-          rounded-xl
-          text-black
-          font-bold
-          transition-all
-          duration-300
-          hover:shadow-[0_0_20px_rgba(6,182,212,0.7)]
+            mt-6
+            flex
+            w-full
+            items-center
+            justify-center
+            gap-2
+            rounded-2xl
+            bg-cyan-500
+            py-4
+            font-bold
+            text-black
+            transition-all
+            duration-300
+            hover:bg-cyan-400
+            hover:shadow-[0_0_25px_rgba(6,182,212,0.7)]
           "
         >
           <ShoppingCart size={18} />
-
           Add to Cart
         </button>
-
       </div>
     </div>
   );

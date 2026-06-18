@@ -56,70 +56,186 @@ const items = [
 
 export default function CategoryGrid() {
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
-      {items.map((item, index) => (
-        <Link
-          key={index}
-          href={`/categories/${item.slug}`}
-          className="group relative h-56 overflow-hidden rounded-2xl border border-cyan-900 hover:border-emerald-500 transition-all duration-300"
-        >
-          {/* Image */}
+    // <section className="relative bg-[#020B12] py-24">
 
-          <img
-            src={item.img}
-            alt={item.title}
-            className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
-          />
+      <div className="container mx-auto px-6">
 
-          {/* Overlay */}
+        {/* Header */}
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+        <div className="text-center mb-16">
 
-          {/* Content */}
-
-          <div className="absolute bottom-5 left-5">
-            <h3 className="text-white text-2xl font-bold">
-              {item.title}
-            </h3>
-
-            <p className="text-gray-300 text-sm mt-1">
-              {item.count}
-            </p>
-          </div>
-
-          {/* Arrow Button */}
-
-          <div
+          <p
             className="
-            absolute
-            bottom-5
-            right-5
-            w-12
-            h-12
-            rounded-full
-            bg-emerald-500
-            flex
-            items-center
-            justify-center
-            transition-all
-            duration-300
-            shadow-[0_0_20px_rgba(16,185,129,0.4)]
-            group-hover:scale-110
-            group-hover:shadow-[0_0_35px_rgba(16,185,129,0.9)]
-            "
+            mt-5
+            max-w-3xl
+            mx-auto
+            text-lg
+            text-slate-400
+          "
           >
-            <ArrowRight
-              size={22}
+            Explore premium aquarium plants,
+            fertilizers, fish food, aquascaping tools,
+            accessories and professional equipment.
+          </p>
+        </div>
+
+        {/* Grid */}
+
+        <div
+          className="
+          grid
+          gap-8
+          md:grid-cols-2
+          xl:grid-cols-4
+        "
+        >
+          {items.map((item, index) => (
+            <Link
+              key={index}
+              href={`/categories/${item.slug}`}
               className="
-              text-white
-              transition-transform
-              duration-300
-              group-hover:translate-x-1
+              group
+              relative
+              h-[340px]
+              overflow-hidden
+              rounded-[32px]
+
+              border
+              border-white/10
+
+              bg-black/20
+              backdrop-blur-xl
+
+              shadow-xl
+
+              transition-all
+              duration-500
+
+              hover:-translate-y-3
+              hover:border-emerald-500/50
+              hover:shadow-[0_0_50px_rgba(16,185,129,0.35)]
+            "
+            >
+              {/* Image */}
+
+              <img
+                src={item.img}
+                alt={item.title}
+                className="
+                absolute
+                inset-0
+                h-full
+                w-full
+                object-cover
+
+                transition-all
+                duration-700
+
+                group-hover:scale-110
               "
-            />
-          </div>
-        </Link>
-      ))}
-    </div>
+              />
+
+              {/* Overlay */}
+
+              <div
+                className="
+                absolute
+                inset-0
+
+                bg-gradient-to-t
+                from-black
+                via-black/40
+                to-transparent
+              "
+              />
+
+              {/* Badge */}
+
+              <div
+                className="
+                absolute
+                top-5
+                left-5
+
+                rounded-full
+
+                border
+                border-emerald-500/30
+
+                bg-black/40
+                backdrop-blur-xl
+
+                px-4
+                py-2
+
+                text-xs
+                font-semibold
+                text-emerald-300
+              "
+              >
+                {item.count}
+              </div>
+
+              {/* Content */}
+
+              <div
+                className="
+                absolute
+                bottom-6
+                left-6
+                right-6
+
+                flex
+                items-end
+                justify-between
+              "
+              >
+                <div>
+                  <h3
+                    className="
+                    text-3xl
+                    font-bold
+                    text-white
+                  "
+                  >
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-2 text-slate-300">
+                    Explore Collection
+                  </p>
+                </div>
+
+                <div
+                  className="
+                  flex
+                  h-14
+                  w-14
+                  items-center
+                  justify-center
+
+                  rounded-full
+
+                  bg-emerald-500
+
+                  transition-all
+                  duration-300
+
+                  group-hover:scale-110
+                  group-hover:rotate-45
+                "
+                >
+                  <ArrowRight
+                    size={24}
+                    className="text-white"
+                  />
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+      </div>
+    // </section>
   );
 }
