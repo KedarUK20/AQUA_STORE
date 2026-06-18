@@ -19,14 +19,14 @@ export default function Navbar() {
             <Link href="/">Home</Link>
             <Link href="/discover">Discover</Link>
             <Link href="/services">Services</Link>
-            <Link href="/#projects">Projects</Link>
+            <Link href="/projects">Projects</Link>
             <Link href="/#shop">Shop</Link>
             <Link href="/#about">About Us</Link>
           </nav>
 
           <div className="flex items-center gap-4">
             <Link
-              href="/#consultation"
+              href="/consultation"
               className="btn-secondary hidden px-5 py-2 text-xs sm:inline-flex"
             >
               Book Consultation
