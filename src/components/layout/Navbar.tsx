@@ -13,11 +13,12 @@ export default function Navbar() {
 
   const links = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Projects", href: "/projects" },
     { name: "Gallery", href: "/gallery" },
+    { name: "Projects", href: "/projects" },
+    { name: "Services", href: "/services" },
     { name: "Shop", href: "/shop" },
-    { name: "Contact", href: "/contact" },
+    { name: "About", href: "/about" },
+    { name: "Consultation", href: "/consultation" },
   ];
 
   const handleSearch = () => {
@@ -29,7 +30,7 @@ export default function Navbar() {
   return (
     <>
       {/* Navbar */}
-      <header className="fixed top-0 left-0 right-0 z-50 px-3 py-3">
+      <header className="fixed top-0 left-0 right-0 z-50 px-3 pt-2">
         <div className="container-custom">
           <div
             className="
