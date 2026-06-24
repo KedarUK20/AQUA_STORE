@@ -13,12 +13,11 @@ export default function FeaturedProjects() {
           title="Aquarium environments with a sense of place"
         />
 
-        <div className="grid gap-5 md:grid-cols-3">
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-5">
           {projectStories.map((project) => (
             <div
               key={project.title}
-              className="premium-card group overflow-hidden"
-            >
+              className="premium-card overflow-hidden group" >
               <div className="relative h-96 overflow-hidden">
                 <Image
                   src={project.image}

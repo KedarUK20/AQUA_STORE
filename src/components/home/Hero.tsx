@@ -11,7 +11,7 @@ const services = [
 
 export default function Hero() {
   return (
-    <section className="relative isolate min-h-screen overflow-hidden bg-[#02080d]">
+    <section className="relative min-h-screen overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: "url('/images/aquahomeimg.png')" }}
@@ -20,13 +20,13 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_24%,rgba(20,184,166,0.24),transparent_28%),radial-gradient(circle_at_18%_82%,rgba(215,181,109,0.14),transparent_30%)]" />
       <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#02080d] to-transparent" />
 
-      <div className="relative z-10 flex min-h-screen flex-col justify-between gap-12 px-4 pb-5 pt-28 sm:px-6 md:px-8 lg:px-12">
-        <div className="hero-content max-w-4xl pt-8 md:pl-14 lg:pt-16 xl:pl-24">
+      <div className="relative z-10 flex min-h-screen flex-col justify-between gap-12 px-4 pb-5 pt-0 sm:px-6 md:px-8 lg:px-12">
+        <div className="hero-content max-w-4xl pt-32 pl-6 md:pl-16 lg:pl-24 lg:pt-40 xl:pl-32">
           <p className="mb-5 text-xs uppercase tracking-[0.28em] text-[#6fffe9]">
             Aquarium Nature Studio
           </p>
 
-          <h1 className="max-w-3xl font-serif text-5xl leading-[0.98] tracking-normal text-white md:text-7xl xl:text-8xl">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif leading-tight">
             We Design.
             <br />
             You Relax.
@@ -48,7 +48,6 @@ export default function Hero() {
             </Link>
           </div>
         </div>
-
         <div className="grid gap-4 lg:grid-cols-[1.05fr_1fr]">
           <div className="premium-card p-5">
             <div className="mb-4 flex items-center justify-between">
@@ -117,7 +116,7 @@ export default function Hero() {
               </Link>
             </div>
 
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
               {productHighlights.map((item) => (
                 <div
                   key={item.name}

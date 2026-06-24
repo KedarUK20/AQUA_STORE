@@ -1,47 +1,261 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
-import { Search, ShoppingCart } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Search, ShoppingCart, Menu, X } from "lucide-react";
 
 export default function Navbar() {
-  return (
-    <header className="fixed left-0 right-0 top-4 z-50">
-      <div className="px-3 sm:px-4 lg:px-6">
-        <div className="glass flex h-16 items-center justify-between rounded-lg border-white/10 bg-[#04111f]/78 px-5 shadow-2xl md:px-8">
-          <Link href="/" aria-label="Aquarium Nature Studio home">
-            <h1 className="text-lg font-serif tracking-normal text-white md:text-xl">
-              <span className="text-[#14b8a6]">AQUARIUM</span>
-              <span className="block text-[9px] uppercase tracking-[0.36em] text-[#6fffe9]">
-                Nature Studio
-              </span>
-            </h1>
-          </Link>
+  const [mobileMenu, setMobileMenu] = useState(false);
+  const [query, setQuery] = useState("");
 
-          <nav className="hidden items-center gap-7 text-xs text-slate-300 lg:flex">
+  const router = useRouter();
+
+  const links = [
+    { name: "Home", href: "/" },
+    { name: "Gallery", href: "/gallery" },
+    { name: "Projects", href: "/projects" },
+    { name: "Services", href: "/services" },
+    { name: "Shop", href: "/shop" },
+    { name: "About", href: "/about" },
+    { name: "Consultation", href: "/consultation" },
+  ];
+
+  const handleSearch = () => {
+    if (!query.trim()) return;
+    router.push(`/search?q=${query}`);
+    setQuery("");
+  };
+
+  return (
+    <>
+      {/* Navbar */}
+      <header className="fixed top-0 left-0 right-0 z-50 px-3 pt-2">
+        <div className="container-custom">
+          <div
+            className="
+            glass
+            h-16
+            rounded-2xl
+            flex
+            items-center
+            justify-between
+            px-4
+            md:px-6
+            "
+          >
+            {/* Logo */}
+            <Link href="/">
+              <div>
+                <h1 className="text-lg md:text-xl font-bold text-cyan-400">
+                  AQUARIUM
+                </h1>
+
+                <p className="text-[10px] tracking-[0.35em] uppercase text-cyan-200">
+                  Nature Studio
+                </p>
+              </div>
+            </Link>
+
+            {/* Desktop Menu */}
+            <nav className="hidden lg:flex items-center gap-8 text-sm">
+              {links.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="
+                  text-slate-300
+                  transition
+                  hover:text-cyan-400
+                  "
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </nav>
+
+            {/* Right Side */}
+            <div className="flex items-center gap-3">
+              {/* Search */}
+              <div
+                className="
+                hidden
+                md:flex
+                items-center
+                rounded-xl
+                border
+                border-white/10
+                bg-white/5
+                px-3
+                py-2
+                "
+              >
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  className="
+                  w-36
+                  bg-transparent
+                  text-sm
+                  text-white
+                  outline-none
+                  "
+                />
+
+                <button onClick={handleSearch}>
+                  <Search
+                    size={18}
+                    className="text-slate-300 hover:text-cyan-400"
+                  />
+                </button>
+              </div>
+
+              {/* Mobile Search */}
+              <button className="md:hidden">
+                <Search size={20} className="text-slate-300" />
+              </button>
+
+              {/* Cart */}
+              <Link href="/cart">
+                <ShoppingCart
+                  size={20}
+                  className="
+                  text-slate-300
+                  hover:text-cyan-400
+                  transition
+                  "
+                />
+              </Link>
+
+              {/* Desktop CTA */}
+              <Link
+                href="/consultation"
+                className="
+                hidden
+                lg:flex
+                btn-primary
+                "
+              >
+                Book Consultation
+              </Link>
+
+              {/* Mobile Menu */}
+              <button
+                onClick={() => setMobileMenu(!mobileMenu)}
+                className="lg:hidden"
+              >
+                {mobileMenu ? (
+                  <X size={24} className="text-white" />
+                ) : (
+                  <Menu size={24} className="text-white" />
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile Drawer */}
+      <div
+        className={`
+        fixed
+        top-0
+        right-0
+        h-screen
+        w-[280px]
+        bg-[#04111f]
+        border-l
+        border-cyan-500/10
+        backdrop-blur-xl
+        z-[60]
+        transition-all
+        duration-300
+        ${mobileMenu ? "translate-x-0" : "translate-x-full"}
+      `}
+      >
+        <div className="p-6">
+          <div className="mb-8 flex items-center justify-between">
+            <h2 className="text-xl font-bold text-cyan-400">Menu</h2>
+
+            <button onClick={() => setMobileMenu(false)}>
+              <X className="text-white" />
+            </button>
+          </div>
+
+          <nav className="flex flex-col gap-5">
+            {links.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                onClick={() => setMobileMenu(false)}
+                className="
+                text-slate-300
+                hover:text-cyan-400
+                "
+              >
+                {item.name}
+              </Link>
+            ))}
+
+            <Link
+              href="/consultation"
+              onClick={() => setMobileMenu(false)}
+              className="btn-primary mt-4"
+            >
+              Consultation
+            </Link>
+          </nav>
+        </div>
+      </div>
+
+      {/* Mobile Drawer */}
+      <div
+        className={`
+        fixed top-0 right-0
+        h-screen w-[280px]
+        bg-[#06141B]
+        border-l border-cyan-500/20
+        z-[60]
+        transition-all duration-300
+        ${mobileMenu ? "translate-x-0" : "translate-x-full"}
+      `}
+      >
+        <div className="p-6">
+          <div className="flex justify-between mb-8">
+            <h2 className="text-xl text-white font-bold">Menu</h2>
+
+            <button onClick={() => setMobileMenu(false)}>
+              <X className="text-white" />
+            </button>
+          </div>
+
+          <div className="flex flex-col gap-5 text-white">
             <Link href="/">Home</Link>
             <Link href="/discover">Discover</Link>
             <Link href="/services">Services</Link>
-            <Link href="/#projects">Projects</Link>
-            <Link href="/#shop">Shop</Link>
-            <Link href="/#about">About Us</Link>
-          </nav>
-
-          <div className="flex items-center gap-4">
-            <Link
-              href="/#consultation"
-              className="btn-secondary hidden px-5 py-2 text-xs sm:inline-flex"
-            >
-              Book Consultation
-            </Link>
-            <Search
-              className="hidden h-5 w-5 text-slate-300 sm:block"
-              aria-hidden="true"
-            />
-            <ShoppingCart
-              className="h-5 w-5 text-slate-300"
-              aria-hidden="true"
-            />
+            <Link href="/projects">Projects</Link>
+            <Link href="/shop">Shop</Link>
+            <Link href="/about">About</Link>
+            <Link href="/cart">Cart</Link>
           </div>
         </div>
       </div>
-    </header>
+
+      {/* Overlay */}
+      {mobileMenu && (
+        <div
+          onClick={() => setMobileMenu(false)}
+          className="
+          fixed
+          inset-0
+          bg-black/50
+          backdrop-blur-sm
+          z-40
+          "
+        />
+      )}
+    </>
   );
 }
