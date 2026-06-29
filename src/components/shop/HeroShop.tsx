@@ -1,14 +1,18 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 
 export default function HeroShop() {
   return (
     <section className="relative min-h-screen overflow-hidden">
       {/* Background Image */}
-      <img
+      <Image
         src="/images/banner1.jpg"
         alt="Aquarium Banner"
+        fill
+        priority
+        sizes="100vw"
         className="absolute inset-0 h-full w-full object-cover"
       />
 

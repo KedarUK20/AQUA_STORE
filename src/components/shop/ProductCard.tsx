@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { Star, CheckCircle } from "lucide-react";
 
@@ -8,6 +9,7 @@ type Props = {
   image: string;
   price: string;
   category?: string;
+  link?: string;
 };
 
 type CartItem = {
@@ -16,6 +18,8 @@ type CartItem = {
   price: string;
   quantity: number;
 };
+
+
 
 export default function ProductCard({
   title,

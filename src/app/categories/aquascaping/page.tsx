@@ -1,32 +1,30 @@
-import ProductCard from  "../../../components/shop/ProductCard";
+import ProductCard from "../../../components/shop/ProductCard";
 
 const products = [
   {
     title: "Dragon Stone",
-    image:
-      "https://img.freepik.com/premium-photo/launch-new-aquascaping-with-driftwood-dragonstone-soil-with-plants-freshwater-aquarium_421422-1808.jpg?w=2000",
+    image: "/images/5.jpeg",
     price: "$12",
   },
   {
     title: "Driftwood",
-    image:
-      "https://zenaquaria.com/wp-content/uploads/2023/07/ZA-Best-Driftwood-for-Aquariums-Image-1.jpg",
+    image: "/images/10.jpeg",
     price: "$15",
   },
   {
     title: "Aquarium Sand Base",
-    image:
-      "https://www.aquariumgallery.com.au/cdn/shop/collections/eco-complete-aquarium-substrate.jpg?v=1694851198",
+    image: "/images/02 aquarium.jpg",
     price: "$8",
   },
 ];
 
 export default function Page() {
   return (
-    <div className="p-8 text-white">
+    <main className="min-h-screen px-4 pb-12 pt-28 text-white sm:px-6 lg:px-10">
+      <div className="mx-auto w-full max-w-[1800px]">
 
       {/* Title */}
-      <h1 className="text-3xl font-bold text-cyan-400">
+      <h1 className="text-3xl font-bold text-cyan-400 sm:text-4xl">
         Aquascaping
       </h1>
 
@@ -36,7 +34,7 @@ export default function Page() {
       </p>
 
       {/* Product Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-5 sm:gap-6 lg:gap-8">
 
         {products.map((p, i) => (
           <ProductCard
@@ -48,7 +46,8 @@ export default function Page() {
         ))}
 
       </div>
+      </div>
 
-    </div>
+    </main>
   );
 }

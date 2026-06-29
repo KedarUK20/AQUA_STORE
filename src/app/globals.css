@@ -45,6 +45,11 @@ body {
   overflow-x: hidden;
 }
 
+html,
+body {
+  max-width: 100vw;
+}
+
 .font-heading {
   font-family: var(--font-heading);
 }
@@ -78,6 +83,29 @@ body {
 
 @media (min-width: 1024px) {
   .container-custom {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+.about-custom {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 1800px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .about-custom {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-custom {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
   }
@@ -137,6 +165,8 @@ body {
   font-size: 0.875rem;
   font-weight: 500;
   color: #ffffff;
+  text-align: center;
+  white-space: nowrap;
 
   background: linear-gradient(135deg, #0f766e, #14b8a6);
 
@@ -158,6 +188,8 @@ body {
   font-size: 0.875rem;
   font-weight: 500;
   color: #ffffff;
+  text-align: center;
+  white-space: nowrap;
 
   border: 1px solid rgba(20, 184, 166, 0.55);
   background: rgba(2, 8, 13, 0.32);

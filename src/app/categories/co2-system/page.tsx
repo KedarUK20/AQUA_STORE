@@ -1,32 +1,30 @@
-import ProductCard from  "../../../components/shop/ProductCard";
+import ProductCard from "../../../components/shop/ProductCard";
 
 const products = [
   {
     title: "CO2 Kit",
-    image:
-      "https://aquascapeshop.com/cdn/shop/collections/co2-injection-kits-2277960.jpg?crop=center&height=1200&v=1753706491&width=1200",
+    image: "/images/7.jpeg",
     price: "$30",
   },
   {
     title: "CO2 Regulator",
-    image:
-      "https://epicaquarium.com/wp-content/uploads/2021/11/best_co2_regulator_fo_planted_aquarium.jpg",
+    image: "/images/8.jpeg",
     price: "$22",
   },
   {
     title: "CO2 Diffuser",
-    image:
-      "https://petmag.com/wp-content/uploads/2021/03/CO2-diffuser-on-aquarium-glass-tank.jpg",
+    image: "/images/9.jpeg",
     price: "$10",
   },
 ];
 
 export default function Page() {
   return (
-    <div className="p-8 text-white">
+    <main className="min-h-screen px-4 pb-12 pt-28 text-white sm:px-6 lg:px-10">
+      <div className="mx-auto w-full max-w-[1800px]">
 
       {/* Title */}
-      <h1 className="text-3xl font-bold text-cyan-400">
+      <h1 className="text-3xl font-bold text-cyan-400 sm:text-4xl">
         CO2 System
       </h1>
 
@@ -36,7 +34,7 @@ export default function Page() {
       </p>
 
       {/* Products Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-5 sm:gap-6 lg:gap-8">
 
         {products.map((p, i) => (
           <ProductCard
@@ -48,7 +46,8 @@ export default function Page() {
         ))}
 
       </div>
+      </div>
 
-    </div>
+    </main>
   );
 }
