@@ -1,5 +1,5 @@
-import Navbar from "../../components/layout/Navbar";
-import Footer from "../../components/layout/Footer";
+import Image from "next/image";
+
 import ServicesGrid from "../../components/services/ServicesGrid";
 import BeforeAfter from "../../components/services/BeforeAfter";
 import ProcessTimeline from "../../components/services/ProcessTimeline";
@@ -13,8 +13,6 @@ import FadeUp from "@/src/components/shared/FadeUp";
 export default function ServicesPage() {
   return (
     <main className="min-h-screen bg-[#02080d] text-white">
-      <Navbar />
-
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/images/aqua maintaince.jpg')] bg-cover bg-center opacity-10" />
 
@@ -94,24 +92,13 @@ export default function ServicesPage() {
 
             <div className="order-1 lg:order-2">
               <div className="group relative overflow-hidden">
-                <img
+                <Image
                   src="/images/aqua maintaince.jpg"
                   alt="Luxury Aquarium"
+                  width={900}
+                  height={1200}
                   className="h-[320px] w-full rounded-3xl object-cover sm:h-[450px] lg:h-[720px]"
                 />
-
-                <div className="absolute bottom-0 left-0 right-0 p-8">
-                  <p className="text-xs uppercase tracking-[0.35em] text-[#6fffe9]">
-                    Signature Installation
-                  </p>
-
-                  <h3 className="mt-3 font-serif text-4xl">Nature Aquarium</h3>
-
-                  <p className="mt-3 max-w-md text-slate-300">
-                    Custom aquascaping, premium filtration systems and long-term
-                    ecosystem care.
-                  </p>
-                </div>
               </div>
             </div>
           </div>
@@ -134,8 +121,6 @@ export default function ServicesPage() {
       <FAQ />
 
       <ConsultationCTA />
-
-      <Footer />
     </main>
   );
 }

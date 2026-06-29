@@ -1,32 +1,28 @@
-import "./globals.css";
 import type { Metadata } from "next";
-import { Inter, Cormorant_Garamond } from "next/font/google";
+import "./globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-body",
-});
+import Navbar from "@/src/components/layout/Navbar";
+import Footer from "@/src/components/layout/Footer";
 
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-heading",
-});
-
+// ✅ SEO Metadata
 export const metadata: Metadata = {
-  title: "Aquarium Nature Studio | Premium Aquascaping",
+  title: "Aquarium Nature Studio",
   description:
-    "Premium aquarium design, aquascaping, curated aquatic products, and maintenance for refined living spaces.",
+    "Luxury aquarium design, aquascaping, maintenance and premium aquatic products.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" className={`${inter.variable} ${cormorant.variable}`}>
-      <body>{children}</body>
+    <html lang="en">
+      <body className="bg-[#030d18] text-white">
+        <Navbar />
+
+        <main className="pt-24">{children}</main>
+      </body>
     </html>
   );
 }
