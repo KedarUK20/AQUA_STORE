@@ -21,9 +21,11 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-white/10 bg-[#02080d] text-white">
-      <div className="container-custom py-12 sm:py-16">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
+    <footer className="pt-10 pb-8 border-t border-white/10 bg-[#02080d] text-white">
+      {/* Main Footer */}
+      <div className="container-custom py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+          {/* Brand */}
           <div>
             <h2 className="text-xl font-bold">
               <span className="text-cyan-400">AQUARIUM</span>
@@ -44,7 +46,10 @@ export default function Footer() {
             <ul className="space-y-3 text-slate-400">
               {exploreLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="transition hover:text-cyan-400">
+                  <Link
+                    href={link.href}
+                    className="transition hover:text-cyan-400"
+                  >
                     {link.label}
                   </Link>
                 </li>
