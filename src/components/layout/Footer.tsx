@@ -9,7 +9,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-24 border-t border-white/10 bg-[#02080d] text-white">
+    <footer className="pt-10 pb-8 border-t border-white/10 bg-[#02080d] text-white">
 
       
 
