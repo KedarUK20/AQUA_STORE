@@ -1,151 +1,171 @@
+import Image from "next/image";
 import Link from "next/link";
-import { CircleCheck, Droplets, Leaf, ShieldCheck } from "lucide-react";
+import { ArrowRight, CircleCheck, Droplets, Leaf, ShieldCheck } from "lucide-react";
 
-import { productHighlights, projectStories } from "../../data/home";
+const proofPoints = [
+  { value: "500+", label: "Aquariums designed" },
+  { value: "10+", label: "Years of aquascaping craft" },
+  { value: "50+", label: "Commercial installs" },
+];
 
 const services = [
-  { icon: Droplets, title: "Custom Design", text: "Tailored to your room" },
-  { icon: Leaf, title: "Aquascaping", text: "Planted, reef, iwagumi" },
-  { icon: ShieldCheck, title: "Maintenance", text: "Quiet expert care" },
+  {
+    icon: Droplets,
+    title: "Custom Builds",
+    text: "Glass, filtration, lighting and cabinet planning.",
+  },
+  {
+    icon: Leaf,
+    title: "Aquascaping",
+    text: "Planted, reef, iwagumi and nature-led layouts.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Maintenance",
+    text: "Water quality, trimming, cleaning and livestock care.",
+  },
+];
+
+const projectPreviews = [
+  {
+    title: "Residential planted aquarium",
+    location: "Private home",
+    image: "/images/5.jpeg",
+  },
+  {
+    title: "Statement lobby aquascape",
+    location: "Hospitality space",
+    image: "/images/banner2.jpg",
+  },
+  {
+    title: "Premium office installation",
+    location: "Corporate suite",
+    image: "/images/about-story.jpg",
+  },
 ];
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden">
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/5.jpeg')" }}
-      />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,8,13,0.94)_0%,rgba(2,8,13,0.74)_38%,rgba(2,8,13,0.2)_72%,rgba(2,8,13,0.72)_100%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_24%,rgba(20,184,166,0.24),transparent_28%),radial-gradient(circle_at_18%_82%,rgba(215,181,109,0.14),transparent_30%)]" />
-      <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#02080d] to-transparent" />
+    <section className="relative overflow-hidden">
+      <div className="absolute inset-0">
+        <Image
+          src="/images/5.jpeg"
+          alt="Luxury planted aquarium with clear water and aquatic plants"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,#02080d_0%,rgba(2,8,13,0.94)_34%,rgba(2,8,13,0.58)_66%,rgba(2,8,13,0.88)_100%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#02080d] to-transparent" />
+      </div>
 
-      <div className="relative z-10 flex min-h-screen flex-col justify-between gap-8 px-3 pb-4 pt-24 sm:px-5 sm:pt-28 md:gap-10 md:px-8 lg:px-12 lg:pt-32">
-        <div className="hero-content max-w-4xl px-2 pt-6 sm:px-4 md:pl-10 lg:pl-20 xl:pl-28">
-          <p className="mb-4 text-[11px] uppercase tracking-[0.24em] text-[#6fffe9] sm:mb-5 sm:text-xs sm:tracking-[0.28em]">
+      <div className="container-custom relative z-10 grid min-h-[calc(100vh-6rem)] gap-10 pb-8 pt-20 lg:grid-cols-[1fr_0.82fr] lg:items-center lg:pb-12 lg:pt-24">
+        <div className="max-w-4xl self-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#6fffe9]">
             Aquarium Nature Studio
           </p>
 
-          <h1 className="font-serif text-[2.55rem] leading-[1.02] sm:text-5xl md:text-6xl lg:text-7xl">
-            We Design.
-            <br />
-            You Relax.
-            <br />
-            Nature Thrives.
+          <h1 className="mt-5 font-serif text-4xl leading-[1.02] text-white sm:text-5xl md:text-6xl xl:text-7xl">
+            Luxury aquariums designed for calm, healthy spaces.
           </h1>
 
-          <p className="mt-5 max-w-xl text-sm leading-7 text-slate-200 sm:mt-6 md:text-base">
-            Luxury aquarium design, custom builds, and premium aquatic products
-            for a thriving underwater world.
+          <p className="mt-6 max-w-2xl text-base leading-8 text-slate-200 sm:text-lg">
+            We design, install and maintain premium planted, marine and custom
+            aquariums for homes, offices and hospitality interiors.
           </p>
 
-          <div className="mt-7 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:gap-3">
-            <Link href="/#projects" className="btn-primary px-4 sm:px-7">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Link href="/consultation" className="btn-primary">
+              Book Consultation
+            </Link>
+            <Link href="/#projects" className="btn-secondary">
               Explore Projects
             </Link>
-            <Link href="/#shop" className="btn-secondary px-4 sm:px-7">
-              Shop Now
-            </Link>
+          </div>
+
+          <div className="mt-8 grid gap-3 sm:grid-cols-3">
+            {proofPoints.map((item) => (
+              <div
+                key={item.label}
+                className="rounded-lg border border-white/10 bg-[#04111f]/72 p-4 backdrop-blur-xl"
+              >
+                <p className="font-serif text-3xl leading-none text-white">
+                  {item.value}
+                </p>
+                <p className="mt-2 text-xs leading-5 text-slate-300">
+                  {item.label}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
-        <div className="grid gap-3 sm:gap-4 lg:grid-cols-[1.05fr_1fr]">
-          <div className="premium-card p-4 sm:p-5">
-            <div className="mb-4 flex items-center justify-between gap-3">
-              <h2 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white sm:text-xs sm:tracking-[0.22em]">
-                Featured Projects
+
+        <div className="grid gap-4 self-end lg:self-center">
+          <div className="rounded-lg border border-white/10 bg-[#04111f]/78 p-4 backdrop-blur-xl sm:p-5">
+            <div className="flex items-center justify-between gap-3">
+              <h2 className="text-xs font-semibold uppercase tracking-[0.24em] text-white">
+                Signature Work
               </h2>
-              <Link href="/#projects" className="text-xs text-[#6fffe9]">
+              <Link
+                href="/projects"
+                className="inline-flex items-center gap-1 text-xs text-[#6fffe9]"
+              >
                 View All
+                <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-3">
-              {projectStories.map((project, index) => (
-                <div key={project.title} className="group">
-                  <div
-                    className="h-24 rounded-md bg-cover bg-center transition duration-500 group-hover:scale-[1.02] sm:h-28"
-                    style={{
-                      backgroundImage: `url('/images/5.jpeg')`,
-                      backgroundPosition:
-                        index === 0
-                          ? "left center"
-                          : index === 1
-                            ? "center"
-                            : "right center",
-                    }}
-                  />
-                  <p className="mt-3 text-sm font-medium text-white">
-                    {project.title}
-                  </p>
-                  <p className="text-xs text-slate-400">{project.location}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="premium-card p-4 sm:p-5">
-            <div className="mb-4 flex items-center justify-between gap-3">
-              <h2 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white sm:text-xs sm:tracking-[0.22em]">
-                Our Services
-              </h2>
-              <span className="text-xs text-slate-500">03</span>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-3">
-              {services.map((service) => (
-                <div key={service.title}>
-                  <service.icon className="mb-3 h-6 w-6 text-[#14b8a6]" />
-                  <h3 className="text-sm font-medium text-white">
-                    {service.title}
-                  </h3>
-                  <p className="mt-1 text-xs leading-5 text-slate-400">
-                    {service.text}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="premium-card p-4 sm:p-5">
-            <div className="mb-4 flex items-center justify-between gap-3">
-              <h2 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white sm:text-xs sm:tracking-[0.22em]">
-                Best Selling Products
-              </h2>
-              <Link href="/#shop" className="text-xs text-[#6fffe9]">
-                View All
-              </Link>
-            </div>
-
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-              {productHighlights.map((item) => (
-                <div
-                  key={item.name}
-                  className="rounded-md border border-white/10 bg-[#071827]/80 p-3"
+            <div className="mt-4 grid gap-3">
+              {projectPreviews.map((project) => (
+                <article
+                  key={project.title}
+                  className="grid grid-cols-[96px_1fr] items-center gap-4 rounded-lg border border-white/10 bg-white/[0.04] p-3"
                 >
-                  <div className="mb-3 h-14 rounded bg-[url('/images/5.jpeg')] bg-cover bg-center" />
-                  <p className="truncate text-xs text-slate-300">{item.name}</p>
-                </div>
+                  <div className="relative h-20 overflow-hidden rounded-md">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      sizes="96px"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="text-sm font-medium text-white">
+                      {project.title}
+                    </h3>
+                    <p className="mt-1 text-xs text-slate-400">
+                      {project.location}
+                    </p>
+                  </div>
+                </article>
               ))}
             </div>
           </div>
 
-          <div className="premium-card grid gap-4 p-4 sm:grid-cols-[0.8fr_1fr] sm:gap-5 sm:p-5">
-            <div className="min-h-32 rounded-md bg-[url('/images/5.jpeg')] bg-cover bg-left sm:min-h-36" />
-            <div className="flex flex-col justify-center">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white sm:text-xs sm:tracking-[0.22em]">
-                Knowledge Hub
-              </p>
-              <h3 className="mt-3 text-xl font-serif text-white">
-                Build a thriving planted aquarium.
-              </h3>
-              <p className="mt-3 text-sm leading-6 text-slate-400">
-                Learn water balance, planting strategy, livestock care, and
-                premium maintenance routines.
-              </p>
-              <div className="mt-5 flex items-center gap-2 text-xs text-[#6fffe9]">
-                <CircleCheck className="h-4 w-4" />
-                Expert guided care
-              </div>
+          <div className="rounded-lg border border-white/10 bg-[#04111f]/78 p-4 backdrop-blur-xl sm:p-5">
+            <div className="mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.24em] text-white">
+              <CircleCheck className="h-4 w-4 text-[#d7b56d]" />
+              Full-Service Studio
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+              {services.map((service) => {
+                const Icon = service.icon;
+
+                return (
+                  <div key={service.title}>
+                    <Icon className="h-6 w-6 text-[#14b8a6]" />
+                    <h3 className="mt-3 text-sm font-medium text-white">
+                      {service.title}
+                    </h3>
+                    <p className="mt-1 text-xs leading-5 text-slate-400">
+                      {service.text}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

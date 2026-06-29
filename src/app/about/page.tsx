@@ -1,108 +1,134 @@
 import Image from "next/image";
 import Link from "next/link";
+import {
+  CheckCircle2,
+  Gem,
+  Leaf,
+  Ruler,
+  ShieldCheck,
+  Sparkles,
+  Waves,
+} from "lucide-react";
 
-import Navbar from "@/src/components/layout/Navbar";
 import Footer from "@/src/components/layout/Footer";
+
+const stats = [
+  { value: "500+", label: "Aquariums designed" },
+  { value: "10+", label: "Years of hands-on experience" },
+  { value: "50+", label: "Commercial spaces transformed" },
+  { value: "100%", label: "Care-led project approach" },
+];
 
 const values = [
   {
-    title: "Nature First",
+    icon: Leaf,
+    title: "Nature-led design",
     description:
-      "Every aquarium is inspired by natural ecosystems and balanced aquatic environments.",
+      "Every layout starts with real aquatic behavior, plant growth, light, water flow and long-term balance.",
   },
   {
-    title: "Premium Quality",
+    icon: Gem,
+    title: "Premium material selection",
     description:
-      "We use trusted equipment, premium aquatic plants, and luxury hardscape materials.",
+      "We choose dependable equipment, quality hardscape, healthy plants and clean finishing details.",
   },
   {
-    title: "Long-Term Support",
+    icon: ShieldCheck,
+    title: "Aftercare that protects the investment",
     description:
-      "From installation to maintenance, we ensure your aquarium stays healthy and beautiful.",
-  },
-];
-
-const stats = [
-  {
-    value: "500+",
-    label: "Aquariums Designed",
-  },
-  {
-    value: "10+",
-    label: "Years Experience",
-  },
-  {
-    value: "50+",
-    label: "Commercial Projects",
-  },
-  {
-    value: "100%",
-    label: "Client Satisfaction",
+      "The work continues after installation with maintenance guidance, water checks and ecosystem support.",
   },
 ];
 
 const process = [
-  "Consultation",
-  "Design",
-  "Installation",
-  "Aquascaping",
-  "Maintenance",
+  {
+    step: "01",
+    title: "Consult",
+    description: "We understand your space, routine, budget and design taste.",
+  },
+  {
+    step: "02",
+    title: "Design",
+    description: "We plan the layout, equipment, materials and care path.",
+  },
+  {
+    step: "03",
+    title: "Install",
+    description: "Our team handles setup, aquascaping and technical finishing.",
+  },
+  {
+    step: "04",
+    title: "Stabilize",
+    description: "We guide the early ecosystem cycle so the aquarium matures well.",
+  },
+  {
+    step: "05",
+    title: "Maintain",
+    description: "Scheduled care keeps the aquarium healthy, clear and beautiful.",
+  },
+];
+
+const strengths = [
+  "Custom freshwater, planted, marine and reef concepts",
+  "Space planning for homes, offices, showrooms and hospitality",
+  "Equipment recommendations that match the aquarium scale",
+  "Maintenance plans focused on water quality and livestock health",
 ];
 
 export default function AboutPage() {
   return (
     <>
-      <Navbar />
+      <div className="min-h-screen overflow-hidden bg-[#02080d] text-white">
+        <section className="relative">
+          <div className="absolute inset-0">
+            <Image
+              src="/images/about-story.jpg"
+              alt="Premium planted aquarium aquascape"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,#02080d_0%,rgba(2,8,13,0.92)_34%,rgba(2,8,13,0.62)_64%,rgba(2,8,13,0.82)_100%)]" />
+            <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#02080d] to-transparent" />
+          </div>
 
-      <main className="min-h-screen bg-[#02080d] text-white overflow-hidden">
-        {/* HERO */}
-        <section className="relative min-h-screen overflow-hidden">
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url('/images/about-story.jpg')" }}
-          />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,8,13,0.95)_0%,rgba(2,8,13,0.76)_38%,rgba(2,8,13,0.22)_72%,rgba(2,8,13,0.7)_100%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_24%,rgba(20,184,166,0.24),transparent_28%),radial-gradient(circle_at_18%_82%,rgba(215,181,109,0.14),transparent_30%)]" />
-          <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#02080d] to-transparent" />
-
-          <div className="relative z-10 flex min-h-screen flex-col justify-between gap-8 px-3 pb-4 pt-24 sm:px-5 sm:pt-28 md:gap-10 md:px-8 lg:px-12 lg:pt-32">
-            <div className="hero-content max-w-4xl px-2 pt-6 sm:px-4 md:pl-10 lg:pl-20 xl:pl-28">
-              <span className="mb-4 block text-[11px] uppercase tracking-[0.24em] text-[#6fffe9] sm:mb-5 sm:text-xs sm:tracking-[0.28em]">
+          <div className="container-custom relative z-10 grid min-h-[calc(100vh-6rem)] items-end gap-12 pb-8 pt-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:pb-14 lg:pt-24">
+            <div className="max-w-3xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#6fffe9]">
                 About Aquarium Nature Studio
-              </span>
-
-              <h1 className="font-serif text-[2.55rem] leading-[1.02] sm:text-5xl md:text-6xl lg:text-7xl">
-                Crafting Living
-                <br />
-                Underwater Ecosystems
-              </h1>
-
-              <p className="mt-5 max-w-xl text-sm leading-7 text-slate-200 sm:mt-6 md:text-base">
-                We create luxury aquariums, premium aquascapes and thriving
-                aquatic environments that transform homes, offices and
-                commercial spaces into living works of art.
               </p>
 
-              <div className="mt-7 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:gap-3">
-                <Link href="#our-story" className="btn-primary px-4 sm:px-7">
-                  Our Story
-                </Link>
-                <Link
-                  href="/consultation"
-                  className="btn-secondary px-4 sm:px-7"
-                >
+              <h1 className="mt-5 font-serif text-4xl leading-[1.02] text-white sm:text-5xl md:text-6xl xl:text-7xl">
+                Premium aquariums built to feel alive, calm and effortless.
+              </h1>
+
+              <p className="mt-6 max-w-2xl text-base leading-8 text-slate-200 sm:text-lg">
+                We design, install and care for luxury aquatic environments
+                that suit the space, support healthy ecosystems and stay
+                beautiful long after launch day.
+              </p>
+
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Link href="/consultation" className="btn-primary">
                   Book Consultation
+                </Link>
+                <Link href="/projects" className="btn-secondary">
+                  View Projects
                 </Link>
               </div>
             </div>
 
-            <div className="premium-card mx-2 grid gap-4 p-4 sm:mx-4 sm:grid-cols-3 sm:p-5 md:mx-10 lg:mx-20 xl:mx-28">
-              {stats.slice(0, 3).map((item) => (
-                <div key={item.label}>
-                  <p className="font-serif text-3xl text-white sm:text-4xl">
+            <div className="grid gap-3 sm:grid-cols-2 lg:justify-self-end">
+              {stats.map((item) => (
+                <div
+                  key={item.label}
+                  className="rounded-lg border border-white/10 bg-[#04111f]/78 p-5 backdrop-blur-xl"
+                >
+                  <p className="font-serif text-4xl leading-none text-white">
                     {item.value}
                   </p>
-                  <p className="mt-1 text-xs uppercase tracking-[0.18em] text-slate-400">
+                  <p className="mt-3 text-sm leading-6 text-slate-300">
                     {item.label}
                   </p>
                 </div>
@@ -111,229 +137,198 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* STORY */}
-        <section id="our-story" className="py-20">
-          <div className="container mx-auto px-5 max-w-7xl">
-            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-              <div>
-                <span className="text-cyan-400 uppercase tracking-[0.3em] text-xs">
-                  Our Story
-                </span>
-
-                <h2 className="mt-4 text-3xl md:text-5xl font-bold">
-                  Passion Meets Nature
-                </h2>
-
-                <p className="mt-6 text-slate-300 leading-8">
-                  Aquarium Nature Studio was founded with a vision to transform
-                  ordinary spaces into extraordinary aquatic experiences.
-                </p>
-
-                <p className="mt-5 text-slate-400 leading-8">
-                  Every aquarium is carefully planned, handcrafted and
-                  maintained to ensure long-term beauty, health and balance.
-                </p>
-              </div>
-
-              <div className="relative overflow-hidden rounded-3xl border border-cyan-500/10 group">
-                <Image
-                  src="/images/about-story.jpg"
-                  alt="Aquascaping"
-                  width={900}
-                  height={700}
-                  className="
-                    w-full
-                    h-[300px]
-                    sm:h-[400px]
-                    md:h-[500px]
-                    object-cover
-                    transition
-                    duration-700
-                    group-hover:scale-105
-                  "
-                />
-
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-              </div>
+        <section className="py-20 sm:py-24">
+          <div className="container-custom grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <div className="relative overflow-hidden rounded-lg border border-white/10">
+              <Image
+                src="/images/banner2.jpg"
+                alt="Aquarium hardscape with plants and clear water"
+                width={1100}
+                height={900}
+                className="h-[320px] w-full object-cover sm:h-[440px] lg:h-[560px]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#02080d]/68 via-transparent to-transparent" />
             </div>
-          </div>
-        </section>
 
-        {/* STATS */}
-        <section className="py-16">
-          <div className="container mx-auto px-5 max-w-7xl">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
-              {stats.map((item) => (
-                <div
-                  key={item.label}
-                  className="
-                    bg-white/5
-                    border
-                    border-white/10
-                    rounded-3xl
-                    p-8
-                    text-center
-                  "
-                >
-                  <h3 className="text-4xl font-bold text-cyan-400">
-                    {item.value}
-                  </h3>
-
-                  <p className="mt-3 text-slate-400">{item.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* VALUES */}
-        <section className="py-20">
-          <div className="container mx-auto px-5 max-w-7xl">
-            <div className="text-center mb-12">
-              <span className="text-cyan-400 uppercase tracking-[0.3em] text-xs">
-                Our Values
-              </span>
-
-              <h2 className="mt-4 text-3xl md:text-5xl font-bold">
-                What Drives Us
+            <div className="lg:pl-6">
+              <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#d7b56d]">
+                Our Story
+              </p>
+              <h2 className="mt-4 font-serif text-3xl leading-tight sm:text-4xl md:text-5xl">
+                We combine aquascaping craft with dependable service.
               </h2>
-            </div>
+              <div className="mt-6 space-y-5 text-base leading-8 text-slate-300">
+                <p>
+                  Aquarium Nature Studio was created for people who want an
+                  aquarium that looks refined without becoming difficult to
+                  manage. Our work balances aesthetics, technical setup and
+                  practical care from the first conversation.
+                </p>
+                <p>
+                  Each project is planned around the room, the people using it
+                  and the living ecosystem inside the glass. The result is not
+                  just decoration; it is a calm focal point that can mature
+                  beautifully over time.
+                </p>
+              </div>
 
-            <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
-              {values.map((item) => (
-                <div
-                  key={item.title}
-                  className="
-                    bg-white/5
-                    border
-                    border-white/10
-                    rounded-3xl
-                    p-8
-                  "
-                >
-                  <h3 className="text-xl font-semibold">{item.title}</h3>
-
-                  <p className="mt-4 text-slate-400 leading-7">
-                    {item.description}
+              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                <div className="rounded-lg border border-white/10 bg-white/[0.04] p-5">
+                  <Ruler className="h-6 w-6 text-[#6fffe9]" />
+                  <h3 className="mt-4 text-lg font-semibold">
+                    Designed for your space
+                  </h3>
+                  <p className="mt-2 text-sm leading-6 text-slate-400">
+                    Scale, lighting, visibility and daily usability are planned
+                    before materials are selected.
                   </p>
                 </div>
-              ))}
+                <div className="rounded-lg border border-white/10 bg-white/[0.04] p-5">
+                  <Waves className="h-6 w-6 text-[#6fffe9]" />
+                  <h3 className="mt-4 text-lg font-semibold">
+                    Built for stability
+                  </h3>
+                  <p className="mt-2 text-sm leading-6 text-slate-400">
+                    Filtration, flow, livestock needs and water quality guide
+                    every installation.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* PROCESS */}
-        <section className="py-20">
-          <div className="container mx-auto px-5 max-w-7xl">
-            <div className="text-center mb-12">
-              <span className="text-cyan-400 uppercase tracking-[0.3em] text-xs">
-                Our Process
-              </span>
-
-              <h2 className="mt-4 text-3xl md:text-5xl font-bold">
-                From Vision To Reality
+        <section className="border-y border-white/10 bg-white/[0.025] py-18 sm:py-24">
+          <div className="container-custom">
+            <div className="max-w-3xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#6fffe9]">
+                What We Stand For
+              </p>
+              <h2 className="mt-4 font-serif text-3xl leading-tight sm:text-4xl md:text-5xl">
+                Premium is not just how it looks. It is how well it lives.
               </h2>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
-              {process.map((item, index) => (
-                <div
-                  key={item}
-                  className="
-                    bg-white/5
-                    border
-                    border-white/10
-                    rounded-3xl
-                    p-6
-                    text-center
-                  "
-                >
-                  <div className="text-4xl font-bold text-cyan-400">
-                    {String(index + 1).padStart(2, "0")}
-                  </div>
+            <div className="mt-10 grid gap-5 md:grid-cols-3">
+              {values.map((item) => {
+                const Icon = item.icon;
 
-                  <p className="mt-4 text-slate-300">{item}</p>
+                return (
+                  <article
+                    key={item.title}
+                    className="rounded-lg border border-white/10 bg-[#071827]/70 p-6"
+                  >
+                    <Icon className="h-7 w-7 text-[#d7b56d]" />
+                    <h3 className="mt-5 text-xl font-semibold">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-7 text-slate-400">
+                      {item.description}
+                    </p>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 sm:py-24">
+          <div className="container-custom">
+            <div className="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
+              <div className="lg:sticky lg:top-32">
+                <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#d7b56d]">
+                  Our Process
+                </p>
+                <h2 className="mt-4 font-serif text-3xl leading-tight sm:text-4xl md:text-5xl">
+                  A clear path from idea to thriving aquarium.
+                </h2>
+                <p className="mt-5 text-base leading-8 text-slate-400">
+                  You always know what happens next. We keep the design,
+                  installation and aftercare process simple, transparent and
+                  easy to follow.
+                </p>
+              </div>
+
+              <div className="grid gap-4">
+                {process.map((item) => (
+                  <article
+                    key={item.step}
+                    className="grid gap-4 rounded-lg border border-white/10 bg-white/[0.04] p-5 sm:grid-cols-[88px_1fr] sm:p-6"
+                  >
+                    <p className="font-serif text-4xl leading-none text-[#6fffe9]">
+                      {item.step}
+                    </p>
+                    <div>
+                      <h3 className="text-xl font-semibold">{item.title}</h3>
+                      <p className="mt-2 text-sm leading-7 text-slate-400">
+                        {item.description}
+                      </p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 sm:py-24">
+          <div className="container-custom grid gap-8 rounded-lg border border-white/10 bg-[#071827]/78 p-6 sm:p-8 lg:grid-cols-[1fr_0.8fr] lg:p-10">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#6fffe9]">
+                Why Clients Choose Us
+              </p>
+              <h2 className="mt-4 font-serif text-3xl leading-tight sm:text-4xl md:text-5xl">
+                Detail-focused work with practical long-term care.
+              </h2>
+              <p className="mt-5 max-w-2xl text-base leading-8 text-slate-300">
+                Our clients come to us when they want a polished aquarium
+                experience without guesswork. We handle the creative direction,
+                technical setup and maintenance thinking together.
+              </p>
+            </div>
+
+            <div className="grid content-center gap-4">
+              {strengths.map((item) => (
+                <div key={item} className="flex gap-3">
+                  <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-[#d7b56d]" />
+                  <p className="text-sm leading-7 text-slate-300">{item}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* WHY CHOOSE US */}
-        <section className="py-20">
-          <div className="container mx-auto px-5 max-w-7xl">
-            <div className="text-center mb-12">
-              <span className="text-cyan-400 uppercase tracking-[0.3em] text-xs">
-                Why Choose Us
-              </span>
-
-              <h2 className="mt-4 text-3xl md:text-5xl font-bold">
-                Excellence In Every Detail
-              </h2>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-white/5 border border-white/10 rounded-3xl p-8">
-                <h3 className="text-xl font-semibold">Custom Designs</h3>
-
-                <p className="mt-4 text-slate-400">
-                  Every aquarium is uniquely designed for your space.
-                </p>
-              </div>
-
-              <div className="bg-white/5 border border-white/10 rounded-3xl p-8">
-                <h3 className="text-xl font-semibold">Expert Aquascaping</h3>
-
-                <p className="mt-4 text-slate-400">
-                  Nature-inspired layouts using premium materials.
-                </p>
-              </div>
-
-              <div className="bg-white/5 border border-white/10 rounded-3xl p-8">
-                <h3 className="text-xl font-semibold">Ongoing Support</h3>
-
-                <p className="mt-4 text-slate-400">
-                  Maintenance and long-term ecosystem care.
-                </p>
+        <section className="pb-20 sm:pb-24">
+          <div className="container-custom">
+            <div className="relative overflow-hidden rounded-lg border border-cyan-300/20">
+              <Image
+                src="/images/banner1.jpg"
+                alt="Elegant aquarium installation"
+                width={1600}
+                height={700}
+                className="h-[420px] w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,8,13,0.94),rgba(2,8,13,0.72),rgba(2,8,13,0.32))]" />
+              <div className="absolute inset-0 flex items-center">
+                <div className="max-w-2xl px-6 sm:px-10">
+                  <Sparkles className="h-8 w-8 text-[#d7b56d]" />
+                  <h2 className="mt-5 font-serif text-3xl leading-tight sm:text-4xl md:text-5xl">
+                    Ready to build an aquarium that feels considered from day
+                    one?
+                  </h2>
+                  <p className="mt-4 text-base leading-8 text-slate-300">
+                    Share your space, style and timeline. We will help you
+                    shape the right aquarium concept and care plan.
+                  </p>
+                  <Link href="/consultation" className="btn-primary mt-7">
+                    Start Your Project
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
         </section>
-
-        {/* CTA */}
-        <section className="py-24">
-          <div className="container mx-auto px-5 max-w-6xl">
-            <div className="rounded-3xl border border-cyan-500/20 bg-cyan-500/5 p-10 md:p-16 text-center">
-              <h2 className="text-3xl md:text-5xl font-bold">
-                Ready To Build Your Dream Aquarium?
-              </h2>
-
-              <p className="mt-5 text-slate-400 max-w-2xl mx-auto">
-                Let us create a stunning aquatic centerpiece that transforms
-                your space.
-              </p>
-
-              <Link
-                href="/consultation"
-                className="
-                  inline-flex
-                  mt-8
-                  px-8
-                  py-4
-                  rounded-xl
-                  bg-cyan-500
-                  text-black
-                  font-semibold
-                  hover:bg-cyan-400
-                  transition
-                "
-              >
-                Book Consultation
-              </Link>
-            </div>
-          </div>
-        </section>
-      </main>
+      </div>
 
       <Footer />
     </>

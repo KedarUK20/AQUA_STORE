@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import Navbar from "@/src/components/layout/Navbar";
-import Footer from "@/src/components/layout/Footer";
 
 // ✅ SEO Metadata
 export const metadata: Metadata = {
