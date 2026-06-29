@@ -5,11 +5,15 @@ import {
   MapPin,
 } from "lucide-react";
 
-export default function Footer() {
+type FooterProps = {
+  className?: string;
+};
+
+export default function Footer({ className = "mt-24" }: FooterProps) {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-24 border-t border-white/10 bg-[#02080d] text-white">
+    <footer className={`${className} border-t border-white/10 bg-[#02080d] text-white`}>
 
       
 
@@ -152,48 +156,7 @@ export default function Footer() {
 
       </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-white/5">
-
-        <div className="container-custom py-6">
-
-          <div className="flex flex-col items-center justify-between gap-4 text-center md:flex-row">
-
-            <p className="text-xs text-slate-500">
-              © {year} Aquarium Nature Studio.
-              All rights reserved.
-            </p>
-
-            <div className="flex flex-wrap justify-center gap-6 text-xs text-slate-500">
-
-              <Link
-                href="/privacy"
-                className="hover:text-cyan-400 transition"
-              >
-                Privacy Policy
-              </Link>
-
-              <Link
-                href="/terms"
-                className="hover:text-cyan-400 transition"
-              >
-                Terms
-              </Link>
-
-              <Link
-                href="/contact"
-                className="hover:text-cyan-400 transition"
-              >
-                Contact
-              </Link>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
+      
 
     </footer>
   );

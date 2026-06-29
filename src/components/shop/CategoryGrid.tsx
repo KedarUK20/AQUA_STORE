@@ -56,186 +56,51 @@ const items = [
 
 export default function CategoryGrid() {
   return (
-    // <section className="relative bg-[#020B12] py-24">
+    <div>
+      {/* <div className="mb-8 max-w-3xl md:mb-10">
+        <p className="text-base leading-7 text-slate-400 md:text-lg">
+          Explore premium aquarium plants, fertilizers, fish food,
+          aquascaping tools, accessories and professional equipment.
+        </p>
+      </div> */}
 
-      <div className="container mx-auto px-6">
-
-        {/* Header */}
-
-        <div className="text-center mb-16">
-
-          <p
-            className="
-            mt-5
-            max-w-3xl
-            mx-auto
-            text-lg
-            text-slate-400
-          "
+      <div className="grid gap-5 sm:gap-6 md:grid-cols-2 xl:grid-cols-4">
+        {items.map((item) => (
+          <Link
+            key={item.slug}
+            href={`/categories/${item.slug}`}
+            className="group relative h-[270px] overflow-hidden rounded-2xl border border-cyan-900/60 bg-black/20 shadow-lg backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-emerald-500/50 hover:shadow-[0_0_50px_rgba(16,185,129,0.28)] sm:h-[310px]"
           >
-            Explore premium aquarium plants,
-            fertilizers, fish food, aquascaping tools,
-            accessories and professional equipment.
-          </p>
-        </div>
+            <img
+              src={item.img}
+              alt={item.title}
+              className="absolute inset-0 h-full w-full object-cover transition-all duration-700 group-hover:scale-110"
+            />
 
-        {/* Grid */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
 
-        <div
-          className="
-          grid
-          gap-8
-          md:grid-cols-2
-          xl:grid-cols-4
-        "
-        >
-          {items.map((item, index) => (
-            <Link
-              key={index}
-              href={`/categories/${item.slug}`}
-              className="
-              group
-              relative
-              h-[340px]
-              overflow-hidden
-              rounded-[32px]
+            <div className="absolute left-4 top-4 rounded-full border border-emerald-500/30 bg-black/45 px-3 py-2 text-xs font-semibold text-emerald-300 backdrop-blur-xl">
+              {item.count}
+            </div>
 
-              border
-              border-white/10
+            <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4">
+              <div>
+                <h3 className="text-2xl font-bold text-white md:text-3xl">
+                  {item.title}
+                </h3>
 
-              bg-black/20
-              backdrop-blur-xl
-
-              shadow-xl
-
-              transition-all
-              duration-500
-
-              hover:-translate-y-3
-              hover:border-emerald-500/50
-              hover:shadow-[0_0_50px_rgba(16,185,129,0.35)]
-            "
-            >
-              {/* Image */}
-
-              <img
-                src={item.img}
-                alt={item.title}
-                className="
-                absolute
-                inset-0
-                h-full
-                w-full
-                object-cover
-
-                transition-all
-                duration-700
-
-                group-hover:scale-110
-              "
-              />
-
-              {/* Overlay */}
-
-              <div
-                className="
-                absolute
-                inset-0
-
-                bg-gradient-to-t
-                from-black
-                via-black/40
-                to-transparent
-              "
-              />
-
-              {/* Badge */}
-
-              <div
-                className="
-                absolute
-                top-5
-                left-5
-
-                rounded-full
-
-                border
-                border-emerald-500/30
-
-                bg-black/40
-                backdrop-blur-xl
-
-                px-4
-                py-2
-
-                text-xs
-                font-semibold
-                text-emerald-300
-              "
-              >
-                {item.count}
+                <p className="mt-2 text-slate-300">
+                  Explore Collection
+                </p>
               </div>
 
-              {/* Content */}
-
-              <div
-                className="
-                absolute
-                bottom-6
-                left-6
-                right-6
-
-                flex
-                items-end
-                justify-between
-              "
-              >
-                <div>
-                  <h3
-                    className="
-                    text-3xl
-                    font-bold
-                    text-white
-                  "
-                  >
-                    {item.title}
-                  </h3>
-
-                  <p className="mt-2 text-slate-300">
-                    Explore Collection
-                  </p>
-                </div>
-
-                <div
-                  className="
-                  flex
-                  h-14
-                  w-14
-                  items-center
-                  justify-center
-
-                  rounded-full
-
-                  bg-emerald-500
-
-                  transition-all
-                  duration-300
-
-                  group-hover:scale-110
-                  group-hover:rotate-45
-                "
-                >
-                  <ArrowRight
-                    size={24}
-                    className="text-white"
-                  />
-                </div>
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-emerald-500 transition-all duration-300 group-hover:scale-110 group-hover:rotate-45">
+                <ArrowRight size={22} className="text-white" />
               </div>
-            </Link>
-          ))}
-        </div>
-
+            </div>
+          </Link>
+        ))}
       </div>
-    // </section>
+    </div>
   );
 }

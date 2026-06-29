@@ -1,12 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Heart,
-  Eye,
-  ShoppingCart,
-  Star,
-} from "lucide-react";
+import { Star, CheckCircle } from "lucide-react";
 
 type Props = {
   title: string;
@@ -15,188 +10,133 @@ type Props = {
   category?: string;
 };
 
+type CartItem = {
+  title: string;
+  image: string;
+  price: string;
+  quantity: number;
+};
+
 export default function ProductCard({
   title,
   image,
   price,
   category = "Premium Aquarium Product",
 }: Props) {
-  const [liked, setLiked] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+  const [showNotification, setShowNotification] = useState(false);
 
   const handleAddToCart = () => {
-    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    if (typeof window === "undefined") return;
+
+    const cart = JSON.parse(
+      localStorage.getItem("cart") || "[]"
+    ) as CartItem[];
 
     const existingItem = cart.find(
-      (item: any) => item.title === title
+      (item) => item.title === title
     );
 
     if (existingItem) {
-      existingItem.quantity += 1;
+      existingItem.quantity += quantity;
     } else {
       cart.push({
         title,
         image,
         price,
-        quantity: 1,
+        quantity,
       });
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
+    window.dispatchEvent(new Event("cartUpdated"));
 
-    alert(`${title} added to cart 🛒`);
+    setShowNotification(true);
+    setQuantity(1);
+
+    setTimeout(() => {
+      setShowNotification(false);
+    }, 2000);
   };
 
   return (
-    <div
-      className="
-        group
-        bg-gradient-to-b
-        from-[#081923]
-        to-[#07141d]
-        rounded-3xl
-        overflow-hidden
-        border
-        border-cyan-900/30
-        hover:border-cyan-400
-        hover:-translate-y-2
-        transition-all
-        duration-300
-        shadow-xl
-      "
-    >
-      {/* Product Image */}
-      <div className="relative overflow-hidden">
-        <img
-          src={image}
-          alt={title}
-          className="
-            h-72
-            w-full
-            object-cover
-            transition
-            duration-700
-            group-hover:scale-110
-          "
-        />
+    <>
+      {/* Notification */}
+      {showNotification && (
+        <div className="fixed top-5 right-5 z-50 flex items-center gap-3 rounded-xl bg-green-500 px-5 py-3 text-black font-semibold shadow-2xl animate-bounce">
+          <CheckCircle size={20} />
+          Added to Cart
+        </div>
+      )}
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-
-        {/* Badge */}
-        <div className="absolute left-4 top-4 rounded-full bg-emerald-500 px-3 py-1 text-xs font-bold text-black">
-          NEW
+      <div className="group overflow-hidden rounded-2xl border border-cyan-900/70 bg-[#081923] shadow-lg transition-all duration-300 hover:border-cyan-500 hover:shadow-cyan-500/20 hover:shadow-2xl">
+        
+        {/* Product Image */}
+        <div className="overflow-hidden">
+          <img
+            src={image}
+            alt={title}
+            className="h-56 w-full object-cover transition duration-500 group-hover:scale-110 sm:h-64 lg:h-72"
+          />
         </div>
 
-        {/* Right Icons */}
-        <div
-          className="
-            absolute
-            right-4
-            top-4
-            flex
-            flex-col
-            gap-3
-            opacity-0
-            translate-x-3
-            group-hover:opacity-100
-            group-hover:translate-x-0
-            transition-all
-            duration-300
-          "
-        >
-          <button
-            onClick={() => setLiked(!liked)}
-            className="
-              h-10 w-10 rounded-full bg-black/70
-              hover:bg-cyan-500
-              flex items-center justify-center
-              transition
-            "
-          >
-            <Heart
-              size={18}
-              className={
-                liked
-                  ? "fill-red-500 text-red-500"
-                  : "text-white"
-              }
-            />
-          </button>
+        {/* Product Content */}
+        <div className="p-5 sm:p-6">
+          <h2 className="text-xl font-bold text-white sm:text-2xl">
+            {title}
+          </h2>
 
-          <button
-            className="
-              h-10 w-10 rounded-full bg-black/70
-              hover:bg-cyan-500
-              flex items-center justify-center
-              transition
-            "
-          >
-            <Eye size={18} className="text-white" />
-          </button>
-        </div>
-      </div>
+          <p className="mt-2 text-gray-400">{category}</p>
 
-      {/* Content */}
-      <div className="p-6">
-        <h3 className="text-2xl font-bold text-white">
-          {title}
-        </h3>
+          {/* Rating */}
+          <div className="mt-3 flex gap-1">
+            {[...Array(5)].map((_, i) => (
+              <Star
+                key={i}
+                size={16}
+                className="fill-yellow-400 text-yellow-400"
+              />
+            ))}
+          </div>
 
-        <p className="mt-1 text-sm text-gray-400">
-          {category}
-        </p>
-
-        {/* Rating */}
-        <div className="mt-3 flex items-center gap-1">
-          {[...Array(5)].map((_, index) => (
-            <Star
-              key={index}
-              size={16}
-              className="fill-yellow-400 text-yellow-400"
-            />
-          ))}
-
-          <span className="ml-2 text-sm text-gray-400">
-            (5.0)
-          </span>
-        </div>
-
-        {/* Price */}
-        <div className="mt-5 flex items-center justify-between">
-          <span className="text-4xl font-bold text-cyan-400">
+          {/* Price */}
+          <h3 className="mt-4 text-2xl font-bold text-cyan-400 sm:text-3xl">
             {price}
-          </span>
+          </h3>
 
-          <span className="text-sm text-gray-500 line-through">
-            $12
-          </span>
+          {/* Quantity + Button */}
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:gap-4">
+            <div className="flex w-full items-center justify-between rounded-xl border border-gray-600 bg-[#0d2532] sm:w-auto">
+              <button
+                onClick={() =>
+                  setQuantity(quantity > 1 ? quantity - 1 : 1)
+                }
+                className="px-4 py-2 text-lg text-white hover:text-cyan-400"
+              >
+                -
+              </button>
+
+              <span className="px-4 py-2 text-white font-semibold">
+                {quantity}
+              </span>
+
+              <button
+                onClick={() => setQuantity(quantity + 1)}
+                className="px-4 py-2 text-lg text-white hover:text-cyan-400"
+              >
+                +
+              </button>
+            </div>
+
+            <button
+              onClick={handleAddToCart}
+              className="flex-1 rounded-xl bg-cyan-500 px-4 py-3 font-bold text-black transition duration-300 hover:bg-cyan-400 hover:shadow-lg"
+            >
+              Add To Cart
+            </button>
+          </div>
         </div>
-
-        {/* Add to cart */}
-        <button
-          onClick={handleAddToCart}
-          className="
-            mt-6
-            flex
-            w-full
-            items-center
-            justify-center
-            gap-2
-            rounded-2xl
-            bg-cyan-500
-            py-4
-            font-bold
-            text-black
-            transition-all
-            duration-300
-            hover:bg-cyan-400
-            hover:shadow-[0_0_25px_rgba(6,182,212,0.7)]
-          "
-        >
-          <ShoppingCart size={18} />
-          Add to Cart
-        </button>
       </div>
-    </div>
+    </>
   );
 }

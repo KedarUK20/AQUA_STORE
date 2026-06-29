@@ -4,8 +4,7 @@ import Link from "next/link";
 
 export default function HeroShop() {
   return (
-    <section className="relative h-screen overflow-hidden">
-
+    <section className="relative min-h-screen overflow-hidden">
       {/* Background Image */}
       <img
         src="/images/banner1.jpg"
@@ -14,99 +13,41 @@ export default function HeroShop() {
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/70" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/70" />
 
       {/* Hero Content */}
-      <div className="relative z-20 flex h-full items-center">
-
-        <div className="container mx-auto px-6 md:px-12 lg:px-20">
-
-          <div className="max-w-3xl">
-
-            <h1
-              className="
-                text-5xl
-                md:text-7xl
-                xl:text-8xl
-                font-black
-                leading-tight
-                text-white
-              "
-            >
+      <div className="relative z-20 flex min-h-screen items-center pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20">
+        <div className="w-full px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32">
+          <div className="max-w-4xl">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl xl:text-8xl font-black leading-tight text-white">
               Premium Products
               <br />
-              For{" "}
-              <span className="text-cyan-400">
-                Aquariums
-              </span>
+              For <span className="text-cyan-400">Aquariums</span>
             </h1>
 
-            <p
-              className="
-                mt-6
-                text-lg
-                md:text-2xl
-                text-gray-300
-                max-w-2xl
-              "
-            >
-              Discover premium aquarium plants,
-              fertilizers, fish food, aquascaping
-              essentials and high-quality aquarium
-              accessories.
+            <p className="mt-5 text-base sm:text-lg md:text-2xl text-gray-300 max-w-2xl leading-relaxed">
+              Discover premium aquarium plants, fertilizers, fish food,
+              aquascaping essentials and high-quality aquarium accessories.
             </p>
 
-            {/* Buttons */}
-            <div className="mt-10 flex flex-wrap gap-4">
-
+            {/* Button */}
+            <div className="mt-8 flex flex-wrap gap-3 sm:mt-10 sm:gap-4">
               <Link
                 href="/products"
-                className="
-                  rounded-2xl
-                  bg-cyan-500
-                  px-8
-                  py-4
-                  font-bold
-                  text-black
-                  transition-all
-                  duration-300
-                  hover:scale-105
-                  hover:bg-cyan-400
-                  hover:shadow-[0_0_30px_rgba(34,211,238,0.5)]
-                "
+                className="rounded-xl bg-cyan-500 px-6 py-3 sm:px-8 sm:py-4 font-bold text-black transition-all duration-300 hover:scale-105 hover:bg-cyan-400 hover:shadow-[0_0_30px_rgba(34,211,238,0.5)]"
               >
                 Shop Now
               </Link>
-
-              {/* <Link
-                href="/gallery"
-                className="
-                  rounded-2xl
-                  border
-                  border-cyan-400
-                  px-8
-                  py-4
-                  text-white
-                  transition-all
-                  duration-300
-                  hover:bg-cyan-500/10
-                  hover:shadow-[0_0_25px_rgba(34,211,238,0.25)]
-                "
-              >
-                Explore Gallery
-              </Link> */}
-
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 gap-4 mt-14 max-w-xl">
-
-              <div className="bg-black/30 backdrop-blur-xl border border-white/10 rounded-3xl p-6">
-                <h2 className="text-4xl md:text-5xl font-bold text-white">
+            <div className="mt-8 grid max-w-xl grid-cols-1 gap-4 sm:mt-10 sm:grid-cols-2 lg:mt-12">
+              <div className="rounded-2xl border border-white/10 bg-black/30 p-5 backdrop-blur-xl sm:p-6">
+                <h2 className="text-3xl font-bold text-white md:text-5xl">
                   500+
                 </h2>
 
-                <p className="text-cyan-400 text-lg mt-2">
+                <p className="mt-2 text-base text-cyan-400 sm:text-lg">
                   Live Plants
                 </p>
 
@@ -115,12 +56,12 @@ export default function HeroShop() {
                 </p>
               </div>
 
-              <div className="bg-black/30 backdrop-blur-xl border border-white/10 rounded-3xl p-6">
-                <h2 className="text-4xl md:text-5xl font-bold text-white">
+              <div className="rounded-2xl border border-white/10 bg-black/30 p-5 backdrop-blur-xl sm:p-6">
+                <h2 className="text-3xl font-bold text-white md:text-5xl">
                   1000+
                 </h2>
 
-                <p className="text-cyan-400 text-lg mt-2">
+                <p className="mt-2 text-base text-cyan-400 sm:text-lg">
                   Products
                 </p>
 
@@ -128,15 +69,10 @@ export default function HeroShop() {
                   Filters, lights, substrate and more.
                 </p>
               </div>
-
             </div>
-
           </div>
-
         </div>
-
       </div>
-
     </section>
   );
 }
