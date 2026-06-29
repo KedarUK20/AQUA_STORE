@@ -1,5 +1,3 @@
-import Navbar from "../../components/layout/Navbar";
-import Footer from "../../components/layout/Footer";
 import FeaturedProjects from "../../components/projects/FeaturedProjects";
 import ProjectCategories from "../../components/projects/ProjectCategories";
 import CaseStudies from "../../components/projects/CaseStudies";
@@ -10,17 +8,20 @@ import ProjectsCTA from "../../components/projects/ProjectsCTA";
 export default function ProjectsPage() {
   return (
     <main className="min-h-screen bg-[#02080d] text-white">
-      <Navbar />
-
       <section className="relative overflow-hidden">
+        {/* Background Image */}
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-20"
+          className="absolute inset-0 bg-cover bg-center opacity-50"
           style={{
-            backgroundImage: "url('/images/aquahomeimg.png')",
+            backgroundImage: "url('/images/3.jpeg')",
           }}
         />
 
-        <div className="absolute inset-0 bg-gradient-to-r from-[#02080d] via-[#02080d]/95 to-[#02080d]/70" />
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#02080d]/90 via-[#02080d]/60 to-[#02080d]/20" />
+
+        {/* Decorative Glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_30%,rgba(20,184,166,0.15),transparent_35%)]" />
 
         <div className="relative mx-auto max-w-[1800px] px-6 lg:px-10">
           <div className="flex min-h-[75vh] items-center">
@@ -52,7 +53,6 @@ export default function ProjectsPage() {
       <BeforeAfterProjects />
       <ProjectTestimonials />
       <ProjectsCTA />
-      <Footer />
     </main>
   );
 }

@@ -1,6 +1,3 @@
-import Navbar from "../components/layout/Navbar";
-import Footer from "../components/layout/Footer";
-
 import Hero from "../components/home/Hero";
 
 import FeaturedProjects from "../components/home/FeaturedProjects";
@@ -12,8 +9,6 @@ import CTA from "../components/home/CTA";
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#02080d] text-white overflow-hidden">
-      <Navbar />
-
       <Hero />
 
       {/* <DiscoveryEditorial /> */}
@@ -30,7 +25,6 @@ export default function Home() {
 
       <CTA />
 
-      <Footer />
     </main>
   );
 }

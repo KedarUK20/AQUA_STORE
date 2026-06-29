@@ -1,5 +1,3 @@
-import Navbar from "../../components/layout/Navbar";
-import Footer from "../../components/layout/Footer";
 import ConsultationForm from "@/src/components/consultation/ConsultationForm";
 import ConsultationProcess from "../../components/consultation/ConsultationProcess";
 import AquariumStyles from "../../components/consultation/AquariumStyles";
@@ -9,8 +7,6 @@ import ConsultationCTA from "../../components/consultation/ConsultationCTA";
 export default function ConsultationPage() {
   return (
     <main className="min-h-screen bg-[#02080d] text-white">
-      <Navbar />
-
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/images/aquahomeimg.png')] bg-cover bg-center opacity-10" />
 
@@ -24,13 +20,13 @@ export default function ConsultationPage() {
               </p>
 
               <h1 className="font-serif text-5xl leading-[0.95] md:text-7xl">
-                Let's Design
+                Let&apos;s Design
                 <br />
                 Your Dream Aquarium
               </h1>
 
               <p className="mt-8 max-w-2xl text-lg leading-8 text-slate-300">
-                Whether you're planning a luxury freshwater aquascape, reef
+                Whether you&apos;re planning a luxury freshwater aquascape, reef
                 ecosystem, commercial installation, or long-term maintenance
                 program, our specialists will guide you through every detail.
               </p>
@@ -44,8 +40,6 @@ export default function ConsultationPage() {
       <AquariumStyles />
       <WhyChooseUs />
       <ConsultationCTA />
-
-      <Footer />
     </main>
   );
 }

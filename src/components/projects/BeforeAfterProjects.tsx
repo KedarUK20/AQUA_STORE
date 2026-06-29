@@ -1,13 +1,15 @@
+import Image from "next/image";
+
 const transformations = [
   {
     title: "Luxury Residence",
-    before: "/images/project-before.jpg",
-    after: "/images/project-after.jpg",
+    before: "/images/02 aquarium.jpg",
+    after: "/images/istockphoto-1967399204-612x612.jpg",
   },
   {
     title: "Corporate Office",
-    before: "/images/project-before.jpg",
-    after: "/images/project-after.jpg",
+    before: "/images/1.jpeg",
+    after: "/images/5.jpeg",
   },
 ];
 
@@ -38,9 +40,11 @@ export default function BeforeAfterProjects() {
                     Before
                   </div>
 
-                  <img
+                  <Image
                     src={item.before}
                     alt="Before"
+                    width={900}
+                    height={650}
                     className="h-[450px] w-full rounded-[24px] object-cover"
                   />
                 </div>
@@ -50,9 +54,11 @@ export default function BeforeAfterProjects() {
                     After
                   </div>
 
-                  <img
+                  <Image
                     src={item.after}
                     alt="After"
+                    width={900}
+                    height={650}
                     className="h-[450px] w-full rounded-[24px] object-cover"
                   />
                 </div>

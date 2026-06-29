@@ -1,32 +1,30 @@
-import ProductCard from  "../../../components/shop/ProductCard";
+import ProductCard from "../../../components/shop/ProductCard";
 
 const products = [
   {
     title: "Liquid Fertilizer",
-    image:
-      "https://tse2.mm.bing.net/th/id/OIP.ALDAU-VrksYPFeT4cfRLkQHaHa?pid=Api&P=0&h=180",
+    image: "/images/2.jpeg",
     price: "$10",
   },
   {
     title: "Root Tabs",
-    image:
-      "https://www.aquariumcoop.com/cdn/shop/files/small_root_tabs_fish_and_shrimp_safe.jpg?v=1719248289&width=832",
+    image: "/images/4.jpeg",
     price: "$7",
   },
   {
     title: "Iron Supplement",
-    image:
-      "https://pauls-aquariums.myshopify.com/cdn/shop/products/iron.jpg?v=1679632205",
+    image: "/images/5.jpeg",
     price: "$9",
   },
 ];
 
 export default function Page() {
   return (
-    <div className="p-8 text-white">
+    <main className="min-h-screen px-4 pb-12 pt-28 text-white sm:px-6 lg:px-10">
+      <div className="mx-auto w-full max-w-[1800px]">
 
       {/* Title */}
-      <h1 className="text-3xl font-bold text-cyan-400">
+      <h1 className="text-3xl font-bold text-cyan-400 sm:text-4xl">
         Fertilizers
       </h1>
 
@@ -36,7 +34,7 @@ export default function Page() {
       </p>
 
       {/* Products Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-5 sm:gap-6 lg:gap-8">
 
         {products.map((p, i) => (
           <ProductCard
@@ -48,7 +46,8 @@ export default function Page() {
         ))}
 
       </div>
+      </div>
 
-    </div>
+    </main>
   );
 }

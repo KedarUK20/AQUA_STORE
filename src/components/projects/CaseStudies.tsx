@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const studies = [
   {
     title: "Luxury Residence",
@@ -8,7 +10,7 @@ const studies = [
       "Designed a custom planted aquascape with integrated cabinetry and lighting.",
     result:
       "Created a living focal point that transformed the entire interior.",
-    image: "/images/project1.jpg",
+    image: "/images/3.jpeg",
   },
   {
     title: "Corporate Office",
@@ -17,7 +19,7 @@ const studies = [
     solution:
       "Installed a large freshwater ecosystem with automated maintenance systems.",
     result: "Enhanced visitor experience and employee wellbeing.",
-    image: "/images/project2.jpg",
+    image: "/images/4.jpeg",
   },
 ];
 
@@ -41,11 +43,13 @@ export default function CaseStudies() {
                 index % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""
               }`}
             >
-              <div className="overflow-hidden rounded-[32px]">
-                <img
+              <div className="relative h-[340px] overflow-hidden rounded-lg sm:h-[550px]">
+                <Image
                   src={study.image}
                   alt={study.title}
-                  className="h-[550px] w-full object-cover"
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover"
                 />
               </div>
 

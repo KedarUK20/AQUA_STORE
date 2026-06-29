@@ -16,7 +16,7 @@ export default function ProjectsCTA() {
         </p>
 
         <h2 className="font-serif text-5xl md:text-7xl">
-          Let's Create
+          Let&apos;s Create
           <br />
           Something Extraordinary
         </h2>

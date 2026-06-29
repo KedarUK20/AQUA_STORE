@@ -1,7 +1,5 @@
 import Image from "next/image";
-import Navbar from "@/src/components/layout/Navbar";
-import Footer from "@/src/components/layout/Footer";
-import Link from "next/dist/client/link";
+import Link from "next/link";
 
 const values = [
   {
@@ -51,29 +49,69 @@ const process = [
 export default function AboutPage() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#02080d] text-white">
-      <Navbar />
-
       {/* HERO */}
-      <section className="relative pt-32 pb-20">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(20,184,166,0.18),transparent_55%)]" />
+      <section className="relative overflow-hidden border-b border-white/10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(20,184,166,0.18),transparent_34%)]" />
 
-        <div className="about-custom relative z-10 text-center">
-          <span className="text-xs uppercase tracking-[0.4em] text-[#6fffe9]">
-            About Aquarium Nature Studio
-          </span>
+        <div className="about-custom relative z-10 pt-32 pb-16 lg:pt-40 lg:pb-24">
+          <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
+            <div className="max-w-3xl">
+              <p className="text-xs uppercase tracking-[0.35em] text-[#6fffe9]">
+                About Aquarium Nature Studio
+              </p>
 
-          <h1 className="mt-6 font-serif text-4xl leading-tight sm:text-5xl lg:text-7xl">
-            Crafting Living
-            <span className="block text-gradient">
-              Underwater Ecosystems
-            </span>
-          </h1>
+              <h1 className="mt-6 font-serif text-4xl leading-[1.05] sm:text-5xl lg:text-7xl">
+                Designed with nature.
+                <br />
+                Built for everyday calm.
+              </h1>
 
-          <p className="mx-auto mt-8 max-w-3xl text-base leading-8 text-slate-400 md:text-lg">
-            We create luxury aquariums, premium aquascapes, and thriving
-            aquatic environments that transform homes, offices, hotels,
-            and commercial spaces into living works of art.
-          </p>
+              <p className="mt-7 max-w-2xl text-base leading-8 text-slate-300 md:text-lg">
+                We are an aquarium design and care studio creating refined
+                aquatic environments for homes, offices, hotels, and commercial
+                spaces. Each project is planned around balance, beauty, and
+                long-term ecosystem health.
+              </p>
+
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Link href="/projects" className="btn-primary">
+                  View Our Work
+                </Link>
+                <Link href="/consultation" className="btn-secondary">
+                  Start A Project
+                </Link>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="overflow-hidden rounded-lg border border-white/10">
+                <Image
+                  src="/images/about-story.jpg"
+                  alt="Professional aquarium aquascaping studio work"
+                  width={1000}
+                  height={760}
+                  priority
+                  className="h-[320px] w-full object-cover sm:h-[460px] lg:h-[560px]"
+                />
+              </div>
+
+              <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                {stats.map((item) => (
+                  <div
+                    key={item.label}
+                    className="rounded-lg border border-white/10 bg-[#071827]/70 p-4 backdrop-blur"
+                  >
+                    <p className="text-2xl font-bold text-[#6fffe9]">
+                      {item.value}
+                    </p>
+                    <p className="mt-2 text-xs leading-5 text-slate-400">
+                      {item.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -261,8 +299,6 @@ export default function AboutPage() {
            
         </div>
       </section>
-
-      <Footer />
     </main>
   );
 }

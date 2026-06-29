@@ -1,146 +1,111 @@
 import Image from "next/image";
-import Navbar from "@/src/components/layout/Navbar";
-import Footer from "@/src/components/layout/Footer";
-import Link from "next/dist/client/link";
+import Link from "next/link";
 
 const galleryImages = [
-  "/images/gallery/gallery-1.jpg",
-  "/images/gallery/gallery-2.jpg",
-  "/images/gallery/gallery-3.jpg",
-  "/images/gallery/gallery-4.jpg",
-  "/images/gallery/gallery-5.jpg",
-  "/images/gallery/gallery-6.jpg",
+  "/images/4.jpeg",
+  "/images/3.jpeg",
+  "/images/7.jpeg",
+  "/images/8.jpeg",
+  "/images/9.jpeg",
+  "/images/3.jpeg",
 ];
 
 export default function GalleryPage() {
   return (
-    <main className="min-h-screen bg-[#030d18] text-white">
-      <Navbar />
+    <main className="min-h-screen bg-[#02080d] text-white">
+      {/* ================= HERO ================= */}
 
-      {/* Hero */}
-      <section className="pt-32 pb-20 text-center container-custom">
-        <span className="text-cyan-400 uppercase tracking-[0.3em] text-sm">
-          Gallery
-        </span>
+      <section className="relative -mt-24 min-h-screen overflow-hidden">
+        {/* Background */}
 
-        <h1 className="mt-5 font-serif text-4xl sm:text-5xl md:text-6xl">
-          Nature Inspired
-          <br />
-          Aquarium Showcase
-        </h1>
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: "url('/images/8.jpeg')",
+          }}
+        />
 
-        <p className="mx-auto mt-6 max-w-3xl text-slate-400 leading-8">
-          Explore our collection of custom aquascapes,
-          luxury aquarium installations and aquatic ecosystems.
-        </p>
-      </section>
+        {/* Overlay */}
 
-      {/* Featured Image */}
-      <section className="container-custom pb-20">
-        <div className="relative overflow-hidden rounded-[32px] border border-white/10">
-          <Image
-            src="/images/gallery-1.jpg"
-            alt="Featured Aquarium"
-            width={1600}
-            height={900}
-            className="h-[300px] md:h-[500px] lg:h-[650px] w-full object-cover"
-          />
+        <div className="absolute inset-0 bg-black/60" />
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,8,13,0.95)_0%,rgba(2,8,13,0.78)_42%,rgba(2,8,13,0.25)_75%,rgba(2,8,13,0.75)_100%)]" />
 
-          <div className="absolute bottom-8 left-8">
-            <h2 className="font-serif text-2xl md:text-4xl">
-              Featured Aquascape
-            </h2>
+        <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#02080d] to-transparent" />
 
-            <p className="mt-2 text-slate-300">
-              Luxury Nature Aquarium Design
-            </p>
+        {/* Hero Content */}
+
+        <div className="relative z-10 flex min-h-screen items-center">
+          <div className="container-custom">
+            <div className="max-w-3xl">
+              <p className="text-xs uppercase tracking-[0.35em] text-[#6fffe9]">
+                Gallery
+              </p>
+
+              <h1 className="mt-6 font-serif text-5xl leading-[0.95] md:text-6xl lg:text-7xl">
+                Nature Inspired
+                <br />
+                Aquarium Showcase
+              </h1>
+
+              <p className="mt-8 max-w-xl text-lg leading-8 text-slate-300">
+                Discover handcrafted freshwater, reef and planted aquariums
+                designed to transform homes, offices and luxury spaces into
+                living ecosystems.
+              </p>
+
+              <div className="mt-10 flex flex-wrap gap-4">
+                <Link href="#gallery" className="btn-primary">
+                  Explore Gallery
+                </Link>
+
+                <Link href="/consultation" className="btn-secondary">
+                  Book Consultation
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Filters */}
-      <section className="container-custom pb-12">
-        <div className="flex flex-wrap justify-center gap-3">
-          {[
-            "All",
-            "Aquascapes",
-            "Nature",
-            "Marine",
-            "Custom",
-          ].map((item) => (
-            <button
-              key={item}
-              className="rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm text-slate-300 transition hover:border-cyan-400 hover:text-cyan-400"
-            >
-              {item}
-            </button>
-          ))}
+      {/* ================= GALLERY ================= */}
+
+      <section id="gallery" className="container-custom py-24">
+        <div className="mb-16 text-center">
+          <p className="uppercase tracking-[0.35em] text-[#6fffe9] text-xs">
+            Featured Collection
+          </p>
+
+          <h2 className="mt-5 font-serif text-4xl md:text-6xl">
+            Luxury Aquarium Gallery
+          </h2>
+
+          <p className="mx-auto mt-6 max-w-2xl text-slate-400 leading-8">
+            Every aquarium is individually crafted with premium aquascaping,
+            natural hardscape and carefully selected aquatic life.
+          </p>
         </div>
-      </section>
 
-      {/* Gallery Grid */}
-      <section className="container-custom pb-24">
+        {/* Masonry Style Grid */}
+
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-
           {galleryImages.map((image, index) => (
             <div
               key={index}
-              className="group overflow-hidden rounded-[28px] border border-white/10 bg-white/5"
+              className={`group overflow-hidden rounded-3xl border border-white/10 bg-[#071827]
+              ${index % 3 === 0 ? "lg:row-span-2" : ""}`}
             >
-              <div className="overflow-hidden">
-                <Image
-                  src={image}
-                  alt={`Gallery ${index + 1}`}
-                  width={800}
-                  height={600}
-                  className="h-[260px] w-full object-cover transition duration-700 group-hover:scale-110"
-                />
-              </div>
-
-              <div className="p-6">
-                <h3 className="text-lg font-semibold">
-                  Aquarium Project {index + 1}
-                </h3>
-
-                <p className="mt-2 text-sm text-slate-400">
-                  Premium aquascaping and nature-inspired design.
-                </p>
-              </div>
+              <Image
+                src={image}
+                alt={`Gallery ${index}`}
+                width={700}
+                height={900}
+                className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+              />
             </div>
           ))}
-
         </div>
       </section>
-
-      {/* Load More */}
-      <section className="container-custom pb-24 text-center">
-        <button className="btn-primary">
-          Load More Projects
-        </button>
-      </section>
-
-      {/* CTA */}
-      <section className="container-custom pb-24">
-        <div className="rounded-[32px] border border-white/10 bg-white/5 p-10 md:p-16 text-center">
-
-          <h2 className="font-serif text-3xl md:text-5xl">
-            Ready To Build Your Aquarium?
-          </h2>
-
-          <p className="mx-auto mt-5 max-w-2xl text-slate-400">
-            Let's transform your space into a stunning underwater masterpiece.
-          </p>
-          
-           <Link href="/consultation" className="btn-primary mt-8">
-            Book Consultation
-          </Link>
-
-        </div>
-      </section>
-
-      <Footer />
     </main>
   );
 }

@@ -1,18 +1,20 @@
+import Image from "next/image";
+
 const projects = [
   {
     title: "Luxury Nature Aquarium",
     category: "Residential",
-    image: "/images/project1.jpg",
+    image: "/images/3.jpeg",
   },
   {
     title: "Corporate Office Display",
     category: "Commercial",
-    image: "/images/project2.jpg",
+    image: "/images/4.jpeg",
   },
   {
     title: "Premium Reef Ecosystem",
     category: "Marine",
-    image: "/images/project3.jpg",
+    image: "/images/7.jpeg",
   },
 ];
 
@@ -32,20 +34,15 @@ export default function FeaturedProjects() {
           {projects.map((project) => (
             <div
               key={project.title}
-              className="group overflow-hidden rounded-[32px]"
+              className="group overflow-hidden rounded-lg"
             >
-              <div className="relative h-[500px] overflow-hidden">
-                <img
+              <div className="relative h-[360px] overflow-hidden sm:h-[500px]">
+                <Image
                   src={project.image}
                   alt={project.title}
-                  className="
-                    h-full
-                    w-full
-                    object-cover
-                    transition-all
-                    duration-700
-                    group-hover:scale-110
-                  "
+                  fill
+                  sizes="(min-width: 1024px) 33vw, 100vw"
+                  className="object-cover transition-all duration-700 group-hover:scale-110"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />

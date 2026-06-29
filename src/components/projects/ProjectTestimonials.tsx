@@ -32,7 +32,9 @@ export default function ProjectTestimonials() {
             <div key={item.name} className="premium-card p-8">
               <div className="text-[#6fffe9] text-xl">★★★★★</div>
 
-              <p className="mt-6 leading-8 text-slate-300">"{item.review}"</p>
+              <p className="mt-6 leading-8 text-slate-300">
+                &ldquo;{item.review}&rdquo;
+              </p>
 
               <p className="mt-6 text-sm uppercase tracking-wider text-slate-500">
                 {item.name}

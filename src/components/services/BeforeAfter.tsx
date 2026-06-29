@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function BeforeAfter() {
   return (
     <section className="py-28">
@@ -19,9 +21,11 @@ export default function BeforeAfter() {
           {/* BEFORE */}
           <div className="premium-card overflow-hidden">
             <div className="relative">
-              <img
+              <Image
                 src="/images/02 aquarium.jpg"
                 alt="Before"
+                width={900}
+                height={650}
                 className="h-[500px] w-full object-cover"
               />
 
@@ -42,9 +46,11 @@ export default function BeforeAfter() {
           {/* AFTER */}
           <div className="premium-card overflow-hidden">
             <div className="relative">
-              <img
+              <Image
                 src="/images/istockphoto-1967399204-612x612.jpg"
                 alt="After"
+                width={900}
+                height={650}
                 className="h-[500px] w-full object-cover"
               />
 
