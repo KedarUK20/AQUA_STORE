@@ -2,8 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Camera, CheckCircle2, Sparkles } from "lucide-react";
 
-import Footer from "@/src/components/layout/Footer";
-
 const featuredStats = [
   { value: "500+", label: "Aquariums designed" },
   { value: "10+", label: "Years of craft" },
@@ -110,8 +108,7 @@ const qualityPoints = [
 
 export default function GalleryPage() {
   return (
-    <>
-      <div className="min-h-screen overflow-hidden bg-[#02080d] text-white">
+    <div className="min-h-screen overflow-hidden bg-[#02080d] text-white">
         <section className="relative overflow-hidden">
           <div className="absolute inset-0">
             <Image
@@ -308,9 +305,6 @@ export default function GalleryPage() {
             </div>
           </div>
         </section>
-      </div>
-
-      <Footer />
-    </>
+    </div>
   );
 }

@@ -10,7 +10,6 @@ import MaintenancePlans from "../../components/services/MaintenancePlans";
 import ProcessTimeline from "../../components/services/ProcessTimeline";
 import ServicesGrid from "../../components/services/ServicesGrid";
 import TrustStats from "../../components/services/TrustStats";
-import Footer from "@/src/components/layout/Footer";
 
 const heroPoints = [
   "Custom aquarium design and installation",
@@ -38,8 +37,7 @@ const careHighlights = [
 
 export default function ServicesPage() {
   return (
-    <>
-      <div className="min-h-screen overflow-hidden bg-[#02080d] text-white">
+    <div className="min-h-screen overflow-hidden bg-[#02080d] text-white">
         <section className="relative overflow-hidden">
           <div className="absolute inset-0">
             <Image
@@ -129,9 +127,6 @@ export default function ServicesPage() {
         <BeforeAfter />
         <FAQ />
         <ConsultationCTA />
-      </div>
-
-      <Footer />
-    </>
+    </div>
   );
 }

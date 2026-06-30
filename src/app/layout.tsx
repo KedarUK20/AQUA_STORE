@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+import Footer from "@/src/components/layout/Footer";
 import Navbar from "@/src/components/layout/Navbar";
 
 // ✅ SEO Metadata
@@ -21,6 +22,7 @@ export default function RootLayout({
         <Navbar />
 
         <main className="pt-24">{children}</main>
+        <Footer />
       </body>
     </html>
   );
