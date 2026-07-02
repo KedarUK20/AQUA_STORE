@@ -1,45 +1,46 @@
-import Navbar from "../../components/layout/Navbar";
-import Footer from "../../components/layout/Footer";
 import CategoryGrid from "../../components/shop/CategoryGrid";
 
 export default function ProductsPage() {
   return (
-    <main className="min-h-screen bg-[#020B12] text-white">
+    <main className="relative min-h-screen overflow-hidden text-white">
+      {/* Background */}
+      <div
+        className="fixed inset-0 -z-20 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage:
+            "url('https://blog.hannainst.com/hubfs/aquascaping-305878-edited.jpg')",
+        }}
+      />
 
-      {/* Navbar */}
-      <Navbar />
+      {/* Dark Overlay */}
+      <div className="fixed inset-0 -z-10 bg-black/80" />
 
-      {/* Page Header */}
-      <section className="pt-32 pb-10">
-        <div className="max-w-7xl mx-auto px-6">
-
-          <div className="text-center mb-12">
-
-            <span className="inline-block px-4 py-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 text-emerald-400 text-sm">
-              🌿 Premium Aquarium Store
+      <section className="relative z-10 py-12">
+        <div className="mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-8">
+          
+          {/* Header */}
+          <div className="mb-10 rounded-2xl border border-emerald-500/20 bg-black/30 p-6 backdrop-blur-md lg:p-8">
+            <span className="inline-block rounded-full border border-emerald-500/20 bg-emerald-500/10 px-4 py-2 text-sm text-emerald-400">
+              Premium Aquarium Store
             </span>
 
-            <h1 className="mt-6 text-5xl md:text-7xl font-bold">
+            <h1 className="mt-4 text-4xl font-bold lg:text-6xl">
               Shop By
               <span className="text-emerald-400"> Categories</span>
             </h1>
 
-            <p className="mt-4 text-gray-400 max-w-2xl mx-auto">
-              Browse aquarium plants, fertilizers, fish food,
-              aquascaping essentials and accessories.
+            <p className="mt-3 max-w-3xl text-lg text-slate-300">
+              Browse aquarium plants, fertilizers, fish food, aquascaping
+              essentials and accessories.
             </p>
-
           </div>
 
-          {/* Category Grid */}
-          <CategoryGrid />
-
+          {/* Categories */}
+          <div className="rounded-2xl border border-white/10 bg-black/20 p-4 backdrop-blur-sm">
+            <CategoryGrid />
+          </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <Footer />
-
     </main>
   );
 }

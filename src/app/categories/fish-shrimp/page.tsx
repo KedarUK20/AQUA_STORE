@@ -1,54 +1,63 @@
-import ProductCard from  "../../../components/shop/ProductCard";
+import ProductCard from "../../../components/shop/ProductCard";
 
 const products = [
   {
     title: "Neon Tetra",
-    image:
-      "https://www.aquariadise.com/wp-content/uploads/2022/10/how-many-neon-tetras-in-a-10-gallon-tank.jpeg",
+    image: "https://shrimpybusiness.com/cdn/shop/products/NeonTetra1.jpg?v=1644547585",
     price: "$2",
   },
   {
     title: "Guppy",
-    image:
-      "https://aquariumfishsource.com/wp-content/uploads/2023/10/image-96-e1698162086422.png",
+    image: "https://cdn.britannica.com/02/117202-050-62267C8B/Guppy.jpg",
     price: "$3",
   },
   {
     title: "Cherry Shrimp",
-    image:
-      "https://cdn.realacas.com/wp-content/uploads/2024/12/Neocaridina-davidi-Red-Cherry-Shrimp-22.jpg",
+    image: "https://roxyaquarium.com.au/app/uploads/2022/07/Cherry-Shrimp.webp",
     price: "$4",
   },
 ];
 
 export default function Page() {
   return (
-    <div className="p-8 text-white">
+    <main className="relative min-h-screen overflow-hidden px-4 pb-12 pt-28 text-white sm:px-6 lg:px-10">
+      
+      {/* Background Image */}
+      <div
+        className="fixed inset-0 -z-20 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage:
+            "url('https://png.pngtree.com/background/20230425/original/pngtree-an-aquarium-full-of-algae-and-plants-picture-image_2473376.jpg')",
+        }}
+      />
 
-      {/* Title */}
-      <h1 className="text-3xl font-bold text-cyan-400">
-        Fish & Shrimp
-      </h1>
+      {/* Overlay */}
+      <div className="fixed inset-0 -z-10 bg-black/80 backdrop-blur-[2px]" />
 
-      {/* Subtitle */}
-      <p className="text-gray-400 mt-2 mb-6">
-        Colorful aquatic life for your aquarium tank
-      </p>
+      <div className="mx-auto w-full max-w-[1800px]">
 
-      {/* Product Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {/* Title */}
+        <h1 className="text-3xl font-bold text-emerald-400 sm:text-4xl">
+          Fish & Shrimp
+        </h1>
 
-        {products.map((p, i) => (
-          <ProductCard
-            key={i}
-            title={p.title}
-            image={p.image}
-            price={p.price}
-          />
-        ))}
+        {/* Subtitle */}
+        <p className="mt-2 mb-6 text-gray-300">
+          Colorful aquatic life for your aquarium tank
+        </p>
 
+        {/* Product Grid */}
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3 lg:gap-8">
+          {products.map((p, i) => (
+            <ProductCard
+              key={i}
+              title={p.title}
+              image={p.image}
+              price={p.price}
+            />
+          ))}
+        </div>
       </div>
-
-    </div>
+    </main>
   );
 }

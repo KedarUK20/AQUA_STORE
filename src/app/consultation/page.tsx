@@ -1,197 +1,83 @@
-"use client";
+import Image from "next/image";
+import Link from "next/link";
 
-import { useState } from "react";
-import Navbar from "@/src/components/layout/Navbar";
-import Footer from "@/src/components/layout/Footer";
+import ConsultationForm from "@/src/components/consultation/ConsultationForm";
+import ConsultationProcess from "../../components/consultation/ConsultationProcess";
+import AquariumStyles from "../../components/consultation/AquariumStyles";
+import WhyChooseUs from "../../components/consultation/WhyChooseUs";
+import ConsultationCTA from "../../components/consultation/ConsultationCTA";
 
 export default function ConsultationPage() {
-const [loading, setLoading] = useState(false);
+  return (
+    <div className="min-h-screen overflow-hidden bg-[#02080d] text-white">
+      <section className="relative min-h-[calc(100svh-6rem)] overflow-hidden">
+        <Image
+          src="/images/gallery-1.jpg"
+          alt=""
+          fill
+          preload
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,8,13,0.95)_0%,rgba(2,8,13,0.78)_38%,rgba(2,8,13,0.24)_72%,rgba(2,8,13,0.72)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_24%,rgba(20,184,166,0.24),transparent_28%),radial-gradient(circle_at_18%_82%,rgba(215,181,109,0.14),transparent_30%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#02080d] to-transparent" />
 
-const [form, setForm] = useState({
-name: "",
-email: "",
-phone: "",
-message: "",
-});
+        <div className="relative z-10 flex min-h-[calc(100svh-6rem)] flex-col justify-between gap-8 px-3 pb-5 pt-8 sm:px-5 sm:pt-10 md:gap-10 md:px-8 lg:px-12 lg:pt-14">
+          <div className="hero-content max-w-4xl px-2 sm:px-4 md:pl-10 lg:pl-20 xl:pl-28">
+            <p className="mb-4 text-[11px] uppercase tracking-[0.24em] text-[#6fffe9] sm:mb-5 sm:text-xs sm:tracking-[0.28em]">
+              PRIVATE CONSULTATION
+            </p>
 
-const handleSubmit = async (
-e: React.FormEvent<HTMLFormElement>
-) => {
-e.preventDefault();
+            <h1 className="font-serif text-[2.55rem] leading-[1.02] sm:text-5xl md:text-6xl lg:text-7xl">
+              Let&apos;s Design
+              <br />
+              Your Dream Aquarium
+            </h1>
 
+            <p className="mt-5 max-w-xl text-sm leading-7 text-slate-200 sm:mt-6 md:text-base">
+              Whether you&apos;re planning a luxury freshwater aquascape, reef
+              ecosystem, commercial installation, or long-term maintenance
+              program, our specialists will guide you through every detail.
+            </p>
 
-setLoading(true);
+            <div className="mt-7 grid grid-cols-1 gap-3 min-[430px]:grid-cols-2 sm:flex sm:flex-wrap sm:gap-3">
+              <Link
+                href="#consultation-form"
+                className="btn-primary px-4 sm:px-7"
+              >
+                Start Consultation
+              </Link>
+              <Link href="/gallery" className="btn-secondary px-4 sm:px-7">
+                View Gallery
+              </Link>
+            </div>
+          </div>
 
-try {
-  const res = await fetch("/api/consultation", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(form),
-  });
-
-  const data = await res.json();
-
-  if (data.success) {
-    alert("Consultation Request Sent Successfully!");
-
-    setForm({
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-    });
-  } else {
-    alert(data.message);
-  }
-} catch (error) {
-  console.error(error);
-  alert("Something went wrong.");
-}
-
-setLoading(false);
-
-
-};
-
-return (
-<> <Navbar />
-
-  <main className="min-h-screen bg-[#02080d] text-white pt-24 sm:pt-32 pb-16 sm:pb-20">
-    <div className="w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-
-      {/* Header */}
-      <div className="text-center mb-10 sm:mb-12">
-        <span className="text-cyan-400 uppercase tracking-[0.3em] text-xs sm:text-sm">
-          Consultation
-        </span>
-
-        <h1 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
-          Ready To Build Your Dream Aquarium?
-        </h1>
-
-        <p className="mt-4 text-slate-400 text-sm sm:text-base">
-          Fill out the form below and we'll contact you shortly.
-        </p>
-      </div>
-
-      {/* Form Card */}
-      <form
-        onSubmit={handleSubmit}
-        className="glass rounded-3xl p-5 sm:p-8 space-y-6 border border-white/10"
-      >
-        {/* Name */}
-        <div>
-          <label className="block mb-2 text-sm sm:text-base">
-            Full Name
-          </label>
-
-          <input
-            type="text"
-            required
-            value={form.name}
-            onChange={(e) =>
-              setForm({
-                ...form,
-                name: e.target.value,
-              })
-            }
-            placeholder="Enter your full name"
-            className="w-full rounded-xl bg-white/5 border border-white/10 p-3 sm:p-4 text-sm sm:text-base focus:outline-none focus:border-cyan-400"
-          />
+          <div className="premium-card mx-2 grid gap-4 p-4 sm:mx-4 sm:grid-cols-3 sm:p-5 md:mx-10 lg:mx-20 xl:mx-28">
+            {[
+              { value: "01", label: "Design Consultation" },
+              { value: "02", label: "Custom Proposal" },
+              { value: "03", label: "Expert Installation" },
+            ].map((item) => (
+              <div key={item.label}>
+                <p className="font-serif text-3xl text-white sm:text-4xl">
+                  {item.value}
+                </p>
+                <p className="mt-1 text-xs uppercase tracking-[0.18em] text-slate-400">
+                  {item.label}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
+      </section>
 
-        {/* Email */}
-        <div>
-          <label className="block mb-2 text-sm sm:text-base">
-            Email
-          </label>
-
-          <input
-            type="email"
-            required
-            value={form.email}
-            onChange={(e) =>
-              setForm({
-                ...form,
-                email: e.target.value,
-              })
-            }
-            placeholder="Enter your email"
-            className="w-full rounded-xl bg-white/5 border border-white/10 p-3 sm:p-4 text-sm sm:text-base focus:outline-none focus:border-cyan-400"
-          />
-        </div>
-
-        {/* Phone */}
-        <div>
-          <label className="block mb-2 text-sm sm:text-base">
-            Phone Number
-          </label>
-
-          <input
-            type="text"
-            required
-            value={form.phone}
-            onChange={(e) =>
-              setForm({
-                ...form,
-                phone: e.target.value,
-              })
-            }
-            placeholder="Enter your phone number"
-            className="w-full rounded-xl bg-white/5 border border-white/10 p-3 sm:p-4 text-sm sm:text-base focus:outline-none focus:border-cyan-400"
-          />
-        </div>
-
-        {/* Message */}
-        <div>
-          <label className="block mb-2 text-sm sm:text-base">
-            Aquarium Requirement
-          </label>
-
-          <textarea
-            rows={5}
-            required
-            value={form.message}
-            onChange={(e) =>
-              setForm({
-                ...form,
-                message: e.target.value,
-              })
-            }
-            placeholder="Describe your aquarium requirements..."
-            className="w-full rounded-xl bg-white/5 border border-white/10 p-3 sm:p-4 text-sm sm:text-base focus:outline-none focus:border-cyan-400"
-          />
-        </div>
-
-        {/* Submit Button */}
-        <button
-          type="submit"
-          disabled={loading}
-          className="
-            w-full
-            bg-cyan-500
-            hover:bg-cyan-400
-            disabled:opacity-70
-            text-black
-            font-semibold
-            py-3 sm:py-4
-            rounded-xl
-            transition
-          "
-        >
-          {loading
-            ? "Sending..."
-            : "Book Consultation"}
-        </button>
-      </form>
+      <ConsultationForm />
+      <ConsultationProcess />
+      <AquariumStyles />
+      <WhyChooseUs />
+      <ConsultationCTA />
     </div>
-  </main>
-
-  <Footer />
-</>
-
-
-);
+  );
 }

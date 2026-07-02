@@ -5,19 +5,26 @@ import {
   MapPin,
 } from "lucide-react";
 
-export default function Footer() {
+const exploreLinks = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About Us" },
+  { href: "/services", label: "Services" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/contact", label: "Contact" },
+];
+
+type FooterProps = {
+  className?: string;
+};
+
+export default function Footer({ className = "mt-24" }: FooterProps) {
   const year = new Date().getFullYear();
 
   return (
     <footer className="pt-10 pb-8 border-t border-white/10 bg-[#02080d] text-white">
-
-      
-
       {/* Main Footer */}
       <div className="container-custom py-16">
-
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
-
           {/* Brand */}
           <div>
 
@@ -49,37 +56,17 @@ export default function Footer() {
             </h3>
 
             <ul className="space-y-3 text-slate-400">
-
-              <li>
-                <Link href="/" className="footer-link">
-                  Home
-                </Link>
-              </li>
-
-              <li>
-                <Link href="/about" className="footer-link">
-                  About
-                </Link>
-              </li>
-
-              <li>
-                <Link href="/projects" className="footer-link">
-                  Projects
-                </Link>
-              </li>
-
-              <li>
-                <Link href="/gallery" className="footer-link">
-                  Gallery
-                </Link>
-              </li>
-
-              <li>
-                <Link href="/shop" className="footer-link">
-                  Shop
-                </Link>
-              </li>
-
+              {exploreLinks.map((link) => (
+          
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="transition hover:text-cyan-400"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
 
           </div>
@@ -152,48 +139,7 @@ export default function Footer() {
 
       </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-white/5">
-
-        <div className="container-custom py-6">
-
-          <div className="flex flex-col items-center justify-between gap-4 text-center md:flex-row">
-
-            <p className="text-xs text-slate-500">
-              © {year} Aquarium Nature Studio.
-              All rights reserved.
-            </p>
-
-            <div className="flex flex-wrap justify-center gap-6 text-xs text-slate-500">
-
-              <Link
-                href="/privacy"
-                className="hover:text-cyan-400 transition"
-              >
-                Privacy Policy
-              </Link>
-
-              <Link
-                href="/terms"
-                className="hover:text-cyan-400 transition"
-              >
-                Terms
-              </Link>
-
-              <Link
-                href="/contact"
-                className="hover:text-cyan-400 transition"
-              >
-                Contact
-              </Link>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
+      
 
     </footer>
   );

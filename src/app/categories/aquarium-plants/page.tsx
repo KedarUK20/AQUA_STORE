@@ -3,53 +3,53 @@ import ProductCard from "../../../components/shop/ProductCard";
 const products = [
   {
     title: "Java Moss",
-    image:
-      "https://fishsubsidy.org/wp-content/uploads/2019/10/how-to-grow-java-moss.jpg",
+    image: "https://www.aquariumsource.com/wp-content/uploads/2019/08/java-moss-main.jpg",
     price: "$5",
   },
   {
     title: "Amazon Sword",
-    image:
-      "https://cdn.diys.com/wp-content/uploads/2021/05/Amazon-Sword-1.jpg",
+    image: "https://m.media-amazon.com/images/I/71iCDSrSGtL._AC_SL1000_.jpg",
     price: "$8",
   },
   {
     title: "Anubias Plant",
-    image:
-      "https://www.aquariadise.com/wp-content/uploads/2017/02/Depositphotos_1452254_l-2015.jpg",
+    image: "https://www.aquariadise.com/wp-content/uploads/2023/02/Can-Anubias-Grow-Out-of-Water.jpeg",
     price: "$6",
   },
 ];
 
 export default function Page() {
   return (
-    <div className="p-8 text-white">
+    <main className="relative min-h-screen w-full overflow-x-clip px-4 pb-10 pt-28 text-white sm:px-6 sm:pb-12 lg:px-8">
+      
+      
+      {/* Background Image */}
+      <div
+        className="fixed inset-0 -z-20 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage:
+            "url('https://png.pngtree.com/background/20230425/original/pngtree-an-aquarium-full-of-algae-and-plants-picture-image_2473376.jpg')",
+        }}
+      />
 
-      {/* Title */}
-      <h1 className="text-3xl font-bold text-cyan-400">
-        Aquarium Plants
-      </h1>
+      {/* Dark Overlay */}
+      <div className="fixed inset-0 -z-10 bg-black/75 backdrop-blur-[2px]" />
 
-      {/* Subtitle */}
-      <p className="text-gray-400 mt-2 mb-6">
-        Fresh aquatic plants for aquascaping tanks
-      </p>
+      <div className="mx-auto w-full max-w-[1800px]">
+        <h1 className="text-3xl font-bold text-emerald-400 sm:text-4xl">
+          Aquarium Plants
+        </h1>
 
-      {/* Products Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <p className="mt-2 mb-8 text-gray-300">
+          Fresh aquatic plants for aquascaping tanks
+        </p>
 
-        {products.map((p, i) => (
-          <ProductCard
-            key={i}
-            title={p.title}
-            image={p.image}
-            price={p.price}
-            link="/categories/aquarium-plants"
-          />
-        ))}
-
+        <div className="grid min-w-0 grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {products.map((p, i) => (
+            <ProductCard key={i} {...p} />
+          ))}
+        </div>
       </div>
-
-    </div>
+    </main>
   );
 }
