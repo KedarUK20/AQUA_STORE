@@ -2,8 +2,6 @@
 
 import { useState } from "react"
 
-import Navbar from "@/src/components/layout/Navbar";
-import Footer from "@/src/components/layout/Footer";
 import {
     Phone,
     Mail,
@@ -55,8 +53,6 @@ export default function ContactPage() {
     };
     return (
         <>
-            <Navbar />
-
             <main className="min-h-screen bg-[#030d18] text-white overflow-hidden">
 
                 {/* ================= HERO ================= */}
@@ -84,7 +80,7 @@ export default function ContactPage() {
 
                         <h1 className="mt-6 font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight max-w-4xl">
 
-                            Let's Build Your
+                            Let&apos;s Build Your
 
                             <span className="block text-cyan-400">
                                 Dream Aquarium
@@ -94,7 +90,7 @@ export default function ContactPage() {
 
                         <p className="mt-8 max-w-2xl text-slate-300 text-base md:text-lg leading-8">
 
-                            Whether you're planning a luxury aquarium,
+                            Whether you&apos;re planning a luxury aquarium,
                             custom aquascape, planted tank or commercial installation,
                             our aquarium experts are ready to bring your vision to life.
 
@@ -499,7 +495,7 @@ export default function ContactPage() {
                             </span>
 
                             <h2 className="mt-4 font-serif text-3xl md:text-5xl">
-                                We're Open
+                                We&apos;re Open
                             </h2>
 
                             <p className="mx-auto mt-4 max-w-2xl text-slate-400 leading-7">
@@ -848,7 +844,7 @@ export default function ContactPage() {
                         >
 
                             <span className="uppercase tracking-[0.35em] text-cyan-400 text-sm">
-                                Let's Build Together
+                                Let&apos;s Build Together
                             </span>
 
                             <h2 className="mt-5 font-serif text-4xl md:text-5xl lg:text-6xl leading-tight">
@@ -858,7 +854,7 @@ export default function ContactPage() {
                             </h2>
 
                             <p className="mx-auto mt-6 max-w-2xl text-slate-300 leading-8">
-                                Whether you're looking for a luxury home aquarium,
+                                Whether you&apos;re looking for a luxury home aquarium,
                                 a stunning aquascape, or a large commercial installation,
                                 our experts are ready to transform your vision into reality.
                             </p>
@@ -918,9 +914,6 @@ export default function ContactPage() {
                 </section>
 
             </main>
-
-            <Footer />
-
         </>
     );
 }

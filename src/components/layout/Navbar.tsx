@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { EllipsisVertical, Search, ShoppingCart, X } from "lucide-react";
+import { Menu, Search, ShoppingCart, X } from "lucide-react";
 
 const links = [
   { name: "Home", href: "/" },
@@ -177,9 +177,11 @@ export default function Navbar() {
                 type="button"
                 onClick={() => setMobileMenu(true)}
                 aria-label="Open menu"
+                aria-controls="mobile-navigation"
+                aria-expanded={mobileMenu}
                 className="grid h-10 w-10 place-items-center rounded-lg border border-white/10 bg-white/5 text-white transition hover:border-cyan-400/60 hover:text-cyan-300 xl:hidden"
               >
-                <EllipsisVertical size={22} />
+                <Menu size={22} />
               </button>
             </div>
           </div>
@@ -196,6 +198,7 @@ export default function Navbar() {
       )}
 
       <aside
+        id="mobile-navigation"
         className={`fixed right-0 top-0 z-[60] h-dvh w-[min(88vw,360px)] overflow-y-auto overscroll-contain border-l border-cyan-400/15 bg-[#04111f]/96 shadow-2xl backdrop-blur-xl transition-transform duration-300 xl:hidden ${
           mobileMenu ? "translate-x-0" : "translate-x-full"
         }`}
