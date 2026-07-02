@@ -3,7 +3,6 @@
 import { useMemo, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
 import Navbar from "../../components/layout/Navbar";
-import Footer from "../../components/layout/Footer";
 
 type CartItem = {
   title: string;
@@ -112,8 +111,6 @@ export default function CartPage() {
           </>
         )}
       </section>
-
-      <Footer />
     </main>
   );
 }

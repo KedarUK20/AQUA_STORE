@@ -8,12 +8,8 @@ import CTA from "../components/home/CTA";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#02080d] text-white overflow-hidden">
+    <div className="min-h-screen overflow-hidden bg-[#02080d] text-white">
       <Hero />
-     
-      {/* <DiscoveryEditorial /> */}
-
-      {/* <CraftShowcase /> */}
 
       <FeaturedProjects />
 
@@ -24,6 +20,6 @@ export default function Home() {
       <Testimonials />
 
       <CTA />
-    </main>
+    </div>
   );
 }

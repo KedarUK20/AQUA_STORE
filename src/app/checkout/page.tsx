@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Navbar from "../../components/layout/Navbar";
-import Footer from "../../components/layout/Footer";
 
 export default function CheckoutPage() {
   const router = useRouter();
@@ -86,7 +85,6 @@ export default function CheckoutPage() {
   };
 
   return (
-    <>
       <main className="relative min-h-screen overflow-hidden bg-[#06141B] text-white">
         <Navbar />
 
@@ -220,8 +218,5 @@ export default function CheckoutPage() {
           )}
         </section>
       </main>
-
-      <Footer />
-    </>
   );
 }

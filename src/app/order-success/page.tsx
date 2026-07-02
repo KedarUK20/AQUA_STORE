@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import Navbar from "../../components/layout/Navbar";
-import Footer from "../../components/layout/Footer";
 
 export default function OrderSuccessPage() {
   return (
@@ -39,8 +38,6 @@ export default function OrderSuccessPage() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </main>
   );
 }

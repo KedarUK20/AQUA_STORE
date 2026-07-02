@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-import Navbar from "@/src/components/layout/Navbar";
 import Footer from "@/src/components/layout/Footer";
+import Navbar from "@/src/components/layout/Navbar";
 
 // ✅ SEO Metadata
 export const metadata: Metadata = {
@@ -17,15 +17,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth">
       <body className="bg-[#030d18] text-white">
         <Navbar />
 
-        <main className="min-w-0 overflow-x-clip">
-          {children}
-        </main>
-
-       
+        <main className="pt-24">{children}</main>
+        <Footer />
       </body>
     </html>
   );

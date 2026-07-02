@@ -1,7 +1,24 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight, BadgeCheck, Leaf, Waves } from "lucide-react";
+
+const heroStats = [
+  {
+    value: "8",
+    label: "curated departments",
+    icon: Leaf,
+  },
+  {
+    value: "1k+",
+    label: "aquarium essentials",
+    icon: Waves,
+  },
+  {
+    value: "Pro",
+    label: "setup guidance",
+    icon: BadgeCheck,
+  },
+];
 
 export default function HeroShop() {
   return (
@@ -9,11 +26,11 @@ export default function HeroShop() {
       {/* Background Image */}
       <Image
         src="/images/banner1.jpg"
-        alt="Aquarium Banner"
+        alt="Premium planted aquarium with aquatic plants and clear water"
         fill
-        priority
+        preload
         sizes="100vw"
-        className="absolute inset-0 h-full w-full object-cover"
+        className="object-cover"
       />
 
       {/* Overlay */}

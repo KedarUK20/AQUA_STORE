@@ -12,43 +12,60 @@ const links = [
   { name: "Services", href: "/services" },
   { name: "Shop", href: "/shop" },
   { name: "About", href: "/about" },
+  { name: "Contact", href: "/contact" },
 ];
 
-type CartItem = {
-  quantity?: number;
-};
-
-const getCartCount = () => {
-  if (typeof window === "undefined") return 0;
-
-  try {
-    const cart = JSON.parse(localStorage.getItem("cart") || "[]") as CartItem[];
-
-    return cart.reduce((total, item) => total + Number(item.quantity || 0), 0);
-  } catch {
-    return 0;
-  }
-};
+const NAVBAR_SCROLL_THRESHOLD = 20;
 
 export default function Navbar() {
   const [mobileMenu, setMobileMenu] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [query, setQuery] = useState("");
   const [cartCount, setCartCount] = useState(0);
   const pathname = usePathname();
   const router = useRouter();
 
   useEffect(() => {
-    const updateCartCount = () => setCartCount(getCartCount());
+    const updateNavbarState = () => {
+      const nextIsScrolled = window.scrollY > NAVBAR_SCROLL_THRESHOLD;
 
-    updateCartCount();
-    window.addEventListener("cartUpdated", updateCartCount);
-    window.addEventListener("storage", updateCartCount);
+      setIsScrolled((currentIsScrolled) =>
+        currentIsScrolled === nextIsScrolled
+          ? currentIsScrolled
+          : nextIsScrolled,
+      );
+    };
+
+    updateNavbarState();
+    window.addEventListener("scroll", updateNavbarState, { passive: true });
 
     return () => {
-      window.removeEventListener("cartUpdated", updateCartCount);
-      window.removeEventListener("storage", updateCartCount);
+      window.removeEventListener("scroll", updateNavbarState);
     };
   }, []);
+
+  useEffect(() => {
+    if (!mobileMenu) return;
+
+    const { body, documentElement } = document;
+    const originalBodyOverflow = body.style.overflow;
+    const originalHtmlOverflow = documentElement.style.overflow;
+    const originalBodyPaddingRight = body.style.paddingRight;
+    const scrollbarWidth = window.innerWidth - documentElement.clientWidth;
+
+    body.style.overflow = "hidden";
+    documentElement.style.overflow = "hidden";
+
+    if (scrollbarWidth > 0) {
+      body.style.paddingRight = `${scrollbarWidth}px`;
+    }
+
+    return () => {
+      body.style.overflow = originalBodyOverflow;
+      documentElement.style.overflow = originalHtmlOverflow;
+      body.style.paddingRight = originalBodyPaddingRight;
+    };
+  }, [mobileMenu]);
 
   const handleSearch = () => {
     const value = query.trim();
@@ -60,11 +77,23 @@ export default function Navbar() {
     setMobileMenu(false);
   };
 
+  const showPinnedState = isScrolled || mobileMenu;
+
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-4 lg:px-6">
+      <header
+        className={`fixed inset-x-0 top-0 z-50 px-3 transition-all duration-300 sm:px-4 lg:px-6 ${
+          showPinnedState ? "pt-0" : "pt-3"
+        }`}
+      >
         <div className="mx-auto w-full max-w-[1800px]">
-          <div className="glass flex h-16 items-center justify-between gap-2 rounded-xl border-white/10 bg-[#04111f]/82 px-3 shadow-2xl backdrop-blur-xl sm:h-18 sm:gap-3 sm:px-5 lg:h-20 lg:px-7">
+          <div
+            className={`flex h-16 items-center justify-between gap-2 border px-3 backdrop-blur-xl transition-all duration-300 sm:h-18 sm:gap-3 sm:px-5 lg:h-20 lg:px-7 ${
+              showPinnedState
+                ? "rounded-b-xl rounded-t-none border-cyan-300/20 bg-[#04111f]/95 shadow-[0_18px_50px_rgba(0,0,0,0.42)]"
+                : "rounded-xl border-white/10 bg-[#04111f]/82 shadow-2xl"
+            }`}
+          >
             <Link
               href="/"
               aria-label="Aquarium Nature Studio home"
@@ -173,11 +202,11 @@ export default function Navbar() {
       )}
 
       <aside
-        className={`fixed right-0 top-0 z-[60] h-dvh w-[min(88vw,360px)] border-l border-cyan-400/15 bg-[#04111f]/96 shadow-2xl backdrop-blur-xl transition-transform duration-300 xl:hidden ${
+        className={`fixed right-0 top-0 z-[60] h-dvh w-[min(88vw,360px)] overflow-y-auto overscroll-contain border-l border-cyan-400/15 bg-[#04111f]/96 shadow-2xl backdrop-blur-xl transition-transform duration-300 xl:hidden ${
           mobileMenu ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex h-full flex-col p-5">
+        <div className="flex min-h-full flex-col p-5">
           <div className="flex items-center justify-between border-b border-white/10 pb-5">
             <div>
               <span className="block text-lg font-bold text-cyan-400">

@@ -1,4 +1,3 @@
-import Footer from "../../components/layout/Footer";
 import CategoryGrid from "../../components/shop/CategoryGrid";
 
 export default function ProductsPage() {
@@ -42,8 +41,6 @@ export default function ProductsPage() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </main>
   );
 }

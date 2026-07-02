@@ -1,126 +1,130 @@
 import Image from "next/image";
+import Link from "next/link";
+import { CheckCircle2, Droplets, Gauge, ShieldCheck } from "lucide-react";
 
-import ServicesGrid from "../../components/services/ServicesGrid";
 import BeforeAfter from "../../components/services/BeforeAfter";
-import ProcessTimeline from "../../components/services/ProcessTimeline";
-import MaintenancePlans from "../../components/services/MaintenancePlans";
 import CommercialServices from "../../components/services/CommercialServices";
-import FAQ from "../../components/services/FAQ";
 import ConsultationCTA from "../../components/services/ConsultationCTA";
+import FAQ from "../../components/services/FAQ";
+import MaintenancePlans from "../../components/services/MaintenancePlans";
+import ProcessTimeline from "../../components/services/ProcessTimeline";
+import ServicesGrid from "../../components/services/ServicesGrid";
 import TrustStats from "../../components/services/TrustStats";
-import FadeUp from "@/src/components/shared/FadeUp";
+
+const heroPoints = [
+  "Custom aquarium design and installation",
+  "Aquascaping, planting, reef and livestock planning",
+  "Scheduled maintenance, testing and equipment care",
+];
+
+const careHighlights = [
+  {
+    icon: Droplets,
+    title: "Water stability",
+    text: "Testing, dosing, filtration checks and practical corrections before problems grow.",
+  },
+  {
+    icon: Gauge,
+    title: "Equipment reliability",
+    text: "Lighting, pumps, CO2, heaters and filtration reviewed for the actual aquarium load.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Livestock wellbeing",
+    text: "Plant trimming, fish observation and habitat balance kept central to every visit.",
+  },
+];
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-screen bg-[#02080d] text-white">
+    <div className="min-h-screen overflow-hidden bg-[#02080d] text-white">
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/images/aqua maintaince.jpg')] bg-cover bg-center opacity-10" />
+        <div className="absolute inset-0">
+          <Image
+            src="/images/aqua maintaince.jpg"
+            alt="Aquarium maintenance and service work"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,#02080d_0%,rgba(2,8,13,0.94)_38%,rgba(2,8,13,0.62)_68%,rgba(2,8,13,0.86)_100%)]" />
+          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#02080d] to-transparent" />
+        </div>
 
-        <div className="absolute inset-0 bg-gradient-to-r from-[#02080d] via-[#02080d]/95 to-[#02080d]/70" />
+        <div className="container-custom relative z-10 grid min-h-[calc(100vh-6rem)] gap-10 pb-8 pt-20 lg:grid-cols-[1fr_0.86fr] lg:items-center lg:pb-12 lg:pt-24">
+          <div className="max-w-4xl self-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#6fffe9]">
+              Aquarium Services
+            </p>
 
-        <div className="relative mx-auto max-w-[1800px] px-6 lg:px-10">
-          <div className="grid min-h-screen items-center gap-10 py-20 lg:min-h-[90vh] lg:grid-cols-[0.9fr_1.1fr]">
-            {/* LEFT CONTENT */}
+            <h1 className="mt-5 font-serif text-4xl leading-[1.02] sm:text-5xl md:text-6xl xl:text-7xl">
+              Design, build and care for aquariums that keep thriving.
+            </h1>
 
-            <div className="order-1 lg:order-2">
-              <p className="mb-5 text-xs uppercase tracking-[0.4em] text-[#6fffe9]">
-                AQUARIUM SERVICES
+            <p className="mt-6 max-w-2xl text-base leading-8 text-slate-200 sm:text-lg">
+              We handle the full aquarium lifecycle: concept, equipment,
+              aquascaping, installation, water stability and long-term care for
+              homes, offices and hospitality spaces.
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link href="/consultation" className="btn-primary">
+                Book Service Consultation
+              </Link>
+              <Link href="#service-menu" className="btn-secondary">
+                View Services
+              </Link>
+            </div>
+          </div>
+
+          <div className="grid gap-4 self-end lg:self-center">
+            <div className="rounded-lg border border-white/10 bg-[#04111f]/78 p-5 backdrop-blur-xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#d7b56d]">
+                Service Coverage
               </p>
-
-              <h1 className="font-serif text-4xl leading-[1] sm:text-5xl md:text-6xl xl:text-7xl">
-                Living Ecosystems.
-                <br />
-                Crafted Indoors.
-              </h1>
-
-              <p className="mt-6 w-full max-w-xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
-                From luxury planted aquariums and reef installations to ongoing
-                maintenance programs, we create aquatic environments that
-                elevate homes, offices and hospitality spaces.
-              </p>
-
-              <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                <div className="flex items-center gap-3">
-                  <div className="h-2 w-2 rounded-full bg-[#6fffe9]" />
-                  <p className="text-slate-300">
-                    Scheduled Maintenance & Water Quality Management
-                  </p>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <div className="h-2 w-2 rounded-full bg-[#6fffe9]" />
-                  <p className="text-slate-300">
-                    Freshwater, Marine & Reef Aquarium Specialists
-                  </p>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <div className="h-2 w-2 rounded-full bg-[#6fffe9]" />
-                  <p className="text-slate-300">
-                    Emergency Support & Equipment Diagnostics
-                  </p>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <div className="h-2 w-2 rounded-full bg-[#6fffe9]" />
-                  <p className="text-slate-300">
-                    Long-Term Ecosystem Health Monitoring
-                  </p>
-                </div>
+              <div className="mt-5 grid gap-4">
+                {heroPoints.map((item) => (
+                  <div key={item} className="flex gap-3">
+                    <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-[#6fffe9]" />
+                    <p className="text-sm leading-7 text-slate-300">{item}</p>
+                  </div>
+                ))}
               </div>
-
-              <div className="mt-10 rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-6 backdrop-blur-xl max-w-xl">
-                <p className="text-xs uppercase tracking-[0.35em] text-[#6fffe9]">
-                  PROFESSIONAL CARE
-                </p>
-
-                <h3 className="mt-3 font-serif text-2xl">
-                  Built For Long-Term Stability
-                </h3>
-
-                <p className="mt-3 text-slate-400 leading-7">
-                  Our maintenance programs focus on water chemistry, livestock
-                  wellbeing, equipment performance and ecosystem balance to
-                  ensure your aquarium thrives year after year.
-                </p>
-              </div>
-
-              {/* STATS */}
             </div>
 
-            {/* RIGHT SHOWCASE */}
+            <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+              {careHighlights.map((item) => {
+                const Icon = item.icon;
 
-            <div className="order-1 lg:order-2">
-              <div className="group relative overflow-hidden">
-                <Image
-                  src="/images/aqua maintaince.jpg"
-                  alt="Luxury Aquarium"
-                  width={900}
-                  height={1200}
-                  className="h-[320px] w-full rounded-3xl object-cover sm:h-[450px] lg:h-[720px]"
-                />
-              </div>
+                return (
+                  <div
+                    key={item.title}
+                    className="rounded-lg border border-white/10 bg-[#04111f]/72 p-4 backdrop-blur-xl"
+                  >
+                    <Icon className="h-6 w-6 text-[#14b8a6]" />
+                    <h3 className="mt-3 text-sm font-semibold text-white">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-xs leading-5 text-slate-400">
+                      {item.text}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
       </section>
 
       <TrustStats />
-
-      <FadeUp>
-        <ServicesGrid />
-      </FadeUp>
-      <BeforeAfter />
-
-      <ProcessTimeline />
-
+      <ServicesGrid />
       <MaintenancePlans />
-
+      <ProcessTimeline />
       <CommercialServices />
-
+      <BeforeAfter />
       <FAQ />
-
       <ConsultationCTA />
-    </main>
+    </div>
   );
 }

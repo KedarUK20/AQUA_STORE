@@ -15,11 +15,18 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 7rem;
   min-height: 100%;
   width: 100%;
   max-width: 100%;
   overflow-x: clip;
   scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {
@@ -271,7 +278,9 @@ a:focus-visible {
 .text-gradient {
   background: linear-gradient(90deg, #6fffe9, #14b8a6);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .premium-card {
