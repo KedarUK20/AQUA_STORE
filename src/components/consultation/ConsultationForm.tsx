@@ -1,12 +1,89 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import {
+  Building2,
+  ClipboardCheck,
+  Droplets,
+  Home,
+  LifeBuoy,
+  Ruler,
+  Send,
+  Store,
+  Waves,
+  Wrench,
+} from "lucide-react";
+
+const purposePoints = [
+  {
+    title: "Clarify the right aquarium",
+    text: "Match the tank style, livestock, placement and care level to your space.",
+    icon: Ruler,
+  },
+  {
+    title: "Plan the complete setup",
+    text: "Turn a loose idea into a layout, equipment direction and budget range.",
+    icon: ClipboardCheck,
+  },
+  {
+    title: "Prepare long-term care",
+    text: "Decide whether you need training, routine maintenance or full support.",
+    icon: LifeBuoy,
+  },
+];
+
+const projectFocusOptions = [
+  {
+    value: "Freshwater Aquarium",
+    title: "Freshwater Aquarium",
+    text: "Nature aquariums, planted tanks and peaceful freshwater ecosystems.",
+    icon: Droplets,
+  },
+  {
+    value: "Marine & Reef",
+    title: "Marine & Reef",
+    text: "Saltwater displays, reef planning and color-rich marine environments.",
+    icon: Waves,
+  },
+  {
+    value: "Maintenance Plan",
+    title: "Maintenance Plan",
+    text: "Scheduled cleaning, water stability, livestock health and support.",
+    icon: Wrench,
+  },
+];
+
+const installationOptions = [
+  {
+    value: "Residence",
+    title: "Residence",
+    text: "Living rooms, lounges and private luxury homes.",
+    icon: Home,
+  },
+  {
+    value: "Office",
+    title: "Office",
+    text: "Reception areas, cabins and premium workspaces.",
+    icon: Building2,
+  },
+  {
+    value: "Commercial",
+    title: "Commercial",
+    text: "Hotels, restaurants, retail and hospitality spaces.",
+    icon: Store,
+  },
+];
+
+const inputClass =
+  "w-full rounded-lg border border-white/10 bg-[#071827] px-4 py-4 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-[#6fffe9]/80";
 
 export default function ConsultationForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">(
     "idle",
   );
   const [feedback, setFeedback] = useState("");
+  const [projectFocus, setProjectFocus] = useState("");
+  const [installationSpace, setInstallationSpace] = useState("");
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -15,6 +92,9 @@ export default function ConsultationForm() {
 
     const formData = new FormData(event.currentTarget);
     const message = [
+      "Purpose: Plan the aquarium design, equipment, budget and care approach before the project begins.",
+      `Project Focus: ${formData.get("projectFocus") || "Not selected"}`,
+      `Installation Space: ${formData.get("installationSpace") || "Not selected"}`,
       `City: ${formData.get("city") || "Not provided"}`,
       `Project Type: ${formData.get("projectType") || "Not selected"}`,
       `Estimated Budget: ${formData.get("budget") || "Not selected"}`,
@@ -47,6 +127,8 @@ export default function ConsultationForm() {
       }
 
       event.currentTarget.reset();
+      setProjectFocus("");
+      setInstallationSpace("");
       setStatus("success");
       setFeedback(result.message || "Consultation request sent successfully.");
     } catch (error) {
@@ -64,153 +146,213 @@ export default function ConsultationForm() {
   };
 
   return (
-    <section id="consultation-form" className="py-24">
-      <div className="mx-auto max-w-5xl px-6">
-        <div className="rounded-[32px] border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
-          <div className="mb-10">
-            <p className="text-xs uppercase tracking-[0.35em] text-[#6fffe9]">
-              CONSULTATION FORM
+    <section
+      id="consultation-form"
+      className="scroll-mt-28 py-16 sm:py-20 lg:py-24"
+    >
+      <div className="container-custom grid gap-8 lg:grid-cols-[0.86fr_1.14fr] lg:items-start">
+        <aside className="lg:sticky lg:top-32">
+          <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#6fffe9]">
+            Consultation Purpose
+          </p>
+
+          <h2 className="mt-4 font-serif text-3xl leading-tight sm:text-4xl md:text-5xl">
+            Turn your aquarium idea into a practical design plan.
+          </h2>
+
+          <p className="mt-5 max-w-2xl text-base leading-8 text-slate-300">
+            This consultation helps us understand your room, style, maintenance
+            expectations and budget before recommending a tank concept. The form
+            gives our team enough context to prepare a focused first call and a
+            useful proposal.
+          </p>
+
+          <div className="mt-8 grid gap-4">
+            {purposePoints.map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <div
+                  key={item.title}
+                  className="rounded-lg border border-white/10 bg-[#071827]/62 p-5"
+                >
+                  <Icon className="h-6 w-6 text-[#d7b56d]" />
+                  <h3 className="mt-4 text-lg font-semibold text-white">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-6 text-slate-400">
+                    {item.text}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="mt-6 rounded-lg border border-[#6fffe9]/20 bg-[#04111f]/82 p-5">
+            <p className="text-sm font-semibold text-white">
+              After you submit
+            </p>
+            <p className="mt-2 text-sm leading-6 text-slate-400">
+              We review the details, contact you for the consultation, then
+              shape a recommendation for aquarium type, placement, equipment,
+              care routine and next steps.
+            </p>
+          </div>
+        </aside>
+
+        <div className="rounded-lg border border-white/10 bg-white/[0.045] p-5 shadow-2xl backdrop-blur-xl sm:p-7 lg:p-8">
+          <div className="mb-8">
+            <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#6fffe9]">
+              Consult Form
             </p>
 
-            <h2 className="mt-4 font-serif text-4xl">
-              Tell Us About Your Project
+            <h2 className="mt-4 font-serif text-3xl leading-tight sm:text-4xl">
+              Tell us about the project.
             </h2>
 
-            <p className="mt-4 text-slate-400">
-              Share your vision and our specialists will prepare a tailored
-              proposal.
+            <p className="mt-4 text-sm leading-7 text-slate-400">
+              Share the essentials now. We will use them to prepare a tailored
+              aquarium consultation.
             </p>
           </div>
 
-          <div className="mb-10">
-            <h3 className="mb-6 text-xl font-semibold">
-              What Are You Looking For?
-            </h3>
+          <form onSubmit={handleSubmit} className="grid gap-6">
+            <fieldset>
+              <legend className="mb-4 text-lg font-semibold text-white">
+                What are you looking for?
+              </legend>
 
-            <div className="grid gap-4 md:grid-cols-3">
-              <div className="cursor-pointer rounded-2xl border border-white/10 bg-[#071827] p-6 transition hover:border-[#6fffe9]">
-                <h4 className="font-semibold">Freshwater Aquarium</h4>
-                <p className="mt-2 text-sm text-slate-400">
-                  Nature aquariums and planted ecosystems.
-                </p>
-              </div>
+              <div className="grid gap-4 md:grid-cols-3">
+                {projectFocusOptions.map((item) => {
+                  const Icon = item.icon;
 
-              <div className="cursor-pointer rounded-2xl border border-white/10 bg-[#071827] p-6 transition hover:border-[#6fffe9]">
-                <h4 className="font-semibold">Marine & Reef</h4>
-                <p className="mt-2 text-sm text-slate-400">
-                  Coral reefs and saltwater environments.
-                </p>
+                  return (
+                    <label key={item.value} className="cursor-pointer">
+                      <input
+                        type="radio"
+                        name="projectFocus"
+                        value={item.value}
+                        checked={projectFocus === item.value}
+                        onChange={() => setProjectFocus(item.value)}
+                        className="peer sr-only"
+                      />
+                      <span className="block min-h-[150px] rounded-lg border border-white/10 bg-[#071827] p-5 transition peer-checked:border-[#6fffe9] peer-checked:bg-[#0a2331] peer-focus-visible:ring-2 peer-focus-visible:ring-[#d7b56d]">
+                        <Icon className="h-5 w-5 text-[#d7b56d]" />
+                        <span className="mt-4 block font-semibold text-white">
+                          {item.title}
+                        </span>
+                        <span className="mt-2 block text-sm leading-6 text-slate-400">
+                          {item.text}
+                        </span>
+                      </span>
+                    </label>
+                  );
+                })}
               </div>
+            </fieldset>
 
-              <div className="cursor-pointer rounded-2xl border border-white/10 bg-[#071827] p-6 transition hover:border-[#6fffe9]">
-                <h4 className="font-semibold">Maintenance Plan</h4>
-                <p className="mt-2 text-sm text-slate-400">
-                  Long-term ecosystem care and support.
-                </p>
+            <fieldset>
+              <legend className="mb-4 text-lg font-semibold text-white">
+                Where will the aquarium be installed?
+              </legend>
+
+              <div className="grid gap-4 md:grid-cols-3">
+                {installationOptions.map((item) => {
+                  const Icon = item.icon;
+
+                  return (
+                    <label key={item.value} className="cursor-pointer">
+                      <input
+                        type="radio"
+                        name="installationSpace"
+                        value={item.value}
+                        checked={installationSpace === item.value}
+                        onChange={() => setInstallationSpace(item.value)}
+                        className="peer sr-only"
+                      />
+                      <span className="block min-h-[136px] rounded-lg border border-white/10 bg-[#071827] p-5 transition peer-checked:border-[#6fffe9] peer-checked:bg-[#0a2331] peer-focus-visible:ring-2 peer-focus-visible:ring-[#d7b56d]">
+                        <Icon className="h-5 w-5 text-[#d7b56d]" />
+                        <span className="mt-4 block font-semibold text-white">
+                          {item.title}
+                        </span>
+                        <span className="mt-2 block text-sm leading-6 text-slate-400">
+                          {item.text}
+                        </span>
+                      </span>
+                    </label>
+                  );
+                })}
               </div>
+            </fieldset>
+
+            <div className="grid gap-4 md:grid-cols-2">
+              <input
+                name="name"
+                type="text"
+                placeholder="Full Name"
+                required
+                minLength={2}
+                className={inputClass}
+              />
+
+              <input
+                name="email"
+                type="email"
+                placeholder="Email Address"
+                required
+                className={inputClass}
+              />
+
+              <input
+                name="phone"
+                type="tel"
+                placeholder="Phone Number"
+                required
+                minLength={7}
+                className={inputClass}
+              />
+
+              <input
+                name="city"
+                type="text"
+                placeholder="City"
+                className={inputClass}
+              />
+
+              <select name="projectType" className={inputClass}>
+                <option value="">Project Type</option>
+                <option>New aquarium design</option>
+                <option>Existing aquarium upgrade</option>
+                <option>Aquascaping only</option>
+                <option>Maintenance visit</option>
+                <option>Commercial installation</option>
+              </select>
+
+              <select name="budget" className={inputClass}>
+                <option value="">Estimated Budget</option>
+                <option>Rs 25,000 - Rs 50,000</option>
+                <option>Rs 50,000 - Rs 1 Lakh</option>
+                <option>Rs 1 Lakh - Rs 5 Lakh</option>
+                <option>Rs 5 Lakh+</option>
+              </select>
+
+              <textarea
+                name="message"
+                placeholder="Describe your vision, room size, preferred style, livestock ideas or maintenance needs..."
+                rows={6}
+                required
+                minLength={10}
+                className={`${inputClass} resize-y md:col-span-2`}
+              />
             </div>
-          </div>
-
-          <div className="mb-10">
-            <h3 className="mb-6 text-xl font-semibold">
-              Where Will The Aquarium Be Installed?
-            </h3>
-
-            <div className="grid gap-4 md:grid-cols-3">
-              <div className="rounded-2xl border border-white/10 bg-[#071827] p-6 transition hover:border-[#6fffe9]">
-                <h4 className="font-semibold">🏠 Residence</h4>
-                <p className="mt-2 text-sm text-slate-400">
-                  Living rooms, lounges and luxury homes.
-                </p>
-              </div>
-
-              <div className="rounded-2xl border border-white/10 bg-[#071827] p-6 transition hover:border-[#6fffe9]">
-                <h4 className="font-semibold">🏢 Office</h4>
-                <p className="mt-2 text-sm text-slate-400">
-                  Reception areas and premium workspaces.
-                </p>
-              </div>
-
-              <div className="rounded-2xl border border-white/10 bg-[#071827] p-6 transition hover:border-[#6fffe9]">
-                <h4 className="font-semibold">🏨 Commercial</h4>
-                <p className="mt-2 text-sm text-slate-400">
-                  Hotels, restaurants and retail spaces.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <form onSubmit={handleSubmit} className="grid gap-6 md:grid-cols-2">
-            <input
-              name="name"
-              type="text"
-              placeholder="Full Name"
-              required
-              minLength={2}
-              className="rounded-xl border border-white/10 bg-[#071827] p-4 outline-none"
-            />
-
-            <input
-              name="email"
-              type="email"
-              placeholder="Email Address"
-              required
-              className="rounded-xl border border-white/10 bg-[#071827] p-4 outline-none"
-            />
-
-            <input
-              name="phone"
-              type="tel"
-              placeholder="Phone Number"
-              required
-              minLength={7}
-              className="rounded-xl border border-white/10 bg-[#071827] p-4 outline-none"
-            />
-
-            <input
-              name="city"
-              type="text"
-              placeholder="City"
-              className="rounded-xl border border-white/10 bg-[#071827] p-4 outline-none"
-            />
-
-            <select
-              name="projectType"
-              className="rounded-xl border border-white/10 bg-[#071827] p-4"
-            >
-              <option value="">Project Type</option>
-              <option>Freshwater Aquarium</option>
-              <option>Marine Aquarium</option>
-              <option>Reef Aquarium</option>
-              <option>Aquascaping</option>
-              <option>Maintenance</option>
-              <option>Commercial Installation</option>
-            </select>
-
-            <select
-              name="budget"
-              className="rounded-xl border border-white/10 bg-[#071827] p-4"
-            >
-              <option value="">Estimated Budget</option>
-              <option>₹25,000 - ₹50,000</option>
-              <option>₹50,000 - ₹1 Lakh</option>
-              <option>₹1 Lakh - ₹5 Lakh</option>
-              <option>₹5 Lakh+</option>
-            </select>
-
-            <textarea
-              name="message"
-              placeholder="Describe your vision..."
-              rows={6}
-              required
-              minLength={10}
-              className="rounded-xl border border-white/10 bg-[#071827] p-4 outline-none md:col-span-2"
-            />
 
             {feedback && (
               <p
-                className={`md:col-span-2 ${
-                  status === "success" ? "text-[#6fffe9]" : "text-red-300"
+                aria-live="polite"
+                className={`rounded-lg border px-4 py-3 text-sm md:col-span-2 ${
+                  status === "success"
+                    ? "border-[#6fffe9]/30 bg-[#6fffe9]/10 text-[#6fffe9]"
+                    : "border-red-300/30 bg-red-500/10 text-red-200"
                 }`}
               >
                 {feedback}
@@ -220,9 +362,10 @@ export default function ConsultationForm() {
             <button
               type="submit"
               disabled={status === "sending"}
-              className="rounded-xl bg-[#14b8a6] px-8 py-4 font-semibold text-black transition hover:scale-105 md:col-span-2"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#14b8a6] px-8 py-4 text-sm font-semibold text-[#02080d] transition hover:-translate-y-0.5 hover:bg-[#6fffe9] disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {status === "sending" ? "Sending..." : "Request Consultation"}
+              {status === "sending" ? "Sending request" : "Request Consultation"}
+              <Send className="h-4 w-4" />
             </button>
           </form>
         </div>

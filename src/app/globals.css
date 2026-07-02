@@ -18,8 +18,15 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 7rem;
   min-height: 100%;
   width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {

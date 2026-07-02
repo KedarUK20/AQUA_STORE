@@ -1,149 +1,87 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight, BadgeCheck, Leaf, Waves } from "lucide-react";
+
+const heroStats = [
+  {
+    value: "8",
+    label: "curated departments",
+    icon: Leaf,
+  },
+  {
+    value: "1k+",
+    label: "aquarium essentials",
+    icon: Waves,
+  },
+  {
+    value: "Pro",
+    label: "setup guidance",
+    icon: BadgeCheck,
+  },
+];
 
 export default function HeroShop() {
   return (
-    <section className="relative min-h-[100svh] overflow-hidden">
-
-      {/* Background Image */}
+    <section className="relative min-h-[calc(100svh-8rem)] overflow-hidden border-b border-white/10">
       <Image
         src="/images/banner1.jpg"
-        alt="Aquarium Banner"
+        alt="Premium planted aquarium with aquatic plants and clear water"
         fill
-        priority
+        preload
         sizes="100vw"
-        className="absolute inset-0 h-full w-full object-cover"
+        className="object-cover"
       />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/70" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,#02080d_0%,rgba(2,8,13,0.92)_38%,rgba(2,8,13,0.58)_68%,rgba(2,8,13,0.86)_100%)]" />
+      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#02080d] to-transparent" />
 
-      {/* Hero Content */}
-      <div className="relative z-20 flex min-h-[100svh] items-center py-28 sm:py-32">
+      <div className="container-custom relative z-10 grid min-h-[calc(100svh-8rem)] gap-8 py-12 lg:grid-cols-[1fr_0.78fr] lg:items-end lg:py-16">
+        <div className="max-w-4xl self-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#6fffe9]">
+            Premium Aquarium Store
+          </p>
 
-        <div className="mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-10">
+          <h1 className="mt-5 font-serif text-4xl leading-[1.02] text-white sm:text-5xl md:text-6xl xl:text-7xl">
+            Aquarium products for healthier water and calmer care.
+          </h1>
 
-          <div className="max-w-3xl">
+          <p className="mt-6 max-w-2xl text-base leading-8 text-slate-200 sm:text-lg">
+            Browse plants, fertilizers, food, hardscape, CO2 equipment and
+            water-care essentials selected for beautiful long-running aquariums.
+          </p>
 
-            <h1
-              className="
-                text-4xl
-                sm:text-5xl
-                md:text-6xl
-                lg:text-7xl
-                xl:text-8xl
-                font-black
-                leading-tight
-                text-white
-              "
-            >
-              Premium Products
-              <br />
-              For{" "}
-              <span className="text-cyan-400">
-                Aquariums
-              </span>
-            </h1>
-
-            <p
-              className="
-                mt-6
-                text-lg
-                md:text-2xl
-                text-gray-300
-                max-w-2xl
-              "
-            >
-              Discover premium aquarium plants,
-              fertilizers, fish food, aquascaping
-              essentials and high-quality aquarium
-              accessories.
-            </p>
-
-            {/* Buttons */}
-            <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
-
-              <Link
-                href="/products"
-                className="
-                  rounded-2xl
-                  bg-cyan-500
-                  px-8
-                  py-4
-                  font-bold
-                  text-black
-                  transition-all
-                  duration-300
-                  hover:scale-105
-                  hover:bg-cyan-400
-                  hover:shadow-[0_0_30px_rgba(34,211,238,0.5)]
-                  text-center
-                "
-              >
-                Shop Now
-              </Link>
-
-              {/* <Link
-                href="/gallery"
-                className="
-                  rounded-2xl
-                  border
-                  border-cyan-400
-                  px-8
-                  py-4
-                  text-white
-                  transition-all
-                  duration-300
-                  hover:bg-cyan-500/10
-                  hover:shadow-[0_0_25px_rgba(34,211,238,0.25)]
-                "
-              >
-                Explore Gallery
-              </Link> */}
-
-            </div>
-
-            {/* Stats */}
-            <div className="mt-10 grid max-w-xl grid-cols-1 gap-4 sm:mt-14 sm:grid-cols-2">
-
-              <div className="rounded-lg border border-white/10 bg-black/30 p-5 backdrop-blur-xl sm:p-6">
-                <h2 className="text-3xl font-bold text-white sm:text-4xl md:text-5xl">
-                  500+
-                </h2>
-
-                <p className="mt-2 text-base text-cyan-400 sm:text-lg">
-                  Live Plants
-                </p>
-
-                <p className="text-gray-400 text-sm mt-3">
-                  Healthy and handpicked aquarium plants.
-                </p>
-              </div>
-
-              <div className="rounded-lg border border-white/10 bg-black/30 p-5 backdrop-blur-xl sm:p-6">
-                <h2 className="text-3xl font-bold text-white sm:text-4xl md:text-5xl">
-                  1000+
-                </h2>
-
-                <p className="mt-2 text-base text-cyan-400 sm:text-lg">
-                  Products
-                </p>
-
-                <p className="text-gray-400 text-sm mt-3">
-                  Filters, lights, substrate and more.
-                </p>
-              </div>
-
-            </div>
-
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Link href="#shop-categories" className="btn-primary gap-2">
+              Browse Categories
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link href="/consultation" className="btn-secondary">
+              Ask For Setup Advice
+            </Link>
           </div>
-
         </div>
 
-      </div>
+        <div className="grid gap-3 self-end sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+          {heroStats.map((item) => {
+            const Icon = item.icon;
 
+            return (
+              <div
+                key={item.label}
+                className="rounded-lg border border-white/10 bg-[#04111f]/76 p-4 backdrop-blur-xl"
+              >
+                <Icon className="h-5 w-5 text-[#d7b56d]" />
+                <p className="mt-4 font-serif text-3xl leading-none text-white">
+                  {item.value}
+                </p>
+                <p className="mt-2 text-xs leading-5 text-slate-300">
+                  {item.label}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </section>
   );
 }

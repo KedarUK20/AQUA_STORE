@@ -1,243 +1,102 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-const items = [
-  {
-    title: "Aquarium Plants",
-    slug: "aquarium-plants",
-    count: "500+ Products",
-    img: "https://aquariumplantsonline.com.au/wp-content/uploads/2023/06/Wide-scaled.jpg",
-  },
-  {
-    title: "Fertilizers",
-    slug: "fertilizers",
-    count: "120+ Products",
-    img: "https://www.aquariumcoop.com/cdn/shop/files/easy-green-all-in-one-fertilizer-32526935457861.jpg?v=1698339452&width=832",
-  },
-  {
-    title: "Fish Food",
-    slug: "fish-food",
-    count: "150+ Products",
-    img: "https://aquarium-boutique.com/cdn/shop/articles/min.png?v=1732452049&width=1100",
-  },
-  {
-    title: "Accessories",
-    slug: "accessories",
-    count: "350+ Products",
-    img: "https://st2.depositphotos.com/1004592/10554/i/950/depositphotos_105546690-stock-photo-group-of-aquarium-equipment.jpg",
-  },
-  {
-    title: "Aquascaping",
-    slug: "aquascaping",
-    count: "350+ Products",
-    img: "https://i.pinimg.com/originals/6a/3d/d7/6a3dd736c1fb0071d40225098c4cff4b.jpg",
-  },
-  {
-    title: "Fish & Shrimp",
-    slug: "fish-shrimp",
-    count: "250+ Products",
-    img: "https://www.tropicalfishcareguides.com/wp-content/uploads/2023/02/Cherry-Shrimp-1024x538.jpg",
-  },
-  {
-    title: "CO2 System",
-    slug: "co2-system",
-    count: "80+ Products",
-    img: "https://www.aquariumsource.com/wp-content/uploads/2025/12/CO2-Regulator-and-Diffuser-Close-Up.jpg",
-  },
-  {
-    title: "Water Care",
-    slug: "water-care",
-    count: "100+ Products",
-    img: "https://pet-health-advisor.com/wp-content/uploads/2024/10/what-aquarium-water-quality-testing-kits-are-best-featured.jpg",
-  },
-];
+import { shopCategories } from "@/src/data/shop";
 
-export default function CategoryGrid() {
-  return (
-    // <section className="relative bg-[#020B12] py-24">
+type CategoryGridProps = {
+  query?: string;
+};
 
-      <div className="mx-auto w-full">
+export default function CategoryGrid({ query = "" }: CategoryGridProps) {
+  const normalizedQuery = query.trim().toLowerCase();
+  const categories = normalizedQuery
+    ? shopCategories.filter((item) => {
+        const searchableText = [
+          item.title,
+          item.slug,
+          item.description,
+          ...item.terms,
+        ]
+          .join(" ")
+          .toLowerCase();
 
-        {/* Header */}
+        return searchableText.includes(normalizedQuery);
+      })
+    : shopCategories;
 
-        <div className="text-center mb-16">
-
-          <p
-            className="
-            mt-5
-            max-w-3xl
-            mx-auto
-            text-lg
-            text-slate-400
-          "
-          >
-            Explore premium aquarium plants,
-            fertilizers, fish food, aquascaping tools,
-            accessories and professional equipment.
-          </p>
-        </div>
-
-        {/* Grid */}
-
-        <div
-          className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-5 sm:gap-6 lg:gap-8"
+  if (categories.length === 0) {
+    return (
+      <div className="rounded-lg border border-white/10 bg-[#071827]/70 p-8 text-center">
+        <p className="text-sm uppercase tracking-[0.28em] text-[#d7b56d]">
+          No matches
+        </p>
+        <h3 className="mt-3 text-2xl font-semibold text-white">
+          No shop categories found for {query}.
+        </h3>
+        <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-slate-400">
+          Try searching for plants, food, CO2, aquascaping, accessories or water
+          care.
+        </p>
+        <Link
+          href="/shop"
+          className="mt-6 inline-flex items-center justify-center gap-2 rounded-md border border-[#6fffe9]/45 px-5 py-3 text-sm font-medium text-white transition hover:border-[#6fffe9] hover:text-[#6fffe9]"
         >
-          {items.map((item, index) => (
-            <Link
-              key={index}
-              href={`/categories/${item.slug}`}
-              className="
-              group
-              relative
-              min-h-[300px]
-              sm:min-h-[340px]
-              overflow-hidden
-              rounded-lg
-
-              border
-              border-white/10
-
-              bg-black/20
-              backdrop-blur-xl
-
-              shadow-xl
-
-              transition-all
-              duration-500
-
-              hover:-translate-y-3
-              hover:border-emerald-500/50
-              hover:shadow-[0_0_50px_rgba(16,185,129,0.35)]
-            "
-            >
-              {/* Image */}
-
-              <Image
-                src={item.img}
-                alt={item.title}
-                fill
-                sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
-                className="
-                absolute
-                inset-0
-                object-cover
-
-                transition-all
-                duration-700
-
-                group-hover:scale-110
-              "
-              />
-
-              {/* Overlay */}
-
-              <div
-                className="
-                absolute
-                inset-0
-
-                bg-gradient-to-t
-                from-black
-                via-black/40
-                to-transparent
-              "
-              />
-
-              {/* Badge */}
-
-              <div
-                className="
-                absolute
-                top-5
-                left-5
-
-                rounded-full
-
-                border
-                border-emerald-500/30
-
-                bg-black/40
-                backdrop-blur-xl
-
-                px-4
-                py-2
-
-                text-xs
-                font-semibold
-                text-emerald-300
-              "
-              >
-                {item.count}
-              </div>
-
-              {/* Content */}
-
-              <div
-                className="
-                absolute
-                bottom-5
-                left-5
-                right-5
-
-                flex
-                items-end
-                justify-between
-                gap-4
-              "
-              >
-                <div className="min-w-0">
-                  <h3
-                    className="
-                    text-2xl
-                    sm:text-3xl
-                    font-bold
-                    text-white
-                  "
-                  >
-                    {item.title}
-                  </h3>
-
-                  <p className="mt-2 text-slate-300">
-                    Explore Collection
-                  </p>
-                </div>
-
-                <div
-                  className="
-                  shrink-0
-                  flex
-                  h-11
-                  w-11
-                  sm:h-14
-                  sm:w-14
-                  items-center
-                  justify-center
-
-                  rounded-full
-
-                  bg-emerald-500
-
-                  transition-all
-                  duration-300
-
-                  group-hover:scale-110
-                  group-hover:rotate-45
-                "
-                >
-                  <ArrowRight
-                    size={24}
-                    className="text-white"
-                  />
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-
+          Reset categories
+          <ArrowRight className="h-4 w-4" />
+        </Link>
       </div>
-    // </section>
+    );
+  }
+
+  return (
+    <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-5 sm:gap-6 lg:gap-8">
+      {categories.map((item) => (
+        <Link
+          key={item.slug}
+          href={`/categories/${item.slug}`}
+          className="group relative min-h-[310px] overflow-hidden rounded-lg border border-white/10 bg-[#071827]/70 shadow-xl transition duration-300 hover:-translate-y-2 hover:border-[#6fffe9]/55 focus-visible:border-[#d7b56d] sm:min-h-[350px]"
+        >
+          <Image
+            src={item.image}
+            alt={`${item.title} category`}
+            fill
+            sizes="(min-width: 1536px) 25vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+            className="object-cover transition duration-700 group-hover:scale-105"
+          />
+
+          <div className="absolute inset-0 bg-gradient-to-t from-[#02080d] via-[#02080d]/52 to-transparent" />
+          <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#02080d]/76 to-transparent" />
+
+          <div className="absolute left-5 top-5 rounded-md border border-[#6fffe9]/25 bg-[#02080d]/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#6fffe9] backdrop-blur-xl">
+            {item.count}
+          </div>
+
+          <div className="absolute bottom-5 left-5 right-5">
+            <div className="flex items-end justify-between gap-4">
+              <div className="min-w-0">
+                <h3 className="text-2xl font-semibold leading-tight text-white sm:text-3xl">
+                  {item.title}
+                </h3>
+                <p className="mt-3 max-w-[24rem] text-sm leading-6 text-slate-300">
+                  {item.description}
+                </p>
+              </div>
+
+              <span
+                aria-hidden="true"
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-[#d7b56d] text-[#02080d] transition duration-300 group-hover:translate-x-1 sm:h-12 sm:w-12"
+              >
+                <ArrowRight className="h-5 w-5" />
+              </span>
+            </div>
+
+            <p className="mt-5 text-sm font-medium text-[#6fffe9]">
+              Explore collection
+            </p>
+          </div>
+        </Link>
+      ))}
+    </div>
   );
 }
