@@ -1,34 +1,39 @@
 const stats = [
   {
     value: "500+",
-    label: "Aquariums Installed",
+    label: "Aquariums installed and serviced",
   },
   {
-    value: "12+",
-    label: "Years Experience",
+    value: "10+",
+    label: "Years of aquarium care experience",
   },
   {
-    value: "98%",
-    label: "Client Satisfaction",
+    value: "50+",
+    label: "Commercial service environments",
   },
   {
-    value: "24/7",
-    label: "Support Available",
+    value: "3",
+    label: "Care levels for different tank needs",
   },
 ];
 
 export default function TrustStats() {
   return (
-    <section className="py-16">
-      <div className="mx-auto max-w-[1800px] px-6 lg:px-10">
-        <div className="grid gap-6 md:grid-cols-4">
+    <section className="border-y border-white/10 bg-white/[0.025] py-10">
+      <div className="container-custom">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((stat) => (
-            <div key={stat.label} className="premium-card p-8 text-center">
-              <h3 className="font-serif text-5xl text-[#6fffe9]">
+            <div
+              key={stat.label}
+              className="rounded-lg border border-white/10 bg-[#071827]/70 p-5"
+            >
+              <h3 className="font-serif text-4xl leading-none text-[#6fffe9]">
                 {stat.value}
               </h3>
 
-              <p className="mt-3 text-slate-400">{stat.label}</p>
+              <p className="mt-3 text-sm leading-6 text-slate-400">
+                {stat.label}
+              </p>
             </div>
           ))}
         </div>

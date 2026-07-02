@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function CTA() {
   return (
     <section
@@ -21,7 +23,9 @@ export default function CTA() {
             complete aquarium concept around the way you live or work.
           </p>
 
-          <button className="btn-primary mt-8">Book Consultation</button>
+          <Link href="/consultation" className="btn-primary mt-8">
+            Book Consultation
+          </Link>
         </div>
       </div>
     </section>

@@ -1,25 +1,27 @@
+import Image from "next/image";
+
 const styles = [
   {
     title: "Nature Aquariums",
-    image: "/images/nature-aquarium.jpg",
+    image: "/images/7.jpeg",
     description:
       "Inspired by rivers, forests and natural landscapes with plants and driftwood.",
   },
   {
     title: "Marine Aquariums",
-    image: "/images/marine-aquarium.jpg",
+    image: "/images/8.jpeg",
     description:
       "Vibrant saltwater systems featuring exotic fish and stunning aquatic life.",
   },
   {
     title: "Reef Systems",
-    image: "/images/reef-aquarium.jpg",
+    image: "/images/9.jpeg",
     description:
       "Premium coral ecosystems designed for beauty, stability and growth.",
   },
   {
     title: "Commercial Installations",
-    image: "/images/commercial-aquarium.jpg",
+    image: "/images/10.jpeg",
     description:
       "Statement aquariums for hotels, offices, restaurants and public spaces.",
   },
@@ -43,11 +45,13 @@ export default function AquariumStyles() {
               key={style.title}
               className="group overflow-hidden rounded-[32px] border border-white/10"
             >
-              <div className="h-[350px] overflow-hidden">
-                <img
+              <div className="relative h-[280px] overflow-hidden sm:h-[350px]">
+                <Image
                   src={style.image}
                   alt={style.title}
-                  className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                  fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="object-cover transition duration-700 group-hover:scale-105"
                 />
               </div>
 
