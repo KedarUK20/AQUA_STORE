@@ -1,6 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CircleCheck, Droplets, Leaf, ShieldCheck } from "lucide-react";
+import {
+  ArrowRight,
+  CircleCheck,
+  Droplets,
+  Leaf,
+  ShieldCheck,
+} from "lucide-react";
 
 const proofPoints = [
   { value: "500+", label: "Aquariums designed" },

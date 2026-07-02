@@ -78,9 +78,9 @@ const inputClass =
   "w-full rounded-lg border border-white/10 bg-[#071827] px-4 py-4 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-[#6fffe9]/80";
 
 export default function ConsultationForm() {
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">(
-    "idle",
-  );
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
   const [feedback, setFeedback] = useState("");
   const [projectFocus, setProjectFocus] = useState("");
   const [installationSpace, setInstallationSpace] = useState("");
@@ -123,7 +123,9 @@ export default function ConsultationForm() {
       const result = (await response.json()) as { message?: string };
 
       if (!response.ok) {
-        throw new Error(result.message || "Unable to send consultation request.");
+        throw new Error(
+          result.message || "Unable to send consultation request.",
+        );
       }
 
       event.currentTarget.reset();
@@ -137,8 +139,8 @@ export default function ConsultationForm() {
         error instanceof DOMException && error.name === "AbortError"
           ? "Email request timed out. Please try again in a moment."
           : error instanceof Error
-          ? error.message
-          : "Unable to send consultation request right now.",
+            ? error.message
+            : "Unable to send consultation request right now.",
       );
     } finally {
       window.clearTimeout(timeout);
@@ -189,9 +191,7 @@ export default function ConsultationForm() {
           </div>
 
           <div className="mt-6 rounded-lg border border-[#6fffe9]/20 bg-[#04111f]/82 p-5">
-            <p className="text-sm font-semibold text-white">
-              After you submit
-            </p>
+            <p className="text-sm font-semibold text-white">After you submit</p>
             <p className="mt-2 text-sm leading-6 text-slate-400">
               We review the details, contact you for the consultation, then
               shape a recommendation for aquarium type, placement, equipment,
@@ -364,7 +364,9 @@ export default function ConsultationForm() {
               disabled={status === "sending"}
               className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#14b8a6] px-8 py-4 text-sm font-semibold text-[#02080d] transition hover:-translate-y-0.5 hover:bg-[#6fffe9] disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {status === "sending" ? "Sending request" : "Request Consultation"}
+              {status === "sending"
+                ? "Sending request"
+                : "Request Consultation"}
               <Send className="h-4 w-4" />
             </button>
           </form>

@@ -48,12 +48,8 @@ export default function Services() {
                 className="rounded-lg border border-white/10 bg-[#071827]/70 p-6 transition duration-300 hover:border-[#6fffe9]/50 sm:p-7"
               >
                 <Icon className="h-7 w-7 text-[#14b8a6]" />
-                <h3 className="mt-8 text-2xl font-semibold">
-                  {service.title}
-                </h3>
-                <p className="mt-4 leading-7 text-slate-400">
-                  {service.text}
-                </p>
+                <h3 className="mt-8 text-2xl font-semibold">{service.title}</h3>
+                <p className="mt-4 leading-7 text-slate-400">{service.text}</p>
                 <Link
                   href="/services"
                   className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-[#6fffe9]"
@@ -69,3 +65,9 @@ export default function Services() {
     </section>
   );
 }
+
+<div className="mt-10 text-center">
+  <Link href="/services" className="btn-primary">
+    Explore All Services
+  </Link>
+</div>;

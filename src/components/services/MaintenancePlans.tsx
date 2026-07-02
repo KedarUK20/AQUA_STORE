@@ -80,7 +80,10 @@ export default function MaintenancePlans() {
 
               <ul className="mt-7 space-y-4">
                 {plan.features.map((feature) => (
-                  <li key={feature} className="flex gap-3 text-sm text-slate-300">
+                  <li
+                    key={feature}
+                    className="flex gap-3 text-sm text-slate-300"
+                  >
                     <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#14b8a6]" />
                     <span className="leading-6">{feature}</span>
                   </li>

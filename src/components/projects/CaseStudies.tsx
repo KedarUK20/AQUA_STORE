@@ -13,7 +13,11 @@ const studies = [
       "We planned a custom planted aquascape with cabinet alignment, controlled lighting, balanced filtration and a care routine the family could live with.",
     result:
       "The aquarium became the visual anchor of the room while staying practical to maintain through scheduled professional care.",
-    outcomes: ["Integrated cabinet line", "Planted ecosystem", "Recurring care plan"],
+    outcomes: [
+      "Integrated cabinet line",
+      "Planted ecosystem",
+      "Recurring care plan",
+    ],
   },
   {
     id: "commercial-case",

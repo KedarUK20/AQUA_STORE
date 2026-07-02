@@ -38,95 +38,93 @@ const careHighlights = [
 export default function ServicesPage() {
   return (
     <div className="min-h-screen overflow-hidden bg-[#02080d] text-white">
-        <section className="relative overflow-hidden">
-          <div className="absolute inset-0">
-            <Image
-              src="/images/aqua maintaince.jpg"
-              alt="Aquarium maintenance and service work"
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,#02080d_0%,rgba(2,8,13,0.94)_38%,rgba(2,8,13,0.62)_68%,rgba(2,8,13,0.86)_100%)]" />
-            <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#02080d] to-transparent" />
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/aqua maintaince.jpg"
+            alt="Aquarium maintenance and service work"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,#02080d_0%,rgba(2,8,13,0.94)_38%,rgba(2,8,13,0.62)_68%,rgba(2,8,13,0.86)_100%)]" />
+          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#02080d] to-transparent" />
+        </div>
+
+        <div className="container-custom relative z-10 grid min-h-[calc(100vh-6rem)] gap-10 pb-8 pt-20 lg:grid-cols-[1fr_0.86fr] lg:items-center lg:pb-12 lg:pt-24">
+          <div className="max-w-4xl self-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#6fffe9]">
+              Aquarium Services
+            </p>
+
+            <h1 className="mt-5 font-serif text-4xl leading-[1.02] sm:text-5xl md:text-6xl xl:text-7xl">
+              Design, build and care for aquariums that keep thriving.
+            </h1>
+
+            <p className="mt-6 max-w-2xl text-base leading-8 text-slate-200 sm:text-lg">
+              We handle the full aquarium lifecycle: concept, equipment,
+              aquascaping, installation, water stability and long-term care for
+              homes, offices and hospitality spaces.
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link href="/consultation" className="btn-primary">
+                Book Service Consultation
+              </Link>
+              <Link href="#service-menu" className="btn-secondary">
+                View Services
+              </Link>
+            </div>
           </div>
 
-          <div className="container-custom relative z-10 grid min-h-[calc(100vh-6rem)] gap-10 pb-8 pt-20 lg:grid-cols-[1fr_0.86fr] lg:items-center lg:pb-12 lg:pt-24">
-            <div className="max-w-4xl self-center">
-              <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#6fffe9]">
-                Aquarium Services
+          <div className="grid gap-4 self-end lg:self-center">
+            <div className="rounded-lg border border-white/10 bg-[#04111f]/78 p-5 backdrop-blur-xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#d7b56d]">
+                Service Coverage
               </p>
-
-              <h1 className="mt-5 font-serif text-4xl leading-[1.02] sm:text-5xl md:text-6xl xl:text-7xl">
-                Design, build and care for aquariums that keep thriving.
-              </h1>
-
-              <p className="mt-6 max-w-2xl text-base leading-8 text-slate-200 sm:text-lg">
-                We handle the full aquarium lifecycle: concept, equipment,
-                aquascaping, installation, water stability and long-term care
-                for homes, offices and hospitality spaces.
-              </p>
-
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link href="/consultation" className="btn-primary">
-                  Book Service Consultation
-                </Link>
-                <Link href="#service-menu" className="btn-secondary">
-                  View Services
-                </Link>
+              <div className="mt-5 grid gap-4">
+                {heroPoints.map((item) => (
+                  <div key={item} className="flex gap-3">
+                    <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-[#6fffe9]" />
+                    <p className="text-sm leading-7 text-slate-300">{item}</p>
+                  </div>
+                ))}
               </div>
             </div>
 
-            <div className="grid gap-4 self-end lg:self-center">
-              <div className="rounded-lg border border-white/10 bg-[#04111f]/78 p-5 backdrop-blur-xl">
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#d7b56d]">
-                  Service Coverage
-                </p>
-                <div className="mt-5 grid gap-4">
-                  {heroPoints.map((item) => (
-                    <div key={item} className="flex gap-3">
-                      <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-[#6fffe9]" />
-                      <p className="text-sm leading-7 text-slate-300">
-                        {item}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
+            <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+              {careHighlights.map((item) => {
+                const Icon = item.icon;
 
-              <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-                {careHighlights.map((item) => {
-                  const Icon = item.icon;
-
-                  return (
-                    <div
-                      key={item.title}
-                      className="rounded-lg border border-white/10 bg-[#04111f]/72 p-4 backdrop-blur-xl"
-                    >
-                      <Icon className="h-6 w-6 text-[#14b8a6]" />
-                      <h3 className="mt-3 text-sm font-semibold text-white">
-                        {item.title}
-                      </h3>
-                      <p className="mt-2 text-xs leading-5 text-slate-400">
-                        {item.text}
-                      </p>
-                    </div>
-                  );
-                })}
-              </div>
+                return (
+                  <div
+                    key={item.title}
+                    className="rounded-lg border border-white/10 bg-[#04111f]/72 p-4 backdrop-blur-xl"
+                  >
+                    <Icon className="h-6 w-6 text-[#14b8a6]" />
+                    <h3 className="mt-3 text-sm font-semibold text-white">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-xs leading-5 text-slate-400">
+                      {item.text}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <TrustStats />
-        <ServicesGrid />
-        <MaintenancePlans />
-        <ProcessTimeline />
-        <CommercialServices />
-        <BeforeAfter />
-        <FAQ />
-        <ConsultationCTA />
+      <TrustStats />
+      <ServicesGrid />
+      <MaintenancePlans />
+      <ProcessTimeline />
+      <CommercialServices />
+      <BeforeAfter />
+      <FAQ />
+      <ConsultationCTA />
     </div>
   );
 }

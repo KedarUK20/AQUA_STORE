@@ -12,9 +12,10 @@ const links = [
   { name: "Services", href: "/services" },
   { name: "Shop", href: "/shop" },
   { name: "About", href: "/about" },
+  { name: "Contact", href: "/contact" },
 ];
 
-const NAVBAR_SCROLL_THRESHOLD = 24;
+const NAVBAR_SCROLL_THRESHOLD = 20;
 
 export default function Navbar() {
   const [mobileMenu, setMobileMenu] = useState(false);
