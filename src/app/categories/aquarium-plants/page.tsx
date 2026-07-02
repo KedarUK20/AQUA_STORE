@@ -3,30 +3,28 @@ import ProductCard from "../../../components/shop/ProductCard";
 const products = [
   {
     title: "Java Moss",
-    image:
-      "https://fishsubsidy.org/wp-content/uploads/2019/10/how-to-grow-java-moss.jpg",
+    image: "/images/1.jpeg",
     price: "$5",
   },
   {
     title: "Amazon Sword",
-    image:
-      "https://cdn.diys.com/wp-content/uploads/2021/05/Amazon-Sword-1.jpg",
+    image: "/images/2.jpeg",
     price: "$8",
   },
   {
     title: "Anubias Plant",
-    image:
-      "https://www.aquariadise.com/wp-content/uploads/2017/02/Depositphotos_1452254_l-2015.jpg",
+    image: "/images/3.jpeg",
     price: "$6",
   },
 ];
 
 export default function Page() {
   return (
-    <div className="p-8 text-white">
+    <main className="min-h-screen px-4 pb-12 pt-28 text-white sm:px-6 lg:px-10">
+      <div className="mx-auto w-full max-w-[1800px]">
 
       {/* Title */}
-      <h1 className="text-3xl font-bold text-cyan-400">
+      <h1 className="text-3xl font-bold text-cyan-400 sm:text-4xl">
         Aquarium Plants
       </h1>
 
@@ -36,7 +34,7 @@ export default function Page() {
       </p>
 
       {/* Products Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-5 sm:gap-6 lg:gap-8">
 
         {products.map((p, i) => (
           <ProductCard
@@ -49,7 +47,8 @@ export default function Page() {
         ))}
 
       </div>
+      </div>
 
-    </div>
+    </main>
   );
 }

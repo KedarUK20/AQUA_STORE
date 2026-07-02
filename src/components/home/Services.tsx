@@ -1,4 +1,5 @@
 import { Gem, Leaf, ShieldCheck } from "lucide-react";
+import Link from "next/link";
 
 const services = [
   {
@@ -55,3 +56,9 @@ gap-5
     </section>
   );
 }
+
+<div className="mt-10 text-center">
+  <Link href="/services" className="btn-primary">
+    Explore All Services
+  </Link>
+</div>;

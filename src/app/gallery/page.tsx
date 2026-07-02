@@ -81,7 +81,7 @@ return (
       </section>
 
   {/* FEATURED */}
-  <section className="container-custom pb-16 md:pb-24">
+  <section className="pb-16 md:pb-24">
 
     <div className="group relative overflow-hidden rounded-3xl lg:rounded-[40px] border border-white/10">
 

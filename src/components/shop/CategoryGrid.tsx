@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
@@ -58,7 +59,7 @@ export default function CategoryGrid() {
   return (
     // <section className="relative bg-[#020B12] py-24">
 
-      <div className="container mx-auto px-6">
+      <div className="mx-auto w-full">
 
         {/* Header */}
 
@@ -82,12 +83,7 @@ export default function CategoryGrid() {
         {/* Grid */}
 
         <div
-          className="
-          grid
-          gap-8
-          md:grid-cols-2
-          xl:grid-cols-4
-        "
+          className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-5 sm:gap-6 lg:gap-8"
         >
           {items.map((item, index) => (
             <Link
@@ -96,9 +92,10 @@ export default function CategoryGrid() {
               className="
               group
               relative
-              h-[340px]
+              min-h-[300px]
+              sm:min-h-[340px]
               overflow-hidden
-              rounded-[32px]
+              rounded-lg
 
               border
               border-white/10
@@ -118,14 +115,14 @@ export default function CategoryGrid() {
             >
               {/* Image */}
 
-              <img
+              <Image
                 src={item.img}
                 alt={item.title}
+                fill
+                sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
                 className="
                 absolute
                 inset-0
-                h-full
-                w-full
                 object-cover
 
                 transition-all
@@ -181,19 +178,21 @@ export default function CategoryGrid() {
               <div
                 className="
                 absolute
-                bottom-6
-                left-6
-                right-6
+                bottom-5
+                left-5
+                right-5
 
                 flex
                 items-end
                 justify-between
+                gap-4
               "
               >
-                <div>
+                <div className="min-w-0">
                   <h3
                     className="
-                    text-3xl
+                    text-2xl
+                    sm:text-3xl
                     font-bold
                     text-white
                   "
@@ -208,9 +207,12 @@ export default function CategoryGrid() {
 
                 <div
                   className="
+                  shrink-0
                   flex
-                  h-14
-                  w-14
+                  h-11
+                  w-11
+                  sm:h-14
+                  sm:w-14
                   items-center
                   justify-center
 

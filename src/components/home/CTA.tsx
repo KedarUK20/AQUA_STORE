@@ -1,4 +1,5 @@
-import Link from "next/dist/client/link";
+import Link from "next/link";
+import Footer from "../layout/Footer";
 
 export default function CTA() {
   return (
@@ -28,6 +29,8 @@ export default function CTA() {
           </Link>
         </div>
       </div>
+    
     </section>
   );
+  
 }

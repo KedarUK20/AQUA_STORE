@@ -17,7 +17,8 @@ export default function FeaturedProjects() {
           {projectStories.map((project) => (
             <div
               key={project.title}
-              className="premium-card overflow-hidden group" >
+              className="premium-card overflow-hidden group"
+            >
               <div className="relative h-96 overflow-hidden">
                 <Image
                   src={project.image}
@@ -33,9 +34,7 @@ export default function FeaturedProjects() {
                 <p className="text-xs uppercase tracking-[0.26em] text-[#6fffe9]">
                   {project.location}
                 </p>
-                <h3 className="mt-3 text-2xl font-semibold">
-                  {project.title}
-                </h3>
+                <h3 className="mt-3 text-2xl font-semibold">{project.title}</h3>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <span

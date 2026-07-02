@@ -3,30 +3,28 @@ import ProductCard from "../../../components/shop/ProductCard";
 const products = [
   {
     title: "Water Conditioner",
-    image:
-      "https://aquapics.com.au/cdn/shop/products/ShCondCleaerAquarium125ml.png?v=1679283205",
+    image: "/images/8.jpeg",
     price: "$6",
   },
   {
     title: "pH Control",
-    image:
-      "https://aquariumgrow.com/wp-content/uploads/2025/04/How-to-Check-Your-Aquariums-pH-Levels-Step-by-Step-Guide.jpg",
+    image: "/images/9.jpeg",
     price: "$8",
   },
   {
     title: "Algae Remover",
-    image:
-      "https://img4.dhresource.com/webp/m/0x0/f3/albu/jc/g/14/7460af2b-4d27-4ded-8d05-a654e8583084.jpg",
+    image: "/images/10.jpeg",
     price: "$7",
   },
 ];
 
 export default function Page() {
   return (
-    <div className="p-8 text-white">
+    <main className="min-h-screen px-4 pb-12 pt-28 text-white sm:px-6 lg:px-10">
+      <div className="mx-auto w-full max-w-[1800px]">
 
       {/* Title */}
-      <h1 className="text-3xl font-bold text-cyan-400">
+      <h1 className="text-3xl font-bold text-cyan-400 sm:text-4xl">
         Water Care
       </h1>
 
@@ -36,7 +34,7 @@ export default function Page() {
       </p>
 
       {/* Product Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-5 sm:gap-6 lg:gap-8">
 
         {products.map((p, i) => (
           <ProductCard
@@ -48,7 +46,8 @@ export default function Page() {
         ))}
 
       </div>
+      </div>
 
-    </div>
+    </main>
   );
 }
