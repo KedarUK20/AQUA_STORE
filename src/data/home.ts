@@ -47,22 +47,19 @@ export const projectStories = [
   {
     title: "Amazonia Escape",
     location: "Private residence",
-    image:
-      "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=1200&q=85",
+    image: "/images/360_F_599769747_o3YrtqXBV8hHZqMOjhf2T4VgKl1tWd97.jpg",
     tags: ["Planted", "Bespoke Cabinet", "Annual Care"],
   },
   {
     title: "Iwagumi Lounge",
     location: "Hospitality lobby",
-    image:
-      "https://images.unsplash.com/photo-1520637836862-4d197d17c93a?auto=format&fit=crop&w=1200&q=85",
+    image: "/images/20210909_081637-1024x768.jpg",
     tags: ["Stone Layout", "CO2 System", "Minimal"],
   },
   {
     title: "Executive Reef",
     location: "Corporate suite",
-    image:
-      "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=85",
+    image: "/images/2.jpeg",
     tags: ["Marine", "Quiet Filtration", "Concierge"],
   },
 ];

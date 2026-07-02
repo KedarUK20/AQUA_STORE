@@ -7,8 +7,8 @@ export default function CTA() {
       className="mx-auto w-full max-w-[1800px] px-4 py-28 sm:px-6 lg:px-10"
     >
       <div className="premium-card relative overflow-hidden p-8 md:p-14">
-        <div className="absolute inset-y-0 right-0 hidden w-1/2 bg-[url('/images/aquahomeimg.png')] bg-cover bg-center opacity-35 md:block" />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,#061521_0%,rgba(6,21,33,0.94)_48%,rgba(6,21,33,0.52)_100%)]" />
+        <div className="absolute inset-0 bg-[url('/images/banner1.jpg')] bg-cover bg-center" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(6,21,33,0.92)_0%,rgba(6,21,33,0.6)_38%,rgba(6,21,33,0.15)_72%,transparent_100%)]" />
 
         <div className="relative max-w-2xl">
           <p className="mb-4 text-xs uppercase tracking-[0.34em] text-[#6fffe9]">

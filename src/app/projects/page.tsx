@@ -34,8 +34,7 @@ export default function ProjectsPage() {
             sizes="100vw"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,#02080d_0%,rgba(2,8,13,0.94)_36%,rgba(2,8,13,0.58)_66%,rgba(2,8,13,0.86)_100%)]" />
-          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#02080d] to-transparent" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,8,13,0.82)_0%,rgba(2,8,13,0.42)_44%,transparent_80%)]" />
         </div>
 
         <div className="container-custom relative z-10 grid min-h-[calc(100vh-6rem)] gap-10 pb-8 pt-20 lg:grid-cols-[1fr_0.85fr] lg:items-center lg:pb-12 lg:pt-24">

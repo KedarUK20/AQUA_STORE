@@ -23,7 +23,6 @@ const galleryImages = [
     id: "nature",
     description:
       "A calming planted layout with layered greens, driftwood detail and soft movement.",
-    height: "h-[360px] lg:h-[520px]",
   },
   {
     image: "/images/1.jpeg",
@@ -32,7 +31,6 @@ const galleryImages = [
     id: "aquascape",
     description:
       "Dense planting, balanced hardscape and clean viewing angles for a refined room feature.",
-    height: "h-[320px] lg:h-[420px]",
   },
   {
     image: "/images/2.jpeg",
@@ -41,7 +39,6 @@ const galleryImages = [
     id: "marine",
     description:
       "A vibrant reef-inspired showcase planned around color, flow and visual depth.",
-    height: "h-[320px] lg:h-[460px]",
   },
   {
     image: "/images/3.jpeg",
@@ -50,7 +47,6 @@ const galleryImages = [
     id: "custom",
     description:
       "Built as part of the interior language, with scale and placement tuned to the space.",
-    height: "h-[360px] lg:h-[500px]",
   },
   {
     image: "/images/4.jpeg",
@@ -59,7 +55,6 @@ const galleryImages = [
     id: "nature-2",
     description:
       "A quiet composition inspired by river stones, submerged roots and open swimming zones.",
-    height: "h-[320px] lg:h-[430px]",
   },
   {
     image: "/images/5.jpeg",
@@ -68,7 +63,6 @@ const galleryImages = [
     id: "aquascape-2",
     description:
       "A premium display focused on clear sight lines, healthy plant mass and elegant contrast.",
-    height: "h-[360px] lg:h-[540px]",
   },
   {
     image: "/images/6.jpeg",
@@ -77,7 +71,6 @@ const galleryImages = [
     id: "nature-3",
     description:
       "A planted ecosystem shaped to feel lush, balanced and easy to enjoy every day.",
-    height: "h-[320px] lg:h-[420px]",
   },
   {
     image: "/images/7.jpeg",
@@ -86,7 +79,6 @@ const galleryImages = [
     id: "aquascape-3",
     description:
       "Close-up texture, plant rhythm and hardscape proportion brought into one frame.",
-    height: "h-[320px] lg:h-[470px]",
   },
   {
     image: "/images/8.jpeg",
@@ -95,7 +87,6 @@ const galleryImages = [
     id: "custom-2",
     description:
       "A living focal point designed for daily viewing, quiet maintenance and long-term beauty.",
-    height: "h-[360px] lg:h-[500px]",
   },
 ];
 
@@ -119,8 +110,7 @@ export default function GalleryPage() {
             sizes="100vw"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,#02080d_0%,rgba(2,8,13,0.94)_36%,rgba(2,8,13,0.58)_66%,rgba(2,8,13,0.86)_100%)]" />
-          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#02080d] to-transparent" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,8,13,0.82)_0%,rgba(2,8,13,0.42)_44%,transparent_80%)]" />
         </div>
 
         <div className="container-custom relative z-10 grid min-h-[calc(100vh-6rem)] gap-10 pb-8 pt-20 lg:grid-cols-[1fr_0.82fr] lg:items-center lg:pb-12 lg:pt-24">
@@ -177,7 +167,7 @@ export default function GalleryPage() {
               height={900}
               className="h-[340px] w-full object-cover sm:h-[480px] lg:h-[620px]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#02080d]/80 via-transparent to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#02080d]/85 via-[#02080d]/20 to-transparent" />
             <div className="absolute bottom-5 left-5 right-5">
               <p className="text-xs uppercase tracking-[0.28em] text-[#6fffe9]">
                 Featured Project
@@ -244,28 +234,28 @@ export default function GalleryPage() {
           </h2>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
           {galleryImages.map((item) => (
             <article
               id={item.id}
               key={item.id}
-              className="group overflow-hidden rounded-lg border border-white/10 bg-[#071827]/70"
+              className="group flex flex-col overflow-hidden rounded-xl border border-white/10 bg-[#071827]/70 transition duration-300 hover:-translate-y-1 hover:border-[#6fffe9]/40"
             >
-              <div className={`relative overflow-hidden ${item.height}`}>
+              <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
                   src={item.image}
                   alt={item.title}
                   fill
-                  sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
-                  className="object-cover transition duration-700 group-hover:scale-105"
+                  sizes="(min-width: 1280px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  className="object-cover brightness-105 saturate-[1.05] transition duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#02080d]/86 via-transparent to-transparent" />
-                <div className="absolute left-5 top-5 rounded-md border border-white/10 bg-[#02080d]/70 px-3 py-1 text-xs uppercase tracking-[0.2em] text-[#6fffe9] backdrop-blur-xl">
+                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#02080d]/45 to-transparent" />
+                <div className="absolute left-4 top-4 rounded-md border border-white/10 bg-[#02080d]/60 px-3 py-1 text-xs uppercase tracking-[0.2em] text-[#6fffe9] backdrop-blur-xl">
                   {item.category}
                 </div>
               </div>
 
-              <div className="p-5 sm:p-6">
+              <div className="flex flex-1 flex-col p-5 sm:p-6">
                 <h3 className="text-xl font-semibold text-white">
                   {item.title}
                 </h3>

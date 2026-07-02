@@ -88,8 +88,7 @@ export default function AboutPage() {
             sizes="100vw"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,#02080d_0%,rgba(2,8,13,0.92)_34%,rgba(2,8,13,0.62)_64%,rgba(2,8,13,0.82)_100%)]" />
-          <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#02080d] to-transparent" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,8,13,0.82)_0%,rgba(2,8,13,0.42)_44%,transparent_80%)]" />
         </div>
 
         <div className="container-custom relative z-10 grid min-h-[calc(100vh-6rem)] items-end gap-12 pb-8 pt-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:pb-14 lg:pt-24">
@@ -146,7 +145,6 @@ export default function AboutPage() {
               height={900}
               className="h-[320px] w-full object-cover sm:h-[440px] lg:h-[560px]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#02080d]/68 via-transparent to-transparent" />
           </div>
 
           <div className="lg:pl-6">
@@ -305,7 +303,7 @@ export default function AboutPage() {
               height={700}
               className="h-[420px] w-full object-cover"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,8,13,0.94),rgba(2,8,13,0.72),rgba(2,8,13,0.32))]" />
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,8,13,0.80),rgba(2,8,13,0.42),transparent)]" />
             <div className="absolute inset-0 flex items-center">
               <div className="max-w-2xl px-6 sm:px-10">
                 <Sparkles className="h-8 w-8 text-[#d7b56d]" />

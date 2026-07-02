@@ -22,8 +22,8 @@ export default function BeforeAfter() {
           <div className="premium-card overflow-hidden">
             <div className="relative">
               <Image
-                src="/images/02 aquarium.jpg"
-                alt="Before"
+                src="/images/41PCOowDgQL.jpg"
+                alt="Empty glass aquarium before setup"
                 width={900}
                 height={650}
                 className="h-[500px] w-full object-cover"

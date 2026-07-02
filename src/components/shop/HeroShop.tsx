@@ -27,13 +27,12 @@ export default function HeroShop() {
         src="/images/banner1.jpg"
         alt="Premium planted aquarium with aquatic plants and clear water"
         fill
-        preload
+        priority
         sizes="100vw"
         className="object-cover"
       />
 
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,#02080d_0%,rgba(2,8,13,0.92)_38%,rgba(2,8,13,0.58)_68%,rgba(2,8,13,0.86)_100%)]" />
-      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#02080d] to-transparent" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,8,13,0.82)_0%,rgba(2,8,13,0.42)_44%,transparent_80%)]" />
 
       <div className="container-custom relative z-10 grid min-h-[calc(100svh-8rem)] gap-8 py-12 lg:grid-cols-[1fr_0.78fr] lg:items-end lg:py-16">
         <div className="max-w-4xl self-center">

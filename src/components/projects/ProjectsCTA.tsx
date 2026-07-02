@@ -13,7 +13,7 @@ export default function ProjectsCTA() {
           height={760}
           className="h-[480px] w-full object-cover"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,8,13,0.95),rgba(2,8,13,0.78),rgba(2,8,13,0.36))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,8,13,0.80),rgba(2,8,13,0.42),transparent)]" />
 
         <div className="absolute inset-0 flex items-center">
           <div className="max-w-3xl px-6 sm:px-10 lg:px-12">

@@ -64,7 +64,6 @@ export default function FeaturedProjects() {
                   className="object-cover transition duration-700 group-hover:scale-105"
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-[#02080d]/90 via-transparent to-transparent" />
                 <div className="absolute left-5 top-5 rounded-md border border-white/10 bg-[#02080d]/70 px-3 py-1 text-xs uppercase tracking-[0.2em] text-[#6fffe9] backdrop-blur-xl">
                   {project.category}
                 </div>

@@ -13,15 +13,14 @@ export default function ConsultationPage() {
       <section className="relative min-h-[calc(100svh-6rem)] overflow-hidden">
         <Image
           src="/images/gallery-1.jpg"
-          alt=""
+          alt="Luxury planted aquarium consultation backdrop"
           fill
-          preload
+          priority
           sizes="100vw"
-          className="object-cover"
+          className="object-cover brightness-110 saturate-105"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,8,13,0.95)_0%,rgba(2,8,13,0.78)_38%,rgba(2,8,13,0.24)_72%,rgba(2,8,13,0.72)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,8,13,0.80)_0%,rgba(2,8,13,0.40)_46%,transparent_82%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_24%,rgba(20,184,166,0.24),transparent_28%),radial-gradient(circle_at_18%_82%,rgba(215,181,109,0.14),transparent_30%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#02080d] to-transparent" />
 
         <div className="relative z-10 flex min-h-[calc(100svh-6rem)] flex-col justify-between gap-8 px-3 pb-5 pt-8 sm:px-5 sm:pt-10 md:gap-10 md:px-8 lg:px-12 lg:pt-14">
           <div className="hero-content max-w-4xl px-2 sm:px-4 md:pl-10 lg:pl-20 xl:pl-28">

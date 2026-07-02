@@ -325,3 +325,90 @@ a:focus-visible {
   transform: translateY(-5px);
   border-color: rgba(111, 255, 233, 0.2);
 }
+
+/* ============================================================
+   Inviting polish — micro-interactions & motion
+   Appended intentionally so it layers over the base rules above.
+   Nothing here changes the color palette; it only adds warmth,
+   responsiveness and gentle motion. All motion respects
+   prefers-reduced-motion.
+   ============================================================ */
+
+/* Friendlier, springier button feedback */
+.btn-primary,
+.btn-secondary {
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(20, 184, 166, 0.42);
+}
+
+.btn-primary:active,
+.btn-secondary:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* Soft glow lift on premium cards */
+.premium-card {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.premium-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(111, 255, 233, 0.28);
+  box-shadow:
+    0 26px 60px rgba(0, 0, 0, 0.45),
+    0 0 42px rgba(20, 184, 166, 0.14);
+}
+
+/* Gentle warmth on inline links */
+a {
+  transition: color 0.2s ease;
+}
+
+/* Reusable hover-lift helper for cards/tiles */
+.hover-lift {
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+}
+
+/* Scroll-in reveal (progressive enhancement).
+   Activates only where the browser supports scroll-driven animations,
+   so unsupported browsers always render content normally — no risk of
+   content staying hidden. Also disabled under reduced-motion. */
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-up {
+      animation: revealUp linear both;
+      animation-timeline: view();
+      animation-range: entry 4% cover 26%;
+    }
+  }
+}

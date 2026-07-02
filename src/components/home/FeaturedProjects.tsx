@@ -27,7 +27,6 @@ export default function FeaturedProjects() {
                   sizes="(min-width: 768px) 33vw, 100vw"
                   className="object-cover transition duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#02080d]/90 via-transparent to-transparent" />
               </div>
 
               <div className="p-6">

@@ -11,15 +11,25 @@ export default function Home() {
     <div className="min-h-screen overflow-hidden bg-[#02080d] text-white">
       <Hero />
 
-      <FeaturedProjects />
+      <div className="reveal-up">
+        <FeaturedProjects />
+      </div>
 
-      <Services />
+      <div className="reveal-up">
+        <Services />
+      </div>
 
-      <Products />
+      <div className="reveal-up">
+        <Products />
+      </div>
 
-      <Testimonials />
+      <div className="reveal-up">
+        <Testimonials />
+      </div>
 
-      <CTA />
+      <div className="reveal-up">
+        <CTA />
+      </div>
     </div>
   );
 }

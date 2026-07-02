@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
 import Footer from "@/src/components/layout/Footer";
 import Navbar from "@/src/components/layout/Navbar";
+import { CartProvider } from "@/src/context/CartContext";
 
 // ✅ SEO Metadata
 export const metadata: Metadata = {
@@ -19,10 +21,23 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <body className="bg-[#030d18] text-white">
-        <Navbar />
+        <CartProvider>
+          <Navbar />
 
-        <main className="pt-24">{children}</main>
-        <Footer />
+          <main className="pt-24">{children}</main>
+          <Footer />
+
+          <Toaster
+            position="bottom-right"
+            toastOptions={{
+              style: {
+                background: "#04111f",
+                color: "#ffffff",
+                border: "1px solid rgba(111,255,233,0.25)",
+              },
+            }}
+          />
+        </CartProvider>
       </body>
     </html>
   );

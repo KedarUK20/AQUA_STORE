@@ -3,7 +3,9 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Menu, Search, ShoppingCart, X } from "lucide-react";
+import { Menu, Search, X } from "lucide-react";
+
+import CartButton from "./CartButton";
 
 const links = [
   { name: "Home", href: "/" },
@@ -165,13 +167,7 @@ export default function Navbar() {
                 <Search size={18} />
               </button>
 
-              <Link
-                href="/cart"
-                aria-label="Cart"
-                className="grid h-10 w-10 place-items-center rounded-lg border border-white/10 bg-white/5 text-slate-200 transition hover:border-cyan-400/60 hover:text-cyan-300"
-              >
-                <ShoppingCart size={18} />
-              </Link>
+              <CartButton />
 
               <button
                 type="button"

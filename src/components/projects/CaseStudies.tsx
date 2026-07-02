@@ -23,7 +23,7 @@ const studies = [
     id: "commercial-case",
     title: "Corporate Office",
     location: "Pune",
-    image: "/images/4.jpeg",
+    image: "/images/8801cf37d273eb17f5f4c276b2c116f5.jpg",
     challenge:
       "The reception area needed a premium first impression without noise, clutter or operational complexity for the office team.",
     solution:
@@ -65,7 +65,6 @@ export default function CaseStudies() {
                   sizes="(min-width: 1024px) 50vw, 100vw"
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#02080d]/58 via-transparent to-transparent" />
               </div>
 
               <div>

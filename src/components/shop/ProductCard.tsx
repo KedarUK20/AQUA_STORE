@@ -2,7 +2,10 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { Eye, Heart, ShoppingCart, Star } from "lucide-react";
+
+import { useCart } from "@/src/context/CartContext";
 
 type Props = {
   title: string;
@@ -12,13 +15,6 @@ type Props = {
   link?: string;
 };
 
-type CartItem = {
-  title: string;
-  image: string;
-  price: string;
-  quantity: number;
-};
-
 export default function ProductCard({
   title,
   image,
@@ -26,24 +22,11 @@ export default function ProductCard({
   category = "Premium Aquarium Product",
 }: Props) {
   const [liked, setLiked] = useState(false);
+  const { addItem } = useCart();
 
   const handleAddToCart = () => {
-    const cart = JSON.parse(localStorage.getItem("cart") || "[]") as CartItem[];
-    const existingItem = cart.find((item) => item.title === title);
-
-    if (existingItem) {
-      existingItem.quantity += 1;
-    } else {
-      cart.push({
-        title,
-        image,
-        price,
-        quantity: 1,
-      });
-    }
-
-    localStorage.setItem("cart", JSON.stringify(cart));
-    alert(`${title} added to cart`);
+    addItem({ title, image, price });
+    toast.success(`${title} added to cart`);
   };
 
   return (
@@ -54,10 +37,8 @@ export default function ProductCard({
           alt={title}
           fill
           sizes="(min-width: 768px) 33vw, 100vw"
-          className="object-cover transition duration-700 group-hover:scale-110"
+          className="object-cover brightness-110 saturate-[1.15] transition duration-700 group-hover:scale-110 group-hover:brightness-125"
         />
-
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
 
         <div className="absolute left-4 top-4 rounded-md bg-emerald-500 px-3 py-1 text-xs font-bold text-black">
           NEW

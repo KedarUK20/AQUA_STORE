@@ -65,8 +65,7 @@ export default function CategoryGrid({ query = "" }: CategoryGridProps) {
             className="object-cover transition duration-700 group-hover:scale-105"
           />
 
-          <div className="absolute inset-0 bg-gradient-to-t from-[#02080d] via-[#02080d]/52 to-transparent" />
-          <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#02080d]/76 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-[#02080d]/90 via-[#02080d]/20 to-transparent" />
 
           <div className="absolute left-5 top-5 rounded-md border border-[#6fffe9]/25 bg-[#02080d]/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#6fffe9] backdrop-blur-xl">
             {item.count}
