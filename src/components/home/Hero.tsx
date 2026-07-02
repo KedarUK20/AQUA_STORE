@@ -11,22 +11,22 @@ const services = [
 
 export default function Hero() {
   return (
-    <section className="relative isolate min-h-screen overflow-hidden bg-[#02080d]">
+    <section className="relative min-h-screen overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/aquahomeimg.png')" }}
+        style={{ backgroundImage: "url('/images/5.jpeg')" }}
       />
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,8,13,0.94)_0%,rgba(2,8,13,0.74)_38%,rgba(2,8,13,0.2)_72%,rgba(2,8,13,0.72)_100%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_24%,rgba(20,184,166,0.24),transparent_28%),radial-gradient(circle_at_18%_82%,rgba(215,181,109,0.14),transparent_30%)]" />
       <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#02080d] to-transparent" />
 
-      <div className="relative z-10 flex min-h-screen flex-col justify-between gap-12 px-4 pb-5 pt-28 sm:px-6 md:px-8 lg:px-12">
-        <div className="hero-content max-w-4xl pt-8 md:pl-14 lg:pt-16 xl:pl-24">
-          <p className="mb-5 text-xs uppercase tracking-[0.28em] text-[#6fffe9]">
+      <div className="relative z-10 flex min-h-screen flex-col justify-between gap-8 px-3 pb-4 pt-24 sm:px-5 sm:pt-28 md:gap-10 md:px-8 lg:px-12 lg:pt-32">
+        <div className="hero-content max-w-4xl px-2 pt-6 sm:px-4 md:pl-10 lg:pl-20 xl:pl-28">
+          <p className="mb-4 text-[11px] uppercase tracking-[0.24em] text-[#6fffe9] sm:mb-5 sm:text-xs sm:tracking-[0.28em]">
             Aquarium Nature Studio
           </p>
 
-          <h1 className="max-w-3xl font-serif text-5xl leading-[0.98] tracking-normal text-white md:text-7xl xl:text-8xl">
+          <h1 className="font-serif text-[2.55rem] leading-[1.02] sm:text-5xl md:text-6xl lg:text-7xl">
             We Design.
             <br />
             You Relax.
@@ -34,25 +34,24 @@ export default function Hero() {
             Nature Thrives.
           </h1>
 
-          <p className="mt-6 max-w-xl text-sm leading-7 text-slate-200 md:text-base">
+          <p className="mt-5 max-w-xl text-sm leading-7 text-slate-200 sm:mt-6 md:text-base">
             Luxury aquarium design, custom builds, and premium aquatic products
             for a thriving underwater world.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/#projects" className="btn-primary">
+          <div className="mt-7 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:gap-3">
+            <Link href="/#projects" className="btn-primary px-4 sm:px-7">
               Explore Projects
             </Link>
-            <Link href="/#shop" className="btn-secondary">
+            <Link href="/#shop" className="btn-secondary px-4 sm:px-7">
               Shop Now
             </Link>
           </div>
         </div>
-
-        <div className="grid gap-4 lg:grid-cols-[1.05fr_1fr]">
-          <div className="premium-card p-5">
-            <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-xs font-semibold uppercase tracking-[0.22em] text-white">
+        <div className="grid gap-3 sm:gap-4 lg:grid-cols-[1.05fr_1fr]">
+          <div className="premium-card p-4 sm:p-5">
+            <div className="mb-4 flex items-center justify-between gap-3">
+              <h2 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white sm:text-xs sm:tracking-[0.22em]">
                 Featured Projects
               </h2>
               <Link href="/#projects" className="text-xs text-[#6fffe9]">
@@ -64,9 +63,9 @@ export default function Hero() {
               {projectStories.map((project, index) => (
                 <div key={project.title} className="group">
                   <div
-                    className="h-28 rounded-md bg-cover bg-center transition duration-500 group-hover:scale-[1.02]"
+                    className="h-24 rounded-md bg-cover bg-center transition duration-500 group-hover:scale-[1.02] sm:h-28"
                     style={{
-                      backgroundImage: `url('/images/aquahomeimg.png')`,
+                      backgroundImage: `url('/images/5.jpeg')`,
                       backgroundPosition:
                         index === 0
                           ? "left center"
@@ -84,9 +83,9 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="premium-card p-5">
-            <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-xs font-semibold uppercase tracking-[0.22em] text-white">
+          <div className="premium-card p-4 sm:p-5">
+            <div className="mb-4 flex items-center justify-between gap-3">
+              <h2 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white sm:text-xs sm:tracking-[0.22em]">
                 Our Services
               </h2>
               <span className="text-xs text-slate-500">03</span>
@@ -107,9 +106,9 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="premium-card p-5">
-            <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-xs font-semibold uppercase tracking-[0.22em] text-white">
+          <div className="premium-card p-4 sm:p-5">
+            <div className="mb-4 flex items-center justify-between gap-3">
+              <h2 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white sm:text-xs sm:tracking-[0.22em]">
                 Best Selling Products
               </h2>
               <Link href="/#shop" className="text-xs text-[#6fffe9]">
@@ -117,23 +116,23 @@ export default function Hero() {
               </Link>
             </div>
 
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
               {productHighlights.map((item) => (
                 <div
                   key={item.name}
                   className="rounded-md border border-white/10 bg-[#071827]/80 p-3"
                 >
-                  <div className="mb-3 h-14 rounded bg-[url('/images/aquahomeimg.png')] bg-cover bg-center" />
+                  <div className="mb-3 h-14 rounded bg-[url('/images/5.jpeg')] bg-cover bg-center" />
                   <p className="truncate text-xs text-slate-300">{item.name}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="premium-card grid gap-5 p-5 sm:grid-cols-[0.8fr_1fr]">
-            <div className="min-h-36 rounded-md bg-[url('/images/aquahomeimg.png')] bg-cover bg-left" />
+          <div className="premium-card grid gap-4 p-4 sm:grid-cols-[0.8fr_1fr] sm:gap-5 sm:p-5">
+            <div className="min-h-32 rounded-md bg-[url('/images/5.jpeg')] bg-cover bg-left sm:min-h-36" />
             <div className="flex flex-col justify-center">
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white sm:text-xs sm:tracking-[0.22em]">
                 Knowledge Hub
               </p>
               <h3 className="mt-3 text-xl font-serif text-white">

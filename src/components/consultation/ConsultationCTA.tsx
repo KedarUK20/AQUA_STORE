@@ -24,7 +24,7 @@ export default function ConsultationCTA() {
         </h2>
 
         <p className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-slate-300">
-          Whether you're planning a luxury planted aquarium, marine reef system
+          Whether you&apos;re planning a luxury planted aquarium, marine reef system
           or commercial installation, our team is ready to guide your project
           from concept to long-term care.
         </p>

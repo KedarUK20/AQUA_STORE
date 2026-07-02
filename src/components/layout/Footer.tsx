@@ -1,44 +1,146 @@
 import Link from "next/link";
+import {
+  Mail,
+  Phone,
+  MapPin,
+} from "lucide-react";
 
-const footerLinks = [
-  { label: "Discover", href: "/discover" },
-  { label: "Projects", href: "/#projects" },
-  { label: "Services", href: "/#services" },
-  { label: "Shop", href: "/#shop" },
-  { label: "Consultation", href: "/#consultation" },
+const exploreLinks = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About Us" },
+  { href: "/services", label: "Services" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/contact", label: "Contact" },
 ];
 
-export default function Footer() {
+type FooterProps = {
+  className?: string;
+};
+
+export default function Footer({ className = "mt-24" }: FooterProps) {
+  const year = new Date().getFullYear();
+
   return (
-    <footer id="about" className="border-t border-white/10 bg-[#02080d] py-14">
-      <div className="mx-auto grid w-full max-w-[1800px] gap-10 px-4 sm:px-6 lg:px-10 md:grid-cols-[1fr_auto] md:items-end">
-        <div>
-          <Link href="/" className="font-serif text-2xl text-white">
-            <span className="text-[#14b8a6]">AQUARIUM</span>
-            <span className="block text-[10px] uppercase tracking-[0.4em] text-[#6fffe9]">
-              Nature Studio
-            </span>
-          </Link>
-          <p className="mt-6 max-w-xl leading-8 text-slate-400">
-            Premium aquascaping, aquarium builds, curated aquatic products, and
-            calm long-term maintenance for homes, offices, hotels, and living
-            spaces.
-          </p>
+    <footer className="pt-10 pb-8 border-t border-white/10 bg-[#02080d] text-white">
+      {/* Main Footer */}
+      <div className="container-custom py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+          {/* Brand */}
+          <div>
+
+            <h2 className="text-xl font-bold">
+              <span className="text-cyan-400">
+                AQUARIUM
+              </span>
+
+              <span className="block text-xs uppercase tracking-[0.35em] text-cyan-200 mt-1">
+                Nature Studio
+              </span>
+            </h2>
+
+            <p className="mt-5 text-sm leading-7 text-slate-400">
+              Premium aquascaping, custom aquarium design,
+              installation, maintenance and luxury aquatic
+              ecosystems for homes and businesses.
+            </p>
+
+           
+
+          </div>
+
+          {/* Explore */}
+          <div>
+
+            <h3 className="mb-5 text-white font-semibold">
+              Explore
+            </h3>
+
+            <ul className="space-y-3 text-slate-400">
+              {exploreLinks.map((link) => (
+          
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="transition hover:text-cyan-400"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+          </div>
+
+          {/* Services */}
+          <div>
+
+            <h3 className="mb-5 text-white font-semibold">
+              Services
+            </h3>
+
+            <ul className="space-y-3 text-slate-400">
+
+              <li>Custom Aquascaping</li>
+              <li>Aquarium Installation</li>
+              <li>Maintenance & Care</li>
+              <li>Corporate Aquariums</li>
+              <li>Water Testing</li>
+
+            </ul>
+
+          </div>
+
+          {/* Contact */}
+          <div>
+
+            <h3 className="mb-5 text-white font-semibold">
+              Contact
+            </h3>
+
+            <div className="space-y-5 text-slate-400">
+
+              <div className="flex items-start gap-3">
+
+                <MapPin className="h-5 w-5 shrink-0 text-cyan-400 mt-1" />
+
+                <span>
+                  Kolhapur,
+                  Maharashtra,
+                  India
+                </span>
+
+              </div>
+
+              <div className="flex items-center gap-3">
+
+                <Phone className="h-5 w-5 text-cyan-400" />
+
+                <span>
+                  +91 9876543210
+                </span>
+
+              </div>
+
+              <div className="flex items-center gap-3">
+
+                <Mail className="h-5 w-5 text-cyan-400" />
+
+                <span className="break-all">
+                  hello@aquariumnaturestudio.com
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
 
-        <div className="flex flex-wrap gap-5 text-sm text-slate-300 md:justify-end">
-          {footerLinks.map((link) => (
-            <Link key={link.label} href={link.href}>
-              {link.label}
-            </Link>
-          ))}
-        </div>
-
-        <div className="border-t border-white/10 pt-6 text-sm text-slate-500 md:col-span-2 md:flex md:items-center md:justify-between">
-          <p>Copyright 2026 Aquarium Nature Studio. All rights reserved.</p>
-          <p className="mt-3 md:mt-0">Designed for living water.</p>
-        </div>
       </div>
+
+      
+
     </footer>
   );
 }
