@@ -1,22 +1,54 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useMemo, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
 import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
 
+type CartItem = {
+  title: string;
+  price: string;
+  quantity: number;
+};
+
+const emptyCartSnapshot = "[]";
+
+const getCartSnapshot = () => {
+  if (typeof window === "undefined") return emptyCartSnapshot;
+
+  return localStorage.getItem("cart") || emptyCartSnapshot;
+};
+
+const subscribeToCart = (callback: () => void) => {
+  window.addEventListener("cartUpdated", callback);
+  window.addEventListener("storage", callback);
+
+  return () => {
+    window.removeEventListener("cartUpdated", callback);
+    window.removeEventListener("storage", callback);
+  };
+};
+
+const parseCart = (snapshot: string): CartItem[] => {
+  try {
+    return JSON.parse(snapshot) as CartItem[];
+  } catch {
+    return [];
+  }
+};
+
 export default function CartPage() {
   const router = useRouter();
-  const [cartItems, setCartItems] = useState<any[]>([]);
+  const cartSnapshot = useSyncExternalStore(
+    subscribeToCart,
+    getCartSnapshot,
+    () => emptyCartSnapshot
+  );
+  const cartItems = useMemo(() => parseCart(cartSnapshot), [cartSnapshot]);
 
-  useEffect(() => {
-    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-    setCartItems(cart);
-  }, []);
-
-  const updateCart = (updatedCart: any[]) => {
-    setCartItems(updatedCart);
+  const updateCart = (updatedCart: CartItem[]) => {
     localStorage.setItem("cart", JSON.stringify(updatedCart));
+    window.dispatchEvent(new Event("cartUpdated"));
   };
 
   const removeItem = (index: number) => {

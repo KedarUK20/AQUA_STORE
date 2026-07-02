@@ -57,10 +57,13 @@ export default function CheckoutPage() {
     };
 
     try {
-      await fetch("https://script.google.com/macros/s/AKfycbze0JWtV9oHNl2E6ETsGpzMRvkPfSnMuMEbGJsLdx3ExHhgAuxfR70KdIEOnUNCCmkObg/exec", {
-        method: "POST",
-        body: JSON.stringify(orderData),
-      });
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbze0JWtV9oHNl2E6ETsGpzMRvkPfSnMuMEbGJsLdx3ExHhgAuxfR70KdIEOnUNCCmkObg/exec",
+        {
+          method: "POST",
+          body: JSON.stringify(orderData),
+        }
+      );
 
       const existingOrders = JSON.parse(
         localStorage.getItem("orders") || "[]"
@@ -73,7 +76,6 @@ export default function CheckoutPage() {
       localStorage.removeItem("cart");
 
       window.dispatchEvent(new Event("cartUpdated"));
-
       router.push("/order-success");
     } catch (error) {
       console.log(error);
@@ -84,147 +86,142 @@ export default function CheckoutPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#06141B] text-white relative">
-      <Navbar />
+    <>
+      <main className="relative min-h-screen overflow-hidden bg-[#06141B] text-white">
+        <Navbar />
 
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-10"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1520301255226-bf5f144451c1?q=80&w=2070')",
-        }}
-      />
+        {/* Background */}
+        <div
+          className="fixed inset-0 -z-20 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1520301255226-bf5f144451c1?q=80&w=2070')",
+          }}
+        />
 
-      <section className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-20">
-        <div className="text-center mb-14">
-          <p className="text-cyan-400 uppercase tracking-[0.3em] text-sm mb-4">
-            Secure Checkout
-          </p>
+        {/* Overlay */}
+        <div className="fixed inset-0 -z-10 bg-black/80" />
 
-          <h1 className="text-5xl md:text-6xl font-bold">
-            Complete Your Order
-          </h1>
+        <section className="relative z-10 mx-auto max-w-7xl px-6 pt-32 pb-24">
+          <div className="mb-14 text-center">
+            <p className="mb-4 text-sm uppercase tracking-[0.3em] text-emerald-400">
+              Secure Checkout
+            </p>
 
-          <p className="text-gray-400 mt-4">
-            Safe • Secure • Fast Delivery
-          </p>
-        </div>
+            <h1 className="text-5xl font-bold md:text-6xl">
+              Complete Your Order
+            </h1>
 
-        {cartItems.length === 0 ? (
-          <div className="bg-[#0b1d26]/80 backdrop-blur-xl rounded-3xl p-12 text-center border border-cyan-900">
-            <h2 className="text-3xl font-bold mb-4">
-              Cart is Empty 🛒
-            </h2>
-
-            <button
-              onClick={() => router.push("/shop")}
-              className="bg-cyan-500 hover:bg-cyan-400 px-8 py-4 rounded-xl text-black font-bold"
-            >
-              Go To Shop
-            </button>
+            <p className="mt-4 text-gray-400">
+              Safe • Secure • Fast Delivery
+            </p>
           </div>
-        ) : (
-          <div className="grid lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2 bg-[#0b1d26]/80 backdrop-blur-xl rounded-3xl p-8 border border-cyan-900">
-              <h2 className="text-3xl font-bold mb-8">
-                Billing Details
-              </h2>
 
-              <div className="grid md:grid-cols-2 gap-5">
-                <input
-                  placeholder="Full Name"
-                  className="p-4 rounded-xl bg-[#06141B] border border-cyan-900 outline-none"
-                  onChange={(e) =>
-                    setForm({ ...form, name: e.target.value })
-                  }
-                />
-
-                <input
-                  placeholder="Phone Number"
-                  className="p-4 rounded-xl bg-[#06141B] border border-cyan-900 outline-none"
-                  onChange={(e) =>
-                    setForm({ ...form, phone: e.target.value })
-                  }
-                />
-
-                <input
-                  placeholder="City"
-                  className="p-4 rounded-xl bg-[#06141B] border border-cyan-900 outline-none"
-                  onChange={(e) =>
-                    setForm({ ...form, city: e.target.value })
-                  }
-                />
-
-                <input
-                  placeholder="Pincode"
-                  className="p-4 rounded-xl bg-[#06141B] border border-cyan-900 outline-none"
-                  onChange={(e) =>
-                    setForm({ ...form, pincode: e.target.value })
-                  }
-                />
-              </div>
-
-              <textarea
-                placeholder="Full Address"
-                rows={5}
-                className="w-full mt-5 p-4 rounded-xl bg-[#06141B] border border-cyan-900 outline-none"
-                onChange={(e) =>
-                  setForm({ ...form, address: e.target.value })
-                }
-              />
-            </div>
-
-            <div className="bg-[#0b1d26]/80 backdrop-blur-xl rounded-3xl p-8 border border-cyan-900">
-              <h2 className="text-3xl font-bold mb-8">
-                Order Summary
-              </h2>
-
-              <div className="space-y-4 max-h-[350px] overflow-auto">
-                {cartItems.map((item, index) => (
-                  <div
-                    key={index}
-                    className="bg-[#06141B] p-4 rounded-xl border border-cyan-900"
-                  >
-                    <div className="flex justify-between">
-                      <span>{item.title}</span>
-                      <span>x {item.quantity}</span>
-                    </div>
-
-                    <div className="mt-2 text-cyan-400 font-bold">
-                      $
-                      {Number(item.price.replace("$", "")) *
-                        item.quantity}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="border-t border-cyan-900 mt-6 pt-6">
-                <div className="flex justify-between text-2xl font-bold">
-                  <span>Total</span>
-                  <span className="text-cyan-400">
-                    ${totalPrice}
-                  </span>
-                </div>
-              </div>
+          {cartItems.length === 0 ? (
+            <div className="rounded-3xl border border-emerald-900 bg-[#0b1d26]/80 p-12 text-center backdrop-blur-xl">
+              <h2 className="mb-4 text-3xl font-bold">Cart is Empty 🛒</h2>
 
               <button
-                onClick={handlePlaceOrder}
-                disabled={loading}
-                className="w-full mt-8 bg-cyan-500 hover:bg-cyan-400 py-4 rounded-2xl text-black font-bold text-lg disabled:opacity-50"
+                onClick={() => router.push("/shop")}
+                className="rounded-xl bg-emerald-500 px-8 py-4 font-bold text-black hover:bg-emerald-400"
               >
-                {loading ? "Placing Order..." : "Place Order"}
+                Go To Shop
               </button>
-
-              <p className="text-center text-sm text-gray-400 mt-4">
-                🔒 100% Secure Checkout
-              </p>
             </div>
-          </div>
-        )}
-      </section>
+          ) : (
+            <div className="grid gap-8 lg:grid-cols-3">
+              {/* Billing */}
+              <div className="rounded-3xl border border-emerald-900 bg-[#0b1d26]/80 p-8 backdrop-blur-xl lg:col-span-2">
+                <h2 className="mb-8 text-3xl font-bold">Billing Details</h2>
+
+                <div className="grid gap-5 md:grid-cols-2">
+                  <input
+                    placeholder="Full Name"
+                    className="rounded-xl border border-emerald-900 bg-[#06141B] p-4 outline-none"
+                    onChange={(e) =>
+                      setForm({ ...form, name: e.target.value })
+                    }
+                  />
+
+                  <input
+                    placeholder="Phone Number"
+                    className="rounded-xl border border-emerald-900 bg-[#06141B] p-4 outline-none"
+                    onChange={(e) =>
+                      setForm({ ...form, phone: e.target.value })
+                    }
+                  />
+
+                  <input
+                    placeholder="City"
+                    className="rounded-xl border border-emerald-900 bg-[#06141B] p-4 outline-none"
+                    onChange={(e) =>
+                      setForm({ ...form, city: e.target.value })
+                    }
+                  />
+
+                  <input
+                    placeholder="Pincode"
+                    className="rounded-xl border border-emerald-900 bg-[#06141B] p-4 outline-none"
+                    onChange={(e) =>
+                      setForm({ ...form, pincode: e.target.value })
+                    }
+                  />
+                </div>
+
+                <textarea
+                  placeholder="Full Address"
+                  rows={5}
+                  className="mt-5 w-full rounded-xl border border-emerald-900 bg-[#06141B] p-4 outline-none"
+                  onChange={(e) =>
+                    setForm({ ...form, address: e.target.value })
+                  }
+                />
+              </div>
+
+              {/* Summary */}
+              <div className="rounded-3xl border border-emerald-900 bg-[#0b1d26]/80 p-8 backdrop-blur-xl">
+                <h2 className="mb-8 text-3xl font-bold">Order Summary</h2>
+
+                <div className="max-h-[350px] space-y-4 overflow-auto">
+                  {cartItems.map((item, index) => (
+                    <div
+                      key={index}
+                      className="rounded-xl border border-emerald-900 bg-[#06141B] p-4"
+                    >
+                      <div className="flex justify-between">
+                        <span>{item.title}</span>
+                        <span>x {item.quantity}</span>
+                      </div>
+
+                      <div className="mt-2 font-bold text-emerald-400">
+                        $
+                        {Number(item.price.replace("$", "")) * item.quantity}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-6 border-t border-emerald-900 pt-6">
+                  <div className="flex justify-between text-2xl font-bold">
+                    <span>Total</span>
+                    <span className="text-emerald-400">${totalPrice}</span>
+                  </div>
+                </div>
+
+                <button
+                  onClick={handlePlaceOrder}
+                  disabled={loading}
+                  className="mt-8 w-full rounded-2xl bg-emerald-500 py-4 text-lg font-bold text-black hover:bg-emerald-400 disabled:opacity-50"
+                >
+                  {loading ? "Placing Order..." : "Place Order"}
+                </button>
+              </div>
+            </div>
+          )}
+        </section>
+      </main>
 
       <Footer />
-    </main>
+    </>
   );
 }

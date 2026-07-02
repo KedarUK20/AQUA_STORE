@@ -5,6 +5,14 @@ import {
   MapPin,
 } from "lucide-react";
 
+const exploreLinks = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About Us" },
+  { href: "/services", label: "Services" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/contact", label: "Contact" },
+];
+
 type FooterProps = {
   className?: string;
 };
@@ -13,15 +21,10 @@ export default function Footer({ className = "mt-24" }: FooterProps) {
   const year = new Date().getFullYear();
 
   return (
-    <footer className={`${className} border-t border-white/10 bg-[#02080d] text-white`}>
-
-      
-
+    <footer className="pt-10 pb-8 border-t border-white/10 bg-[#02080d] text-white">
       {/* Main Footer */}
       <div className="container-custom py-16">
-
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
-
           {/* Brand */}
           <div>
 
@@ -53,37 +56,17 @@ export default function Footer({ className = "mt-24" }: FooterProps) {
             </h3>
 
             <ul className="space-y-3 text-slate-400">
-
-              <li>
-                <Link href="/" className="footer-link">
-                  Home
-                </Link>
-              </li>
-
-              <li>
-                <Link href="/about" className="footer-link">
-                  About
-                </Link>
-              </li>
-
-              <li>
-                <Link href="/projects" className="footer-link">
-                  Projects
-                </Link>
-              </li>
-
-              <li>
-                <Link href="/gallery" className="footer-link">
-                  Gallery
-                </Link>
-              </li>
-
-              <li>
-                <Link href="/shop" className="footer-link">
-                  Shop
-                </Link>
-              </li>
-
+              {exploreLinks.map((link) => (
+          
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="transition hover:text-cyan-400"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
 
           </div>

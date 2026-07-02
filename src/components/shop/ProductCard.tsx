@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import { Star, CheckCircle } from "lucide-react";
 
@@ -9,7 +8,6 @@ type Props = {
   image: string;
   price: string;
   category?: string;
-  link?: string;
 };
 
 type CartItem = {
@@ -18,8 +16,6 @@ type CartItem = {
   price: string;
   quantity: number;
 };
-
-
 
 export default function ProductCard({
   title,
@@ -33,13 +29,9 @@ export default function ProductCard({
   const handleAddToCart = () => {
     if (typeof window === "undefined") return;
 
-    const cart = JSON.parse(
-      localStorage.getItem("cart") || "[]"
-    ) as CartItem[];
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]") as CartItem[];
 
-    const existingItem = cart.find(
-      (item) => item.title === title
-    );
+    const existingItem = cart.find((item) => item.title === title);
 
     if (existingItem) {
       existingItem.quantity += quantity;
@@ -65,68 +57,67 @@ export default function ProductCard({
 
   return (
     <>
-      {/* Notification */}
       {showNotification && (
-        <div className="fixed top-5 right-5 z-50 flex items-center gap-3 rounded-xl bg-green-500 px-5 py-3 text-black font-semibold shadow-2xl animate-bounce">
+        <div className="fixed right-4 top-4 z-50 flex max-w-[calc(100vw-2rem)] items-center gap-3 rounded-xl bg-emerald-500 px-5 py-3 font-semibold text-black shadow-2xl">
           <CheckCircle size={20} />
           Added to Cart
         </div>
       )}
 
-      <div className="group overflow-hidden rounded-2xl border border-cyan-900/70 bg-[#081923] shadow-lg transition-all duration-300 hover:border-cyan-500 hover:shadow-cyan-500/20 hover:shadow-2xl">
+      <div className="group min-w-0 w-full max-w-full overflow-hidden rounded-2xl border border-emerald-800/50 bg-[#071510] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500 hover:shadow-emerald-500/20">
         
         {/* Product Image */}
         <div className="overflow-hidden">
           <img
             src={image}
             alt={title}
-            className="h-56 w-full object-cover transition duration-500 group-hover:scale-110 sm:h-64 lg:h-72"
+            className="h-[220px] w-full object-cover transition duration-500 group-hover:scale-105 md:h-[240px]"
           />
         </div>
 
         {/* Product Content */}
-        <div className="p-5 sm:p-6">
-          <h2 className="text-xl font-bold text-white sm:text-2xl">
+        <div className="p-5">
+          <h2 className="text-xl font-bold text-white md:text-2xl">
             {title}
           </h2>
 
-          <p className="mt-2 text-gray-400">{category}</p>
+          <p className="mt-2 text-sm text-gray-400">
+            {category}
+          </p>
 
           {/* Rating */}
           <div className="mt-3 flex gap-1">
             {[...Array(5)].map((_, i) => (
               <Star
                 key={i}
-                size={16}
+                size={15}
                 className="fill-yellow-400 text-yellow-400"
               />
             ))}
           </div>
 
           {/* Price */}
-          <h3 className="mt-4 text-2xl font-bold text-cyan-400 sm:text-3xl">
+          <h3 className="mt-4 text-2xl font-bold text-emerald-400">
             {price}
           </h3>
 
           {/* Quantity + Button */}
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:gap-4">
-            <div className="flex w-full items-center justify-between rounded-xl border border-gray-600 bg-[#0d2532] sm:w-auto">
+          <div className="mt-5 grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-[130px_minmax(0,1fr)] lg:grid-cols-1 min-[1180px]:grid-cols-[130px_minmax(0,1fr)]">
+            <div className="flex min-w-0 items-center justify-between rounded-xl border border-gray-700 bg-[#0d2532]">
               <button
-                onClick={() =>
-                  setQuantity(quantity > 1 ? quantity - 1 : 1)
-                }
-                className="px-4 py-2 text-lg text-white hover:text-cyan-400"
+                onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}
+                className="px-4 py-3 text-white hover:text-emerald-400"
               >
                 -
               </button>
 
-              <span className="px-4 py-2 text-white font-semibold">
+              <span className="font-semibold text-white">
                 {quantity}
               </span>
 
               <button
                 onClick={() => setQuantity(quantity + 1)}
-                className="px-4 py-2 text-lg text-white hover:text-cyan-400"
+                className="px-4 py-3 text-white hover:text-emerald-400"
               >
                 +
               </button>
@@ -134,7 +125,7 @@ export default function ProductCard({
 
             <button
               onClick={handleAddToCart}
-              className="flex-1 rounded-xl bg-cyan-500 px-4 py-3 font-bold text-black transition duration-300 hover:bg-cyan-400 hover:shadow-lg"
+              className="min-w-0 rounded-xl bg-emerald-500 px-4 py-3 font-bold text-black transition hover:bg-emerald-400"
             >
               Add To Cart
             </button>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { EllipsisVertical, Search, ShoppingCart, X } from "lucide-react";
@@ -14,11 +14,41 @@ const links = [
   { name: "About", href: "/about" },
 ];
 
+type CartItem = {
+  quantity?: number;
+};
+
+const getCartCount = () => {
+  if (typeof window === "undefined") return 0;
+
+  try {
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]") as CartItem[];
+
+    return cart.reduce((total, item) => total + Number(item.quantity || 0), 0);
+  } catch {
+    return 0;
+  }
+};
+
 export default function Navbar() {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [query, setQuery] = useState("");
+  const [cartCount, setCartCount] = useState(0);
   const pathname = usePathname();
   const router = useRouter();
+
+  useEffect(() => {
+    const updateCartCount = () => setCartCount(getCartCount());
+
+    updateCartCount();
+    window.addEventListener("cartUpdated", updateCartCount);
+    window.addEventListener("storage", updateCartCount);
+
+    return () => {
+      window.removeEventListener("cartUpdated", updateCartCount);
+      window.removeEventListener("storage", updateCartCount);
+    };
+  }, []);
 
   const handleSearch = () => {
     const value = query.trim();
@@ -109,10 +139,15 @@ export default function Navbar() {
 
               <Link
                 href="/cart"
-                aria-label="Cart"
-                className="grid h-10 w-10 place-items-center rounded-lg border border-white/10 bg-white/5 text-slate-200 transition hover:border-cyan-400/60 hover:text-cyan-300"
+                aria-label={`Cart${cartCount > 0 ? `, ${cartCount} items` : ""}`}
+                className="relative grid h-10 w-10 place-items-center rounded-lg border border-white/10 bg-white/5 text-slate-200 transition hover:border-cyan-400/60 hover:text-cyan-300"
               >
                 <ShoppingCart size={18} />
+                {cartCount > 0 && (
+                  <span className="absolute -right-2 -top-2 grid h-5 min-w-5 place-items-center rounded-full bg-emerald-400 px-1 text-[11px] font-bold leading-none text-[#03110d] ring-2 ring-[#04111f]">
+                    {cartCount > 99 ? "99+" : cartCount}
+                  </span>
+                )}
               </Link>
 
               <button
@@ -217,9 +252,14 @@ export default function Navbar() {
             <Link
               href="/cart"
               onClick={() => setMobileMenu(false)}
-              className="btn-secondary w-full"
+              className="btn-secondary relative w-full"
             >
               View Cart
+              {cartCount > 0 && (
+                <span className="ml-2 inline-grid h-5 min-w-5 place-items-center rounded-full bg-emerald-400 px-1 text-[11px] font-bold leading-none text-[#03110d]">
+                  {cartCount > 99 ? "99+" : cartCount}
+                </span>
+              )}
             </Link>
           </div>
         </div>

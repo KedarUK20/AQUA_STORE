@@ -56,43 +56,44 @@ const items = [
 
 export default function CategoryGrid() {
   return (
-    <section className="w-full px-2 sm:px-3 md:px-4">
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {items.map((item) => (
-          <Link
-            key={item.slug}
-            href={`/categories/${item.slug}`}
-            className="group relative h-[260px] overflow-hidden rounded-xl border border-cyan-900/40 bg-black/20 shadow-lg transition-all duration-500 hover:-translate-y-1 hover:border-emerald-500/50 sm:h-[290px]"
-          >
-            <img
-              src={item.img}
-              alt={item.title}
-              className="absolute inset-0 h-full w-full object-cover transition-all duration-700 group-hover:scale-110"
-            />
+    <section className="w-full overflow-x-hidden px-6 py-10">
+      <div className="mx-auto w-full max-w-[1700px] overflow-hidden">
+        <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {items.map((item) => (
+            <Link
+              key={item.slug}
+              href={`/categories/${item.slug}`}
+              className="group relative h-[260px] w-full min-w-0 overflow-hidden rounded-2xl border border-emerald-900/40 bg-black/20 shadow-lg transition-all duration-300 hover:border-emerald-500"
+            >
+              <img
+                src={item.img}
+                alt={item.title}
+                className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-110"
+              />
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
 
-            <div className="absolute left-3 top-3 rounded-full border border-emerald-500/30 bg-black/45 px-3 py-1 text-xs font-semibold text-emerald-300">
-              {item.count}
-            </div>
-
-            <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
-              <div>
-                <h3 className="text-xl font-bold text-white md:text-2xl">
-                  {item.title}
-                </h3>
-
-                <p className="mt-1 text-sm text-slate-300">
-                  Explore Collection
-                </p>
+              <div className="absolute left-3 top-3 rounded-full bg-black/60 px-3 py-1 text-xs font-medium text-emerald-300">
+                {item.count}
               </div>
 
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-500 transition-all duration-300 group-hover:rotate-45">
-                <ArrowRight size={20} className="text-white" />
+              <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
+                <div>
+                  <h3 className="text-2xl font-bold text-white">
+                    {item.title}
+                  </h3>
+                  <p className="mt-1 text-sm text-gray-300">
+                    Explore Collection
+                  </p>
+                </div>
+
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500 transition duration-300 group-hover:rotate-45">
+                  <ArrowRight size={22} className="text-white" />
+                </div>
               </div>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
   );
